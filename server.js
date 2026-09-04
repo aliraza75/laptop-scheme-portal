@@ -174,3 +174,18 @@ if (process.env.NODE_ENV !== 'production') {
         console.log(`🔑 Admin: admin / admin123`);
     });
 }
+// ✅ FOR VERCEL - Export the app
+module.exports = app;
+
+// Local development
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running on port ${PORT}`);
+        console.log(`✅ MongoDB Connected`);
+        console.log(`✅ 100 MCQs Loaded`);
+        console.log(`🔗 http://localhost:${PORT}/`);
+        console.log(`🔗 Admin Panel: http://localhost:${PORT}/admin`);
+        console.log(`🔑 Admin: admin / admin123`);
+    });
+}
