@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>National Laptop Distribution Scheme & Aptitude Test Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+                   ROOT VARIABLES - Premium Dark Theme
+                   ============================================================ */
+        :root {
+            --primary: #0a0e1a;
+            --primary-light: #141b33;
+            --primary-dark: #050810;
+            --secondary: #00f5b0;
+            --secondary-dark: #00c992;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --accent-dark: #6d28d9;
+            --gold: #fbbf24;
+            --gold-light: #fcd34d;
+            --gold-dark: #d97706;
+            --pink: #ec4899;
+            --pink-light: #f472b6;
+            --gradient-primary: linear-gradient(145deg, #0a0e1a 0%, #141b33 40%, #1a2a5c 100%);
+            --gradient-secondary: linear-gradient(135deg, #00f5b0 0%, #00c992 50%, #00f5b0 100%);
+            --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 50%, #8b5cf6 100%);
+            --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fbbf24 100%);
+            --gradient-pink: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            --gradient-hero: linear-gradient(145deg, #0a0e1a 0%, #141b33 30%, #1a2a5c 60%, #0a0e1a 100%);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.04);
+            --glass-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.6);
+            --radius: 24px;
+            --radius-sm: 14px;
+            --radius-full: 9999px;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #050810;
+            color: #e8ecf4;
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0e1a; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00f5b0, #8b5cf6); border-radius: 10px; }
+
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bg-layer .gradient-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 245, 176, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(251, 191, 36, 0.04) 0%, transparent 50%);
+            animation: gradientShift 15s ease-in-out infinite alternate;
+        }
+        @keyframes gradientShift {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .particles span {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+        }
+        .particles span:nth-child(1) { left: 5%; animation-duration: 28s; animation-delay: 0s; width: 5px; height: 5px; background: rgba(0, 245, 176, 0.1); }
+        .particles span:nth-child(2) { left: 15%; animation-duration: 22s; animation-delay: 3s; }
+        .particles span:nth-child(3) { left: 25%; animation-duration: 32s; animation-delay: 6s; width: 7px; height: 7px; background: rgba(139, 92, 246, 0.08); }
+        .particles span:nth-child(4) { left: 35%; animation-duration: 18s; animation-delay: 2s; }
+        .particles span:nth-child(5) { left: 45%; animation-duration: 26s; animation-delay: 5s; width: 4px; height: 4px; background: rgba(251, 191, 36, 0.08); }
+        .particles span:nth-child(6) { left: 55%; animation-duration: 30s; animation-delay: 1s; }
+        .particles span:nth-child(7) { left: 65%; animation-duration: 20s; animation-delay: 7s; width: 6px; height: 6px; background: rgba(236, 72, 153, 0.06); }
+        .particles span:nth-child(8) { left: 75%; animation-duration: 24s; animation-delay: 4s; }
+        .particles span:nth-child(9) { left: 85%; animation-duration: 34s; animation-delay: 2s; width: 5px; height: 5px; background: rgba(0, 245, 176, 0.08); }
+        .particles span:nth-child(10) { left: 95%; animation-duration: 18s; animation-delay: 6s; }
+        .particles span:nth-child(11) { left: 10%; animation-duration: 26s; animation-delay: 8s; width: 8px; height: 8px; background: rgba(139, 92, 246, 0.05); }
+        .particles span:nth-child(12) { left: 50%; animation-duration: 30s; animation-delay: 0s; width: 4px; height: 4px; background: rgba(251, 191, 36, 0.06); }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 8, 16, 0.7);
+            backdrop-filter: blur(24px) saturate(1.8);
+            -webkit-backdrop-filter: blur(24px) saturate(1.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 10px 0;
+            transition: var(--transition);
+        }
+        header.scrolled {
+            background: rgba(5, 8, 16, 0.92);
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #050810;
+            box-shadow: 0 4px 24px rgba(0, 245, 176, 0.25);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .logo-icon:hover {
+            transform: scale(1.05) rotate(-6deg);
+            box-shadow: 0 6px 32px rgba(0, 245, 176, 0.4);
+        }
+        .logo-text {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .logo-text span {
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links li a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 7px 16px;
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+        .nav-links li a i { font-size: 13px; opacity: 0.6; transition: var(--transition); }
+        .nav-links li a:hover { color: #fff; background: rgba(255, 255, 255, 0.04); }
+        .nav-links li a:hover i { opacity: 1; }
+        .nav-links li a.active-link {
+            color: #fff;
+            background: rgba(0, 245, 176, 0.06);
+        }
+        .nav-links li a.active-link::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 2px;
+            background: var(--gradient-secondary);
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 16px;
+            flex: 1;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page { display: none; animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+        .page.active { display: block; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .hero {
+            position: relative;
+            background: var(--gradient-hero);
+            padding: 60px 32px;
+            border-radius: var(--radius);
+            text-align: center;
+            color: #fff;
+            margin-bottom: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            isolation: isolate;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 245, 176, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.04) 0%, transparent 50%);
+            z-index: 0;
+        }
+        .hero>* { position: relative; z-index: 1; }
+        .hero .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: 0;
+            animation: shapeFloat 10s ease-in-out infinite alternate;
+        }
+        .hero .shape-1 { width: 350px; height: 350px; background: #8b5cf6; top: -120px; right: -80px; animation-delay: 0s; }
+        .hero .shape-2 { width: 250px; height: 250px; background: #00f5b0; bottom: -80px; left: -60px; animation-delay: 2s; }
+        .hero .shape-3 { width: 180px; height: 180px; background: #fbbf24; top: 40%; left: 5%; animation-delay: 4s; opacity: 0.15; }
+        @keyframes shapeFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, -40px) scale(1.1); }
+        }
+        .hero .glow {
+            background: linear-gradient(135deg, #ffffff 0%, #00f5b0 30%, #8b5cf6 60%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 300% 300%;
+            animation: shimmerGlow 5s ease-in-out infinite;
+        }
+        @keyframes shimmerGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .badge-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 8px 22px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .badge-premium::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(0, 245, 176, 0.06), transparent);
+            animation: shimmerBadge 3s ease-in-out infinite;
+            transform: translateX(-100%);
+        }
+        @keyframes shimmerBadge {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .badge-premium i { color: var(--gold); font-size: 14px; }
+        .hero h2 {
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 14px;
+            line-height: 1.12;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 15px;
+            max-width: 580px;
+            margin: 0 auto 26px;
+            opacity: 0.7;
+            line-height: 1.9;
+        }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+            margin-bottom: 22px;
+        }
+        .glass:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 245, 176, 0.08);
+            box-shadow: 0 12px 56px rgba(0, 0, 0, 0.4);
+        }
+        .glass .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .glass h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .glass h3 i { color: var(--secondary); font-size: 20px; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 30px;
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            min-height: 46px;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-full);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .btn:hover::after { opacity: 1; }
+        .btn-primary {
+            background: var(--gradient-secondary);
+            color: #050810;
+            box-shadow: 0 4px 28px rgba(0, 245, 176, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 40px rgba(0, 245, 176, 0.4);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-3px); }
+        .btn-accent {
+            background: var(--gradient-accent);
+            color: #fff;
+            box-shadow: 0 4px 28px rgba(139, 92, 246, 0.3);
+        }
+        .btn-accent:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 40px rgba(139, 92, 246, 0.4);
+        }
+        .btn-block { width: 100%; justify-content: center; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-group { margin-bottom: 2px; }
+        .form-group.full { grid-column: span 2; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .form-group label i { margin-right: 6px; color: var(--secondary); }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 11px 16px;
+            border: 1.5px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.02);
+            color: #e8ecf4;
+            font-family: inherit;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 4px rgba(0, 245, 176, 0.04);
+        }
+        .form-group input::placeholder { color: rgba(255, 255, 255, 0.2); }
+        .form-group input[type="file"] {
+            padding: 9px 12px;
+            cursor: pointer;
+        }
+        .form-group input[type="file"]::file-selector-button {
+            background: var(--gradient-secondary);
+            border: none;
+            padding: 5px 16px;
+            border-radius: var(--radius-sm);
+            color: #050810;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 12px;
+            transition: var(--transition);
+            font-size: 13px;
+        }
+        .form-group input[type="file"]::file-selector-button:hover { transform: scale(1.02); }
+
+        .payment-box {
+            background: rgba(0, 245, 176, 0.04);
+            border-left: 3px solid var(--secondary);
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 18px;
+            font-size: 13px;
+            border: 1px solid rgba(0, 245, 176, 0.04);
+        }
+        .payment-box strong { color: var(--secondary); }
+        .payment-box i { color: var(--secondary); margin-right: 6px; }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent);
+            transition: var(--transition);
+        }
+        .step:hover { background: rgba(255, 255, 255, 0.04); transform: translateX(6px); }
+        .step-num {
+            background: var(--gradient-accent);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        .notice {
+            background: rgba(251, 191, 36, 0.04);
+            border: 1px solid rgba(251, 191, 36, 0.08);
+            color: #fbbf24;
+            padding: 24px 20px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            margin: 18px 0;
+        }
+        .notice h4 { font-size: 20px; margin-bottom: 4px; color: #fbbf24; }
+        .notice i { font-size: 32px; margin-bottom: 8px; display: block; color: #fbbf24; }
+
+        .quiz-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 18px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .timer {
+            color: #f87171;
+            font-size: 24px;
+            font-weight: 900;
+            min-width: 40px;
+            display: inline-block;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+            transition: var(--transition);
+        }
+        .timer.warning {
+            color: #ef4444;
+            animation: heartbeat 0.6s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        .progress-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: var(--gradient-secondary);
+            border-radius: 10px;
+            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 24px rgba(0, 245, 176, 0.15);
+        }
+        .progress-text {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--secondary);
+            min-width: 44px;
+            text-align: right;
+        }
+        .q-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+        .q-num { font-size: 13px; color: var(--secondary); font-weight: 600; }
+        .opt {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1.5px solid rgba(255, 255, 255, 0.04);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .opt:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(139, 92, 246, 0.15);
+            transform: translateX(4px);
+        }
+        .opt-letter {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .opt:hover .opt-letter {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-light);
+        }
+        .opt input { display: none; }
+        .opt.selected {
+            border-color: var(--secondary);
+            background: rgba(0, 245, 176, 0.04);
+        }
+        .opt.selected .opt-letter {
+            background: var(--gradient-secondary);
+            color: #050810;
+        }
+
+        .results-glass { padding: 5px 15px !important; margin-top: 0px !important; }
+        .coming-soon { text-align: center; padding: 5px 10px !important; }
+        .coming-soon .icon-big { font-size: 50px; color: var(--gold); margin-bottom: 2px; display: block; }
+        .coming-soon h2 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 2px; }
+        .coming-soon p { font-size: 14px; color: rgba(255, 255, 255, 0.5); max-width: 500px; margin: 2px auto; }
+        .coming-soon .date-badge {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 5px 20px;
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            border-radius: var(--radius-full);
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 12px;
+        }
+        .coming-soon .date-badge i { margin-right: 6px; }
+        .coming-soon .action-buttons {
+            margin-top: 8px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .coming-soon .action-buttons .btn {
+            padding: 8px 18px;
+            font-size: 12px;
+            min-height: 32px;
+        }
+
+        .countdown-container {
+            background: rgba(0, 245, 176, 0.03);
+            border: 1px solid rgba(0, 245, 176, 0.08);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            margin: 12px 0 16px 0;
+            display: inline-block;
+            min-width: 320px;
+        }
+        .countdown-container .countdown-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+        .countdown-container .countdown-timer {
+            font-size: 38px;
+            font-weight: 900;
+            color: var(--secondary);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 2px;
+        }
+        .countdown-container .countdown-timer .time-block {
+            display: inline-block;
+            min-width: 60px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 12px;
+            border-radius: 8px;
+            margin: 0 2px;
+        }
+        .countdown-container .countdown-timer .time-label {
+            font-size: 11px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .countdown-container .countdown-timer .separator {
+            color: rgba(255, 255, 255, 0.1);
+            font-weight: 300;
+            margin: 0 2px;
+        }
+        .countdown-container .countdown-timer .expired {
+            color: var(--gold);
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .countdown-container .countdown-timer .expired i { margin-right: 10px; }
+
+        footer {
+            margin-top: auto;
+            background: rgba(5, 8, 16, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 20px 0;
+        }
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .footer-content p { font-size: 13px; opacity: 0.4; display: flex; align-items: center; gap: 8px; }
+        .footer-content p i { color: var(--secondary); opacity: 0.6; }
+        .footer-socials { display: flex; gap: 6px; }
+        .footer-socials a {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.02);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .footer-socials a:hover {
+            color: #fff;
+            background: rgba(0, 245, 176, 0.06);
+            border-color: rgba(0, 245, 176, 0.08);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 1024px) {
+            .hero h2 { font-size: 34px; }
+            .hero { padding: 50px 28px; }
+        }
+        @media (max-width: 768px) {
+            header { padding: 8px 0; }
+            .nav-container { flex-direction: column; align-items: stretch; gap: 8px; }
+            .logo { justify-content: center; }
+            .logo-text { font-size: 16px; }
+            .logo-text small { display: none; }
+            .logo-icon { width: 36px; height: 36px; font-size: 17px; }
+            .nav-links { justify-content: center; gap: 2px; }
+            .nav-links li a { font-size: 12px; padding: 5px 12px; }
+            .nav-links li a i { display: none; }
+            .hero { padding: 32px 18px; border-radius: 18px; }
+            .hero h2 { font-size: 24px; }
+            .hero p { font-size: 14px; }
+            .hero-buttons .btn { min-width: 100%; }
+            .glass { padding: 18px 16px; border-radius: 18px; }
+            .glass h3 { font-size: 17px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .container { padding: 0 12px; margin: 14px auto; }
+            .quiz-bar { flex-direction: column; text-align: center; }
+            .timer { font-size: 20px; }
+            .q-text { font-size: 16px; }
+            .opt { font-size: 13px; padding: 10px 14px; }
+            .btn { padding: 11px 22px; font-size: 13px; min-height: 40px; }
+            .badge-premium { font-size: 11px; padding: 6px 16px; }
+            .step { padding: 12px 14px; }
+            .step-num { width: 28px; height: 28px; font-size: 11px; }
+            .notice { padding: 18px 14px; }
+            .notice h4 { font-size: 17px; }
+            .notice i { font-size: 26px; }
+            .coming-soon .icon-big { font-size: 40px; }
+            .coming-soon h2 { font-size: 20px; }
+            .coming-soon p { font-size: 13px; }
+            .results-glass { padding: 3px 10px !important; }
+            .coming-soon { padding: 3px 5px !important; }
+            .coming-soon .action-buttons .btn { padding: 6px 14px; font-size: 11px; min-height: 28px; }
+            .countdown-container { min-width: auto; width: 100%; padding: 16px 18px; }
+            .countdown-container .countdown-timer { font-size: 28px; }
+            .countdown-container .countdown-timer .time-block { min-width: 40px; padding: 2px 8px; }
+        }
+        @media (max-width: 480px) {
+            .hero h2 { font-size: 20px; }
+            .hero { padding: 24px 14px; }
+            .glass { padding: 14px 12px; border-radius: 14px; }
+            .glass h3 { font-size: 15px; }
+            .logo-text { font-size: 14px; }
+            .logo-icon { width: 32px; height: 32px; font-size: 14px; }
+            .nav-links li a { font-size: 11px; padding: 4px 10px; }
+            .q-text { font-size: 14px; }
+            .opt { font-size: 12px; padding: 8px 12px; }
+            .opt-letter { width: 24px; height: 24px; font-size: 10px; }
+            .btn { font-size: 12px; padding: 10px 18px; min-height: 36px; }
+            .container { padding: 0 8px; margin: 10px auto; }
+            .footer-content p { font-size: 11px; }
+            .footer-socials a { width: 30px; height: 30px; font-size: 12px; }
+            .badge-premium { font-size: 10px; padding: 5px 12px; }
+            .coming-soon .icon-big { font-size: 32px; }
+            .coming-soon h2 { font-size: 17px; }
+            .coming-soon p { font-size: 12px; }
+            .results-glass { padding: 2px 8px !important; }
+            .coming-soon { padding: 2px 3px !important; }
+            .coming-soon .action-buttons .btn { padding: 5px 12px; font-size: 10px; min-height: 24px; }
+            .countdown-container { padding: 12px 14px; }
+            .countdown-container .countdown-timer { font-size: 22px; }
+            .countdown-container .countdown-timer .time-block { min-width: 30px; padding: 2px 6px; }
+            .countdown-container .countdown-timer .time-label { font-size: 9px; }
+        }
+
+        .text-center { text-align: center; }
+        .mt-12 { margin-top: 12px; }
+        .mt-16 { margin-top: 16px; }
+        .mt-20 { margin-top: 20px; }
+        .flex { display: flex; }
+        .flex-wrap { flex-wrap: wrap; }
+        .gap-12 { gap: 12px; }
+        .gap-8 { gap: 8px; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .w-full { width: 100%; }
+        .max-w-300 { max-width: 300px; }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 420px;
+            width: 100%;
+            pointer-events: none;
+        }
+        .toast {
+            background: rgba(10, 14, 26, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+            pointer-events: auto;
+            animation: slideInRight 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            min-width: 280px;
+            transform-origin: top right;
+        }
+        .toast.hide {
+            animation: slideOutRight 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .toast-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .toast-icon.success { background: rgba(0, 245, 176, 0.12); color: var(--secondary); }
+        .toast-icon.error { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+        .toast-icon.info { background: rgba(139, 92, 246, 0.12); color: var(--accent-light); }
+        .toast-icon.warning { background: rgba(251, 191, 36, 0.12); color: var(--gold); }
+        .toast-content { flex: 1; }
+        .toast-content .toast-title { font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 2px; }
+        .toast-content .toast-message { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.5; }
+        .toast-close {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            transition: var(--transition);
+            flex-shrink: 0;
+            margin-top: -4px;
+        }
+        .toast-close:hover { color: #fff; }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px) scale(0.95); }
+            to { opacity: 1; transform: translateX(0) scale(1); }
+        }
+        @keyframes slideOutRight {
+            from { opacity: 1; transform: translateX(0) scale(1); }
+            to { opacity: 0; transform: translateX(60px) scale(0.95); }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9998;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: rgba(10, 14, 26, 0.96);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 32px 36px;
+            max-width: 480px;
+            width: 100%;
+            margin: 20px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+            animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.92) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-box .modal-icon { font-size: 48px; text-align: center; margin-bottom: 12px; }
+        .modal-box .modal-icon.success { color: var(--secondary); }
+        .modal-box .modal-icon.error { color: #ef4444; }
+        .modal-box .modal-icon.info { color: var(--accent-light); }
+        .modal-box .modal-icon.warning { color: var(--gold); }
+        .modal-box h3 { font-size: 20px; font-weight: 800; color: #fff; text-align: center; margin-bottom: 6px; }
+        .modal-box p { color: rgba(255, 255, 255, 0.5); text-align: center; font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+        .modal-box .modal-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .modal-box .modal-actions .btn { min-width: 100px; padding: 10px 24px; font-size: 13px; min-height: 38px; }
+        .modal-box .modal-detail {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            margin: 12px 0 18px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .modal-box .modal-detail .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .modal-box .modal-detail .detail-row:last-child { border-bottom: none; }
+        .modal-box .modal-detail .detail-row .label { color: rgba(255, 255, 255, 0.3); }
+        .modal-box .modal-detail .detail-row .value { color: #fff; font-weight: 600; }
+        .modal-box .modal-detail .detail-row .value.gold { color: var(--gold); }
+        .modal-box .modal-detail .detail-row .value.secondary { color: var(--secondary); }
+        .modal-box .modal-detail .detail-row .value.accent { color: var(--accent-light); }
+
+        @media (max-width: 480px) {
+            .modal-box { padding: 24px 20px; margin: 12px; }
+            .modal-box h3 { font-size: 17px; }
+            .modal-box .modal-icon { font-size: 36px; }
+        }
+
+        .result-check-section {
+            margin-top: 12px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .result-check-section .result-input-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .result-check-section .result-input-group input {
+            flex: 1;
+            min-width: 200px;
+            padding: 11px 16px;
+            border: 1.5px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.02);
+            color: #e8ecf4;
+            font-size: 14px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .result-check-section .result-input-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 4px rgba(0, 245, 176, 0.04);
+        }
+        .result-check-section .result-input-group input::placeholder { color: rgba(255, 255, 255, 0.2); }
+        .result-display-box {
+            margin-top: 14px;
+            padding: 16px 20px;
+            background: rgba(0, 245, 176, 0.03);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(0, 245, 176, 0.06);
+            display: none;
+        }
+        .result-display-box.show { display: block; animation: fadeIn 0.4s ease; }
+        .result-display-box .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+        }
+        .result-display-box .result-grid .r-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .result-display-box .result-grid .r-item .r-label { color: rgba(255, 255, 255, 0.3); }
+        .result-display-box .result-grid .r-item .r-value { color: #fff; font-weight: 600; }
+        .result-display-box .result-grid .r-item .r-value.gold { color: var(--gold); }
+        .result-display-box .result-grid .r-item .r-value.secondary { color: var(--secondary); }
+        .result-display-box .result-grid .r-item .r-value.accent { color: var(--accent-light); }
+        .result-display-box .result-status {
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .result-display-box .result-status.pass {
+            background: rgba(0, 245, 176, 0.08);
+            color: var(--secondary);
+            border: 1px solid rgba(0, 245, 176, 0.1);
+        }
+        .result-display-box .result-status.fail {
+            background: rgba(239, 68, 68, 0.08);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.1);
+        }
+        .result-display-box .result-status.pending {
+            background: rgba(251, 191, 36, 0.08);
+            color: var(--gold);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+        @media (max-width: 480px) {
+            .result-display-box .result-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox">
+            <div class="modal-icon" id="modalIcon">✅</div>
+            <h3 id="modalTitle">Success</h3>
+            <p id="modalMessage">Your action was completed successfully.</p>
+            <div id="modalDetail" style="display:none;"></div>
+            <div class="modal-actions" id="modalActions">
+                <button class="btn btn-primary" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-layer">
+        <div class="gradient-bg"></div>
+        <div class="particles">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+        </div>
+    </div>
+
+    <header id="mainHeader">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">
+                <div class="logo-icon"><i class="fas fa-laptop"></i></div>
+                <div class="logo-text">
+                    National Trust <span>Laptop</span>Scheme <small>2026</small>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a id="nav-home" class="active-link" onclick="showPage('home')"><i class="fas fa-home"></i> Home</a></li>
+                <li><a id="nav-apply" onclick="showPage('apply')"><i class="fas fa-pen-to-square"></i> Apply</a></li>
+                <li><a id="nav-test" onclick="showPage('test')"><i class="fas fa-file-lines"></i> Test</a></li>
+                <li><a id="nav-results" onclick="showPage('results')"><i class="fas fa-chart-simple"></i> Results</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- ===== HOME ===== -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="badge-premium">
+                    <i class="fas fa-circle-check"></i> Registration Fee: PKR 500
+                </div>
+                <h2>Free Laptop Scheme for <span class="glow">Top 100 Students</span></h2>
+                <p class="glow">Register online, complete the registration payment, and attempt the aptitude test to secure your position among the top 100 candidates on the merit list.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showPage('apply')">
+                        <i class="fas fa-arrow-right"></i> Apply Now
+                    </button>
+                    <button class="btn btn-secondary" onclick="showPage('method')">
+                        <i class="fas fa-circle-info"></i> How to Apply
+                    </button>
+                </div>
+            </div>
+
+            <div class="glass">
+                <div class="head">
+                    <h3><i class="fas fa-list-check"></i> Program Guidelines</h3>
+                    <button class="btn btn-outline" style="padding: 5px 16px; font-size: 12px; min-height: auto; border-radius: var(--radius-full);" onclick="showPage('method')">
+                        <i class="fas fa-eye"></i> View Method
+                    </button>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px;">
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                        <span style="background: var(--gradient-secondary); color: #050810; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">1</span>
+                        Pay PKR 500 via Meezan Bank
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                        <span style="background: var(--gradient-secondary); color: #050810; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">2</span>
+                        Fill form with CNIC & TRX
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                        <span style="background: var(--gradient-secondary); color: #050810; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">3</span>
+                        Upload payment proof
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                        <span style="background: var(--gradient-secondary); color: #050810; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">4</span>
+                        Get Roll Number instantly
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                        <span style="background: var(--gradient-accent); color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">5</span>
+                        <span style="color: var(--gold); font-weight: 700;">Top 100</span> get free laptops
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                        <span style="background: var(--gradient-accent); color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">6</span>
+                        Test: <span style="color: var(--gold); font-weight: 700;">10th October</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                        <span style="background: var(--gradient-accent); color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">7</span>
+                        First <span style="color: var(--gold); font-weight: 700;">100 registrants</span> get prizes
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                        <span style="background: var(--gradient-accent); color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">8</span>
+                        Last date: <span style="color: var(--gold); font-weight: 700;">30th September</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== METHOD ===== -->
+        <div id="method" class="page">
+            <div class="glass">
+                <h3><i class="fas fa-circle-info"></i> How to Apply</h3>
+                <p style="color: rgba(255,255,255,0.4); margin-bottom: 18px; font-size: 14px;">Follow these simple steps to complete your registration.</p>
+                <div class="steps">
+                    <div class="step"><div class="step-num">1</div><div><strong style="color: #fff;">💰 Fee Submission</strong><p style="color: rgba(255,255,255,0.5); font-size: 14px; margin-top: 2px;">Send PKR 500 to Meezan Bank (0440-0116065012, Ali Raza)</p></div></div>
+                    <div class="step"><div class="step-num">2</div><div><strong style="color: #fff;">📸 Save Proof</strong><p style="color: rgba(255,255,255,0.5); font-size: 14px; margin-top: 2px;">Screenshot payment slip, note down <span style="color: var(--gold); font-weight: 600;">TRX ID</span></p></div></div>
+                    <div class="step"><div class="step-num">3</div><div><strong style="color: #fff;">📝 Fill Form</strong><p style="color: rgba(255,255,255,0.5); font-size: 14px; margin-top: 2px;">Enter personal info, CNIC, TRX ID, upload proof</p></div></div>
+                    <div class="step"><div class="step-num">4</div><div><strong style="color: #fff;">🎯 Get Roll Number</strong><p style="color: rgba(255,255,255,0.5); font-size: 14px; margin-top: 2px;">Submit to receive your unique Roll Number instantly!</p></div></div>
+                </div>
+                <div style="display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap;">
+                    <button class="btn btn-primary" style="flex: 1; min-width: 150px;" onclick="showPage('apply')">
+                        <i class="fas fa-arrow-right"></i> Apply Now
+                    </button>
+                    <button class="btn btn-secondary" style="flex: 1; min-width: 120px;" onclick="showPage('home')">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== APPLY ===== -->
+        <div id="apply" class="page">
+            <div class="glass">
+                <h3><i class="fas fa-pen-to-square"></i> Student Registration</h3>
+                <div class="payment-box">
+                    <i class="fas fa-circle-info"></i>
+                    <strong>Send PKR 500</strong> to:
+                    <br>• Account-ID: <strong>0440-0116065012</strong> Meezan Bank
+                    <br>• Account-Holder: <strong>Ali Raza</strong>
+                    <br>• Event: <strong>National Trust Laptop Scheme 2026</strong>
+                </div>
+                <form id="applyForm" onsubmit="handleApplySubmit(event)" enctype="multipart/form-data">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-id-card"></i> CNIC / B-Form</label>
+                            <input type="text" id="cnicOrBform" name="cnicOrBform" placeholder="xxxxx-xxxxxxx-x" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-phone"></i> Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="03xxxxxxxx" required>
+                        </div>
+                        <div class="form-group full">
+                            <label><i class="fas fa-building-columns"></i> Institution</label>
+                            <input type="text" id="institution" name="institution" placeholder="School / College / University" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-receipt"></i> TRX ID</label>
+                            <input type="text" id="paymentTrxId" name="paymentTrxId" placeholder="e.g. xxxx xxxxxxxx" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-image"></i> Payment Proof</label>
+                            <input type="file" id="paymentProof" name="paymentProof" accept="image/*" required>
+                            <small style="color: rgba(255,255,255,0.3); font-size: 11px; display: block; margin-top: 4px;">Only images (JPEG, PNG, JPG) are allowed</small>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 14px;">
+                        <i class="fas fa-paper-plane"></i> Submit Registration
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ===== TEST ===== -->
+        <div id="test" class="page">
+            <div class="glass">
+                <h3><i class="fas fa-file-lines"></i> Test Regulations</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-bottom: 18px;">
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); font-size: 14px;">
+                        <i class="fas fa-calendar-day" style="color: var(--secondary); width: 18px;"></i>
+                        <span><strong style="color: #fff;">Date:</strong> <span style="color: var(--gold);">10th October</span></span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); font-size: 14px;">
+                        <i class="fas fa-clock" style="color: var(--secondary); width: 18px;"></i>
+                        <span><strong style="color: #fff;">Time:</strong> 9:00 AM – 10:30 AM</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); font-size: 14px;">
+                        <i class="fas fa-list" style="color: var(--secondary); width: 18px;"></i>
+                        <span><strong style="color: #fff;">Questions:</strong> 100 MCQs</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); font-size: 14px;">
+                        <i class="fas fa-graduation-cap" style="color: var(--secondary); width: 18px;"></i>
+                        <span><strong style="color: #fff;">Eligibility:</strong> 8th Class & above</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); font-size: 14px; grid-column: span 2;">
+                        <i class="fas fa-book" style="color: var(--secondary); width: 18px;"></i>
+                        <span><strong style="color: #fff;">Subjects:</strong> Physics, Chemistry, Math, CS, English, Logic</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); font-size: 14px; grid-column: span 2;">
+                        <i class="fas fa-trophy" style="color: var(--gold); width: 18px;"></i>
+                        <span><strong style="color: var(--gold);">Certificate:</strong> All participants receive Certificates</span>
+                    </div>
+                </div>
+                <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 18px;">
+                    <button class="btn btn-accent" style="width: 100%; max-width: 300px;" onclick="showPage('take-test-portal')">
+                        <i class="fas fa-play"></i> Take Test
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TAKE TEST (UPDATED WITH NOTICE + ROLL NUMBER INPUT) ===== -->
+        <div id="take-test-portal" class="page">
+            <!-- Test Notice Card -->
+            <div id="testNoticeCard" class="glass" style="text-align: center; padding: 36px 24px;">
+                <h3><i class="fas fa-laptop"></i> Aptitude Test Portal</h3>
+                
+                <!-- ===== TEST AVAILABILITY NOTICE (PURANI JAGAH) ===== -->
+                <div class="notice" style="margin-bottom: 20px;">
+                    <i class="fas fa-calendar-circle-exclamation"></i>
+                    <h4>📅 Test Portal Availability Notice</h4>
+                    <p style="font-size: 17px; font-weight: 700; margin-top: 4px; color: #24f7fb;">
+                        Test will be uploaded here on 10th October
+                    </p>
+                    <p style="font-size: 13px; opacity: 0.6; margin-top: 6px;">
+                        Log in at 9:00 AM with your assigned Roll Number on 10th October
+                    </p>
+                </div>
+
+                <!-- ===== ROLL NUMBER INPUT SECTION ===== -->
+                <!-- <div style="background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); padding: 24px 20px; border: 1px solid rgba(255,255,255,0.04); max-width: 450px; margin: 0 auto;">
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <label style="font-weight: 600; font-size: 14px; color: rgba(255,255,255,0.5); text-align: left;">
+                            <i class="fas fa-id-card" style="color: var(--secondary);"></i> Enter Your Roll Number
+                        </label>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <input type="text" id="verifyRollNo" placeholder="e.g. LAP-123456" 
+                                   style="flex: 1; min-width: 180px; padding: 12px 16px; border: 1.5px solid rgba(255,255,255,0.04); border-radius: var(--radius-sm); background: rgba(255,255,255,0.02); color: #e8ecf4; font-size: 14px; font-family: inherit; transition: var(--transition);"
+                                   onkeypress="if(event.key==='Enter') verifyRollAndStartTest();">
+                            <button class="btn btn-accent" onclick="verifyRollAndStartTest()" style="min-width: 120px;">
+                                <i class="fas fa-arrow-right"></i> Start Test
+                            </button>
+                        </div> 
+                        <p style="font-size: 12px; color: rgba(255,255,255,0.2); text-align: left; margin-top: 4px;">
+                            <i class="fas fa-info-circle"></i> Don't have a roll number? 
+                            <a href="#" onclick="showPage('apply')" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Register Now</a>
+                        </p>
+                    </div>
+                </div>-->
+
+                <!-- ===== ONLY HOME BUTTON (REMOVED BACK TO TEST INFO) ===== -->
+                <div style="margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" onclick="showPage('home')">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Quiz Card (Hidden Initially) -->
+            <div id="liveQuizCard" class="glass" style="display: none;">
+                <div class="quiz-bar">
+                    <span><i class="fas fa-id-card"></i> Roll: <strong id="displayRollNum" style="color: var(--gold);"></strong></span>
+                    <span><i class="fas fa-hourglass-half"></i> <span id="quizTimer" class="timer">30</span>s</span>
+                    <span id="totalQuestionsDisplay" style="font-size: 12px; color: rgba(255,255,255,0.4);">Total: 100 MCQs</span>
+                </div>
+                <div class="progress-wrap">
+                    <span class="q-num" id="questionTitle">Q1 of 100</span>
+                    <div class="progress-bar"><div class="fill" id="progressFill" style="width: 1%;"></div></div>
+                    <span class="progress-text" id="progressText">1%</span>
+                </div>
+                <p class="q-text" id="questionText"></p>
+                <div id="optionsContainer"></div>
+                <div style="display: flex; justify-content: space-between; margin-top: 18px; flex-wrap: wrap; gap: 10px;">
+                    <button class="btn btn-secondary" onclick="exitTest()" style="min-width: 100px;">
+                        <i class="fas fa-times"></i> Exit Test
+                    </button>
+                    <button class="btn btn-primary" onclick="submitCurrentMcq()">
+                        <i class="fas fa-arrow-right"></i> Next
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== RESULTS ===== -->
+        <div id="results" class="page">
+            <div class="glass results-glass">
+                <div class="coming-soon">
+                    <span class="icon-big"><i class="fas fa-file-chart-line"></i></span>
+                    <h2 style="color: #f4fb24;">📊 Results Will Be Uploaded Here</h2>
+                    <p><font color="aqua">Results will be announced shortly after the test completion. All participants will be notified via email.</font></p>
+                    
+                    <div class="date-badge">
+                        <i class="fas fa-calendar-day"></i> Expected Announcement: 25th October 2026
+                    </div>
+
+                    <!-- ===== RESULT CHECK SECTION ===== -->
+                    <!-- <div class="result-check-section">
+                        <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-bottom: 10px;">
+                            <i class="fas fa-search"></i> Enter your Roll Number to check your result
+                        </p>
+                        <div class="result-input-group">
+                            <input type="text" id="resultRollInput" placeholder="Enter Roll Number e.g. 123456">
+                            <button class="btn btn-primary" onclick="checkResult()">
+                                <i class="fas fa-search"></i> Check Result
+                            </button>
+                        </div> -->
+                        <div class="result-display-box" id="resultDisplayBox">
+                            <div class="result-grid" id="resultGrid">
+                                <div class="r-item"><span class="r-label">Roll Number</span><span class="r-value secondary" id="rRoll">-</span></div>
+                                <div class="r-item"><span class="r-label">Student Name</span><span class="r-value" id="rName">-</span></div>
+                                <div class="r-item"><span class="r-label">Total Marks</span><span class="r-value gold" id="rMarks">-</span></div>
+                                <div class="r-item"><span class="r-label">Total Questions</span><span class="r-value" id="rTotal">-</span></div>
+                                <div class="r-item"><span class="r-label">Percentage</span><span class="r-value accent" id="rPercentage">-</span></div>
+                                <div class="r-item"><span class="r-label">Status</span><span class="r-value" id="rStatus">-</span></div>
+                            </div>
+                            <div class="result-status" id="resultStatusBadge"></div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons" style="text-align: center;">
+                        <button class="btn btn-secondary" onclick="showPage('home')">
+                            <i class="fas fa-home"></i> Back to Home
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p><i class="fas fa-envelope"></i> nationaltrust2026@gmail.com</p>
+            <p><i class="fas fa-copyright"></i>Copyrighted.Approved by Government.</p>
+            <p><i class="fas fa-registered"></i>Royal Educational Institution.</p>
+        </div>
+    </footer>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:3000';
+
+        // ===== 100 HARD CORE MCQs =====
+        let currentQuizData = [
+            { id: 1, question: "What is the SI unit of electric charge?", options: ["Ampere", "Coulomb", "Volt", "Ohm"], answer: "Coulomb" },
+            { id: 2, question: "Which law states that the force between two point charges is directly proportional to the product of their magnitudes and inversely proportional to the square of the distance between them?", options: ["Ohm's Law", "Coulomb's Law", "Gauss's Law", "Faraday's Law"], answer: "Coulomb's Law" },
+            { id: 3, question: "What is the speed of light in a vacuum approximately?", options: ["2.998 × 10⁸ m/s", "3.0 × 10⁷ m/s", "3.0 × 10⁹ m/s", "2.5 × 10⁸ m/s"], answer: "2.998 × 10⁸ m/s" },
+            { id: 4, question: "Which particle has a negative charge and orbits the nucleus?", options: ["Proton", "Neutron", "Electron", "Positron"], answer: "Electron" },
+            { id: 5, question: "What is the formula for kinetic energy?", options: ["KE = mv²", "KE = ½mv²", "KE = mgh", "KE = ½mv"], answer: "KE = ½mv²" },
+            { id: 6, question: "What is the SI unit of power?", options: ["Joule", "Newton", "Watt", "Pascal"], answer: "Watt" },
+            { id: 7, question: "Which phenomenon explains the bending of light around obstacles?", options: ["Reflection", "Refraction", "Diffraction", "Polarization"], answer: "Diffraction" },
+            { id: 8, question: "What is the acceleration due to gravity on the surface of Earth approximately?", options: ["8.9 m/s²", "9.8 m/s²", "10.8 m/s²", "7.8 m/s²"], answer: "9.8 m/s²" },
+            { id: 9, question: "What is the first law of thermodynamics also known as?", options: ["Law of Conservation of Energy", "Law of Entropy", "Law of Heat Transfer", "Law of Momentum"], answer: "Law of Conservation of Energy" },
+            { id: 10, question: "Which type of wave does NOT require a medium to travel?", options: ["Sound wave", "Water wave", "Electromagnetic wave", "Seismic wave"], answer: "Electromagnetic wave" },
+            { id: 11, question: "What is the unit of frequency?", options: ["Hertz", "Newton", "Joule", "Watt"], answer: "Hertz" },
+            { id: 12, question: "What is the resistance of a conductor directly proportional to?", options: ["Length", "Area", "Temperature", "Both Length and Temperature"], answer: "Length" },
+            { id: 13, question: "What does the Heisenberg Uncertainty Principle state?", options: ["Position and velocity of a particle can be measured exactly", "It is impossible to simultaneously determine both position and momentum with high precision", "Energy and time can be measured exactly", "Matter and antimatter annihilate"], answer: "It is impossible to simultaneously determine both position and momentum with high precision" },
+            { id: 14, question: "What is the critical angle for total internal reflection in water (n=1.33) with air?", options: ["48.75°", "41.8°", "53.1°", "36.9°"], answer: "48.75°" },
+            { id: 15, question: "What is the escape velocity from Earth's surface approximately?", options: ["7.9 km/s", "9.8 km/s", "11.2 km/s", "14.4 km/s"], answer: "11.2 km/s" },
+            { id: 16, question: "Which equation describes the relationship between pressure, volume, and temperature for an ideal gas?", options: ["PV = nRT", "PV = nkT", "PV = RT", "PV = NkT"], answer: "PV = nRT" },
+            { id: 17, question: "What is the angular velocity of Earth about its own axis?", options: ["7.27 × 10⁻⁵ rad/s", "3.14 × 10⁻⁵ rad/s", "1.57 × 10⁻⁵ rad/s", "9.8 × 10⁻⁵ rad/s"], answer: "7.27 × 10⁻⁵ rad/s" },
+            { id: 18, question: "Which force is responsible for holding atomic nuclei together?", options: ["Gravitational force", "Electromagnetic force", "Strong nuclear force", "Weak nuclear force"], answer: "Strong nuclear force" },
+            { id: 19, question: "What is the efficiency of a Carnot engine operating between two temperatures T_hot and T_cold?", options: ["1 - T_cold/T_hot", "1 - T_hot/T_cold", "T_cold/T_hot", "T_hot/T_cold"], answer: "1 - T_cold/T_hot" },
+            { id: 20, question: "What is the wavelength of a wave with frequency 500 Hz and speed 340 m/s?", options: ["0.68 m", "1.7 m", "0.34 m", "0.85 m"], answer: "0.68 m" },
+            { id: 21, question: "What does the Bohr model of the atom explain?", options: ["Chemical bonding", "Spectrum of hydrogen", "Radioactive decay", "Crystal structure"], answer: "Spectrum of hydrogen" },
+            { id: 22, question: "What is the coefficient of thermal expansion for a material that expands 0.1% per 100°C?", options: ["1 × 10⁻⁶ /°C", "1 × 10⁻⁵ /°C", "1 × 10⁻⁴ /°C", "1 × 10⁻³ /°C"], answer: "1 × 10⁻⁵ /°C" },
+            { id: 23, question: "What is the Doppler effect formula for frequency shift?", options: ["f' = f (v ± v_o)/(v ∓ v_s)", "f' = f (v ± v_s)/(v ∓ v_o)", "f' = f (v ± v_o)/(v ∓ v_s)", "f' = f (v ± v_s)/(v ∓ v_o)"], answer: "f' = f (v ± v_o)/(v ∓ v_s)" },
+            { id: 24, question: "What is the formula for pressure at a depth h in a fluid?", options: ["P = P₀ + ρgh", "P = P₀ + ρg/h", "P = P₀ + ρ/g h", "P = P₀ + ρh/g"], answer: "P = P₀ + ρgh" },
+            { id: 25, question: "Which property of a material is defined as stress divided by strain?", options: ["Density", "Viscosity", "Young's Modulus", "Surface Tension"], answer: "Young's Modulus" },
+            { id: 26, question: "What is the atomic number of Carbon?", options: ["4", "6", "8", "10"], answer: "6" },
+            { id: 27, question: "Which bond is formed by sharing of electrons between atoms?", options: ["Ionic bond", "Covalent bond", "Metallic bond", "Hydrogen bond"], answer: "Covalent bond" },
+            { id: 28, question: "What is the pH of a neutral solution at 25°C?", options: ["0", "7", "14", "10"], answer: "7" },
+            { id: 29, question: "What is the chemical formula of sulfuric acid?", options: ["HCl", "H₂SO₄", "HNO₃", "H₂CO₃"], answer: "H₂SO₄" },
+            { id: 30, question: "What is the most abundant gas in Earth's atmosphere?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Argon"], answer: "Nitrogen" },
+            { id: 31, question: "Which element has the highest electronegativity?", options: ["Oxygen", "Fluorine", "Chlorine", "Nitrogen"], answer: "Fluorine" },
+            { id: 32, question: "What is the product of the reaction of an acid and a base?", options: ["Salt and water", "Salt and hydrogen", "Water and oxygen", "Acid and salt"], answer: "Salt and water" },
+            { id: 33, question: "What is the molecular geometry of methane (CH₄)?", options: ["Linear", "Bent", "Tetrahedral", "Trigonal planar"], answer: "Tetrahedral" },
+            { id: 34, question: "Which process involves the conversion of a solid directly to gas?", options: ["Condensation", "Evaporation", "Sublimation", "Deposition"], answer: "Sublimation" },
+            { id: 35, question: "What is the quantum number that describes the shape of an orbital?", options: ["Principal quantum number (n)", "Azimuthal quantum number (l)", "Magnetic quantum number (m_l)", "Spin quantum number (m_s)"], answer: "Azimuthal quantum number (l)" },
+            { id: 36, question: "What is the half-life of Carbon-14?", options: ["5730 years", "573 years", "57300 years", "573000 years"], answer: "5730 years" },
+            { id: 37, question: "Which isomer has the same molecular formula but different connectivity?", options: ["Geometric", "Structural", "Optical", "Conformational"], answer: "Structural" },
+            { id: 38, question: "What is the oxidizing agent in the reaction: 2Mg + O₂ → 2MgO?", options: ["Mg", "O₂", "MgO", "None"], answer: "O₂" },
+            { id: 39, question: "What is the Van der Waals equation used to describe?", options: ["Ideal gases", "Real gases", "Liquids", "Solids"], answer: "Real gases" },
+            { id: 40, question: "Which element is a liquid at room temperature?", options: ["Mercury", "Bromine", "Gallium", "Cesium"], answer: "Bromine" },
+            { id: 41, question: "What is the molarity of a solution containing 1 mole of solute in 1 liter of solution?", options: ["0.5 M", "1 M", "2 M", "0.1 M"], answer: "1 M" },
+            { id: 42, question: "Which chemical bond is the strongest?", options: ["Ionic bond", "Covalent bond", "Metallic bond", "Hydrogen bond"], answer: "Covalent bond" },
+            { id: 43, question: "What is the shape of the p-orbital?", options: ["Spherical", "Dumbbell", "Cloverleaf", "Complex"], answer: "Dumbbell" },
+            { id: 44, question: "Which element is used in solar cells?", options: ["Silicon", "Carbon", "Aluminum", "Copper"], answer: "Silicon" },
+            { id: 45, question: "What is the formula for the compound formed by Mg and Cl?", options: ["MgCl", "MgCl₂", "Mg₂Cl", "Mg₂Cl₂"], answer: "MgCl₂" },
+            { id: 46, question: "What is the derivative of sin(x) with respect to x?", options: ["cos(x)", "-cos(x)", "sin(x)", "-sin(x)"], answer: "cos(x)" },
+            { id: 47, question: "What is the value of log₁₀(1000)?", options: ["2", "3", "4", "5"], answer: "3" },
+            { id: 48, question: "What is the sum of the interior angles of a hexagon?", options: ["360°", "540°", "720°", "900°"], answer: "720°" },
+            { id: 49, question: "What is the determinant of the matrix [[1,2],[3,4]]?", options: ["-2", "2", "-4", "4"], answer: "-2" },
+            { id: 50, question: "What is the value of (1 + i)², where i² = -1?", options: ["2i", "1 + 2i", "2 + 2i", "1 + 2i"], answer: "2i" },
+            { id: 51, question: "What is the probability of getting exactly 3 heads in 5 tosses of a fair coin?", options: ["5/16", "10/32", "15/32", "10/16"], answer: "10/32" },
+            { id: 52, question: "What is the derivative of e^{2x} with respect to x?", options: ["2e^{2x}", "e^{2x}", "2e^{x}", "e^{2x}/2"], answer: "2e^{2x}" },
+            { id: 53, question: "What is the mode of the data set: 2, 3, 3, 4, 5, 5, 5, 6?", options: ["3", "4", "5", "6"], answer: "5" },
+            { id: 54, question: "What is the limit of (x² - 1)/(x - 1) as x → 1?", options: ["0", "1", "2", "3"], answer: "2" },
+            { id: 55, question: "What is the number of permutations of 4 items taken 2 at a time?", options: ["6", "12", "24", "4"], answer: "12" },
+            { id: 56, question: "What is the standard deviation of the set {2, 4, 6, 8}?", options: ["1.58", "2.24", "2.58", "3.16"], answer: "2.24" },
+            { id: 57, question: "What is the integral of 1/x with respect to x?", options: ["ln(x)", "e^x", "x^2", "1/x^2"], answer: "ln(x)" },
+            { id: 58, question: "What is the length of a diagonal of a square of side 5 cm?", options: ["5√2", "10√2", "5√3", "10"], answer: "5√2" },
+            { id: 59, question: "What is the sum of the first 10 natural numbers?", options: ["45", "50", "55", "60"], answer: "55" },
+            { id: 60, question: "What is the angle between the vectors (1,0) and (0,1)?", options: ["0°", "45°", "90°", "180°"], answer: "90°" },
+            { id: 61, question: "Which data structure uses FIFO (First In First Out) principle?", options: ["Stack", "Queue", "Array", "Linked List"], answer: "Queue" },
+            { id: 62, question: "What is the time complexity of binary search?", options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], answer: "O(log n)" },
+            { id: 63, question: "Which protocol is used for sending email?", options: ["HTTP", "FTP", "SMTP", "TCP"], answer: "SMTP" },
+            { id: 64, question: "What is the decimal equivalent of binary 1101?", options: ["11", "12", "13", "14"], answer: "13" },
+            { id: 65, question: "Which programming language is primarily used for AI development?", options: ["Java", "C", "Python", "Ruby"], answer: "Python" },
+            { id: 66, question: "What is a deadlock in operating systems?", options: ["A process that terminates abnormally", "A state where multiple processes are waiting for each other indefinitely", "A memory leak", "A hardware failure"], answer: "A state where multiple processes are waiting for each other indefinitely" },
+            { id: 67, question: "Which network topology connects all nodes to a central hub?", options: ["Star", "Ring", "Bus", "Mesh"], answer: "Star" },
+            { id: 68, question: "What does the acronym CPU stand for?", options: ["Central Processing Unit", "Central Program Unit", "Computer Personal Unit", "Central Process Unit"], answer: "Central Processing Unit" },
+            { id: 69, question: "What is the default port for HTTP?", options: ["21", "25", "80", "443"], answer: "80" },
+            { id: 70, question: "Which sorting algorithm has the best worst-case time complexity?", options: ["Bubble sort", "Merge sort", "Insertion sort", "Selection sort"], answer: "Merge sort" },
+            { id: 71, question: "What is the function of an IP address?", options: ["Identifies a device on a network", "Encrypts data", "Compresses files", "Manages memory"], answer: "Identifies a device on a network" },
+            { id: 72, question: "Which type of memory is volatile?", options: ["ROM", "HDD", "RAM", "SSD"], answer: "RAM" },
+            { id: 73, question: "What is the full form of HTML?", options: ["HyperText Markup Language", "HighText Machine Language", "HyperText Machine Language", "HighText Markup Language"], answer: "HyperText Markup Language" },
+            { id: 74, question: "Which algorithm is used to find the shortest path in a graph?", options: ["BFS", "Dijkstra's algorithm", "DFS", "A*"], answer: "Dijkstra's algorithm" },
+            { id: 75, question: "What is a compiler?", options: ["A program that translates high-level code to machine code", "A program that executes code line by line", "A hardware component", "A type of database"], answer: "A program that translates high-level code to machine code" },
+            { id: 76, question: "Synonym of 'Ephemeral' is:", options: ["Permanent", "Fleeting", "Heavy", "Bright"], answer: "Fleeting" },
+            { id: 77, question: "Antonym of 'Eloquent' is:", options: ["Articulate", "Fluency", "Inarticulate", "Persuasive"], answer: "Inarticulate" },
+            { id: 78, question: "Choose the correctly spelled word:", options: ["Accomodate", "Accommodate", "Acomodate", "Acommodate"], answer: "Accommodate" },
+            { id: 79, question: "Fill in the blank: She is ______ to the new environment.", options: ["Adapt", "Adopt", "Adept", "Adoptive"], answer: "Adapt" },
+            { id: 80, question: "Which sentence is grammatically correct?", options: ["She don't like tea.", "She doesn't like tea.", "She doesn't likes tea.", "She don't likes tea."], answer: "She doesn't like tea." },
+            { id: 81, question: "Identify the adverb in the sentence: 'She quickly finished her work.'", options: ["Quickly", "Finished", "Work", "She"], answer: "Quickly" },
+            { id: 82, question: "Meaning of 'Ubiquitous' is:", options: ["Rare", "Everywhere", "Dangerous", "Invisible"], answer: "Everywhere" },
+            { id: 83, question: "Which of these is an idiom?", options: ["He is a good person", "Break the ice", "She sings well", "The sun is hot"], answer: "Break the ice" },
+            { id: 84, question: "Correct form: I have ______ to London twice.", options: ["Been", "Be", "Being", "Ben"], answer: "Been" },
+            { id: 85, question: "What is the synonym of 'Benevolent'?", options: ["Kind", "Cruel", "Angry", "Sad"], answer: "Kind" },
+            { id: 86, question: "Which of the following is a preposition?", options: ["Under", "Quickly", "Beautiful", "And"], answer: "Under" },
+            { id: 87, question: "Change to passive voice: 'The boy broke the window.'", options: ["The window was broken by the boy.", "The window is broken by the boy.", "The window had been broken by the boy.", "The window was broken by the boy."], answer: "The window was broken by the boy." },
+            { id: 88, question: "What is the antonym of 'Facilitate'?", options: ["Assist", "Hinder", "Ease", "Simplify"], answer: "Hinder" },
+            { id: 89, question: "She has been studying ______ two hours.", options: ["Since", "For", "During", "From"], answer: "For" },
+            { id: 90, question: "Identify the error: 'The team are playing well.'", options: ["The", "team", "are", "playing"], answer: "are" },
+            { id: 91, question: "If 5 + 3 = 28, 9 + 1 = 810, 7 + 3 = 410, then 8 + 4 = ?", options: ["412", "414", "416", "418"], answer: "412" },
+            { id: 92, question: "Find the missing number: 2, 6, 12, 20, ?, 42", options: ["28", "30", "32", "34"], answer: "30" },
+            { id: 93, question: "Which number is next in the series: 1, 4, 9, 16, 25, ?", options: ["30", "36", "42", "49"], answer: "36" },
+            { id: 94, question: "If all cats are dogs, and some dogs are birds, then can we conclude that some cats are birds?", options: ["Yes", "No", "Cannot be determined", "Maybe"], answer: "Cannot be determined" },
+            { id: 95, question: "What is the angle between the hands of a clock at 3:15?", options: ["0°", "7.5°", "15°", "22.5°"], answer: "7.5°" },
+            { id: 96, question: "Find the odd one out: 12, 24, 36, 48, 55", options: ["12", "24", "48", "55"], answer: "55" },
+            { id: 97, question: "If A = 1, B = 2, C = 3, ... then what is the value of 'Z'?", options: ["24", "25", "26", "27"], answer: "26" },
+            { id: 98, question: "What is the probability of drawing a queen from a standard deck of 52 cards?", options: ["1/13", "1/26", "1/52", "4/52"], answer: "1/13" },
+            { id: 99, question: "A train travels 60 km in 1.5 hours. What is its average speed in km/h?", options: ["30 km/h", "40 km/h", "50 km/h", "60 km/h"], answer: "40 km/h" },
+            { id: 100, question: "If 2x + 3 = 11, what is the value of x?", options: ["2", "3", "4", "5"], answer: "4" }
+        ];
+
+        let currentQuestionIndex = 0;
+        let selectedRollNumber = '';
+        let countdownTimer = null;
+        let timeLeft = 30;
+        let studentResults = {};
+        let countdownInterval = null;
+        let usedTrxIds = [];
+
+        function loadUsedTrxIds() {
+            try {
+                const saved = localStorage.getItem('usedTrxIds');
+                if (saved) usedTrxIds = JSON.parse(saved);
+            } catch (e) {}
+        }
+        function saveUsedTrxIds() {
+            try { localStorage.setItem('usedTrxIds', JSON.stringify(usedTrxIds)); } catch (e) {}
+        }
+
+        function getCountdownData() {
+            const defaultTarget = new Date(); defaultTarget.setHours(defaultTarget.getHours() + 48);
+            try {
+                const saved = localStorage.getItem('countdownData');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    const target = new Date(data.target);
+                    if (target > new Date()) return { target: target, expired: false };
+                    else return { target: target, expired: true };
+                }
+            } catch (e) {}
+            const freshTarget = new Date(); freshTarget.setHours(freshTarget.getHours() + 48);
+            return { target: freshTarget, expired: false };
+        }
+        function saveCountdownData(targetDate) {
+            try { localStorage.setItem('countdownData', JSON.stringify({ target: targetDate.toISOString() })); } catch (e) {}
+        }
+        function startCountdown() {
+            const daysEl = document.getElementById('cdDays');
+            const hoursEl = document.getElementById('cdHours');
+            const minutesEl = document.getElementById('cdMinutes');
+            const secondsEl = document.getElementById('cdSeconds');
+            const container = document.getElementById('countdownContainer');
+            const countdownData = getCountdownData();
+            const targetDate = countdownData.target;
+            if (countdownData.expired || targetDate <= new Date()) {
+                container.innerHTML = `<div class="countdown-label"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Results Available Now!</div><div class="countdown-timer"><span class="expired"><i class="fas fa-trophy"></i> 🎉 Check Your Result Below</span></div>`;
+                return;
+            }
+            saveCountdownData(targetDate);
+            function updateTimer() {
+                const now = new Date().getTime();
+                const target = targetDate.getTime();
+                let diff = target - now;
+                if (diff <= 0) {
+                    clearInterval(countdownInterval);
+                    container.innerHTML = `<div class="countdown-label"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Results Available Now!</div><div class="countdown-timer"><span class="expired"><i class="fas fa-trophy"></i> 🎉 Check Your Result Below</span></div>`;
+                    return;
+                }
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+            updateTimer();
+            if (countdownInterval) clearInterval(countdownInterval);
+            countdownInterval = setInterval(updateTimer, 1000);
+        }
+
+        function loadSavedResults() {
+            try {
+                const saved = localStorage.getItem('studentResults');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    Object.keys(parsed).forEach(roll => {
+                        if (!studentResults[roll]) {
+                            studentResults[roll] = {
+                                totalMarks: parsed[roll].totalMarks || 0,
+                                answers: [],
+                                totalQuestions: parsed[roll].totalQuestions || 100,
+                                testCompleted: parsed[roll].testCompleted || false,
+                                testStarted: parsed[roll].testStarted || false,
+                                percentage: parsed[roll].percentage || 0,
+                                timestamp: parsed[roll].timestamp || null,
+                                studentName: parsed[roll].studentName || 'N/A',
+                                cnic: parsed[roll].cnic || '',
+                                email: parsed[roll].email || '',
+                                phone: parsed[roll].phone || '',
+                                institution: parsed[roll].institution || ''
+                            };
+                        }
+                    });
+                }
+            } catch (e) {}
+        }
+        function saveResultsToLocalStorage() {
+            try {
+                const allResults = {};
+                Object.keys(studentResults).forEach(roll => {
+                    if (studentResults[roll]) {
+                        allResults[roll] = {
+                            totalMarks: studentResults[roll].totalMarks || 0,
+                            totalQuestions: studentResults[roll].totalQuestions || 100,
+                            percentage: studentResults[roll].percentage || 0,
+                            testCompleted: studentResults[roll].testCompleted || false,
+                            testStarted: studentResults[roll].testStarted || false,
+                            timestamp: studentResults[roll].timestamp || new Date().toISOString(),
+                            studentName: studentResults[roll].studentName || 'N/A'
+                        };
+                    }
+                });
+                localStorage.setItem('studentResults', JSON.stringify(allResults));
+            } catch (e) {}
+        }
+
+        function showToast(message, type = 'info', title = '') {
+            const container = document.getElementById('toastContainer');
+            const icons = { success: 'fas fa-check-circle', error: 'fas fa-exclamation-circle', warning: 'fas fa-triangle-exclamation', info: 'fas fa-info-circle' };
+            const titles = { success: 'Success', error: 'Error', warning: 'Warning', info: 'Information' };
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `<div class="toast-icon ${type}"><i class="${icons[type] || icons.info}"></i></div><div class="toast-content"><div class="toast-title">${title || titles[type] || 'Information'}</div><div class="toast-message">${message}</div></div><button class="toast-close" onclick="this.closest('.toast').classList.add('hide'); setTimeout(() => this.closest('.toast').remove(), 300);"><i class="fas fa-times"></i></button>`;
+            container.appendChild(toast);
+            setTimeout(() => { toast.classList.add('hide'); setTimeout(() => toast.remove(), 300); }, 6000);
+        }
+
+        function showModal(message, type = 'info', title = '', detailHtml = '', actions = null) {
+            const overlay = document.getElementById('modalOverlay');
+            const icon = document.getElementById('modalIcon');
+            const titleEl = document.getElementById('modalTitle');
+            const msgEl = document.getElementById('modalMessage');
+            const detailEl = document.getElementById('modalDetail');
+            const actionsEl = document.getElementById('modalActions');
+            const icons = { success: '✅', error: '❌', warning: '⚠️', info: 'ℹ️' };
+            icon.className = 'modal-icon ' + type;
+            icon.textContent = icons[type] || 'ℹ️';
+            titleEl.textContent = title || (type.charAt(0).toUpperCase() + type.slice(1));
+            msgEl.textContent = message;
+            if (detailHtml) { detailEl.style.display = 'block'; detailEl.innerHTML = detailHtml; } else { detailEl.style.display = 'none'; }
+            if (actions) { actionsEl.innerHTML = actions; } else { actionsEl.innerHTML = `<button class="btn btn-primary" onclick="closeModal()">OK</button>`; }
+            overlay.classList.add('active');
+        }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
+        document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active-link'));
+            const target = document.getElementById(pageId);
+            if (target) target.classList.add('active');
+            const navLink = document.getElementById('nav-' + pageId);
+            if (navLink) navLink.classList.add('active-link');
+            if (pageId !== 'take-test-portal') {
+                const notice = document.getElementById('testNoticeCard');
+                const quiz = document.getElementById('liveQuizCard');
+                if (notice) notice.style.display = 'block';
+                if (quiz) quiz.style.display = 'none';
+                clearInterval(countdownTimer);
+            }
+            if (pageId === 'results') { const box = document.getElementById('resultDisplayBox'); if (box) box.classList.remove('show'); }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        async function handleApplySubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('applyForm');
+            const trxId = document.getElementById('paymentTrxId').value.trim();
+            const fileInput = document.getElementById('paymentProof');
+            const file = fileInput.files[0];
+
+            if (usedTrxIds.includes(trxId)) {
+                showModal('This TRX ID has already been used for registration.', 'error', '❌ Duplicate TRX ID',
+                    `<div class="modal-detail"><div class="detail-row"><span class="label">TRX ID</span><span class="value gold">${trxId}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Already Used</span></div></div>`,
+                    `<button class="btn btn-primary" onclick="closeModal();">OK</button>`);
+                return;
+            }
+            if (file) {
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp', 'image/bmp'];
+                if (!validTypes.includes(file.type)) {
+                    showModal('Please upload an image file only.', 'error', '❌ Invalid File Type',
+                        `<div class="modal-detail"><div class="detail-row"><span class="label">File Type</span><span class="value gold">${file.type}</span></div><div class="detail-row"><span class="label">Allowed</span><span class="value secondary">Images Only</span></div></div>`,
+                        `<button class="btn btn-primary" onclick="closeModal();">OK</button>`);
+                    return;
+                }
+            } else {
+                showModal('Please upload a payment proof image.', 'warning', '⚠️ File Required');
+                return;
+            }
+
+            const data = new FormData(form);
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/apply`, { method: 'POST', body: data });
+                const result = await res.json();
+                if (result.success) {
+                    usedTrxIds.push(trxId); saveUsedTrxIds();
+                    studentResults[result.rollNumber] = {
+                        totalMarks: 0, answers: [], totalQuestions: currentQuizData.length,
+                        testCompleted: false, testStarted: false,
+                        studentName: document.getElementById('fullName').value,
+                        cnic: document.getElementById('cnicOrBform').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        institution: document.getElementById('institution').value,
+                        percentage: 0, timestamp: new Date().toISOString()
+                    };
+                    saveResultsToLocalStorage();
+                    showModal(`Registration Successful! Roll Number: ${result.rollNumber}`, 'success', '✅ Registration Complete',
+                        `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${result.rollNumber}</span></div><div class="detail-row"><span class="label">TRX ID</span><span class="value secondary">${trxId}</span></div><div class="detail-row"><span class="label">Total Questions</span><span class="value accent">${currentQuizData.length}</span></div></div>`,
+                        `<button class="btn btn-primary" onclick="closeModal(); showPage('home');">Go Home</button><button class="btn btn-secondary" onclick="closeModal(); showPage('test');">View Test</button>`);
+                    form.reset();
+                } else {
+                    showModal(result.message, 'error', '❌ Registration Failed');
+                }
+            } catch (error) {
+                usedTrxIds.push(trxId); saveUsedTrxIds();
+                const fakeRoll = 'LAP-' + Date.now().toString().slice(-6);
+                studentResults[fakeRoll] = {
+                    totalMarks: 0, answers: [], totalQuestions: currentQuizData.length,
+                    testCompleted: false, testStarted: false,
+                    studentName: document.getElementById('fullName').value,
+                    cnic: document.getElementById('cnicOrBform').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    institution: document.getElementById('institution').value,
+                    percentage: 0, timestamp: new Date().toISOString()
+                };
+                saveResultsToLocalStorage();
+                showModal(`Registration Successful (Offline Mode)! Roll Number: ${fakeRoll}`, 'success', '✅ Registration Complete (Offline)',
+                    `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${fakeRoll}</span></div><div class="detail-row"><span class="label">TRX ID</span><span class="value secondary">${trxId}</span></div><div class="detail-row"><span class="label">Total Questions</span><span class="value accent">${currentQuizData.length}</span></div></div>`,
+                    `<button class="btn btn-primary" onclick="closeModal(); showPage('home');">Go Home</button><button class="btn btn-secondary" onclick="closeModal(); showPage('test');">View Test</button>`);
+                form.reset();
+            }
+        }
+
+        async function verifyRollAndStartTest() {
+            const rollInput = document.getElementById('verifyRollNo');
+            const roll = rollInput.value.trim();
+            if (!roll) { showModal('Please enter your assigned roll number.', 'warning', '⚠️ Roll Number Required'); return; }
+            
+            if (studentResults[roll]) {
+                if (studentResults[roll].testCompleted === true) {
+                    showModal(`Test Already Completed!`, 'warning', '⚠️ Test Already Completed',
+                        `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Completed</span></div></div>`,
+                        `<button class="btn btn-primary" onclick="closeModal(); showPage('results');">Check Results</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+                    return;
+                }
+                if (studentResults[roll].testStarted === true && studentResults[roll].answers.length > 0) {
+                    showModal(`You have an incomplete test. Continue from where you left off?`, 'info', '⏳ Incomplete Test',
+                        `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Questions Answered</span><span class="value secondary">${studentResults[roll].answers.length} / ${currentQuizData.length}</span></div></div>`,
+                        `<button class="btn btn-primary" onclick="closeModal(); continueTest('${roll}');">Continue Test</button><button class="btn btn-secondary" onclick="closeModal();">Cancel</button>`);
+                    return;
+                }
+                selectedRollNumber = roll;
+                currentQuestionIndex = 0;
+                studentResults[selectedRollNumber].totalMarks = 0;
+                studentResults[selectedRollNumber].answers = [];
+                studentResults[selectedRollNumber].testStarted = true;
+                studentResults[selectedRollNumber].testCompleted = false;
+                studentResults[selectedRollNumber].percentage = 0;
+                saveResultsToLocalStorage();
+                document.getElementById('testNoticeCard').style.display = 'none';
+                document.getElementById('liveQuizCard').style.display = 'block';
+                document.getElementById('displayRollNum').innerText = selectedRollNumber;
+                loadQuestion();
+                return;
+            }
+            
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/verify-roll`, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ rollNumber: roll }) 
+                });
+                const result = await res.json();
+                if (result.success) {
+                    if (result.testCompleted === true) {
+                        showModal(`Test Already Completed!`, 'warning', '⚠️ Test Already Completed',
+                            `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Completed</span></div></div>`,
+                            `<button class="btn btn-primary" onclick="closeModal(); showPage('results');">Check Results</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+                        return;
+                    }
+                    selectedRollNumber = roll;
+                    currentQuestionIndex = 0;
+                    studentResults[selectedRollNumber] = {
+                        totalMarks: 0, answers: [], totalQuestions: currentQuizData.length,
+                        testCompleted: false, testStarted: true,
+                        studentName: result.studentName || 'N/A',
+                        percentage: 0, timestamp: new Date().toISOString()
+                    };
+                    saveResultsToLocalStorage();
+                    document.getElementById('testNoticeCard').style.display = 'none';
+                    document.getElementById('liveQuizCard').style.display = 'block';
+                    document.getElementById('displayRollNum').innerText = selectedRollNumber;
+                    loadQuestion();
+                } else {
+                    showModal('Roll Number not found. Please register first.', 'error', '❌ Invalid Roll Number',
+                        `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Not Found</span></div></div>`,
+                        `<button class="btn btn-primary" onclick="closeModal(); showPage('apply');">Register Now</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+                }
+            } catch (err) {
+                showModal('Unable to connect to server. Please make sure you have registered first.', 'error', '❌ Connection Error');
+            }
+        }
+
+        function continueTest(roll) {
+            selectedRollNumber = roll;
+            currentQuestionIndex = studentResults[roll].answers.length;
+            document.getElementById('testNoticeCard').style.display = 'none';
+            document.getElementById('liveQuizCard').style.display = 'block';
+            document.getElementById('displayRollNum').innerText = selectedRollNumber;
+            loadQuestion();
+        }
+
+        function exitTest() {
+            if (confirm('Are you sure you want to exit the test? Your progress will be saved.')) {
+                clearInterval(countdownTimer);
+                if (selectedRollNumber && studentResults[selectedRollNumber]) {
+                    studentResults[selectedRollNumber].testStarted = true;
+                    studentResults[selectedRollNumber].testCompleted = false;
+                    saveResultsToLocalStorage();
+                }
+                document.getElementById('liveQuizCard').style.display = 'none';
+                document.getElementById('testNoticeCard').style.display = 'block';
+                showToast('Test progress saved! You can continue later.', 'info', '⏳ Test Saved');
+                showPage('home');
+            }
+        }
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= currentQuizData.length) {
+                clearInterval(countdownTimer);
+                if (studentResults[selectedRollNumber]) {
+                    studentResults[selectedRollNumber].testCompleted = true;
+                    studentResults[selectedRollNumber].testStarted = false;
+                    const marks = studentResults[selectedRollNumber].totalMarks || 0;
+                    const total = currentQuizData.length;
+                    studentResults[selectedRollNumber].percentage = ((marks / total) * 100);
+                    studentResults[selectedRollNumber].timestamp = new Date().toISOString();
+                    saveResultsToLocalStorage();
+                }
+                const quizCard = document.getElementById('liveQuizCard');
+                if (quizCard) {
+                    quizCard.innerHTML = `<div style="text-align: center; padding: 40px 20px;"><div style="font-size: 64px; margin-bottom: 16px;">✅</div><h3 style="color: var(--secondary); font-size: 28px;">Test Completed Successfully!</h3><p style="color: rgba(255,255,255,0.5); font-size: 16px; margin-top: 10px;">Thank you for participating!</p><div style="margin-top: 20px; padding: 16px 24px; background: rgba(255,255,255,0.03); border-radius: 12px;"><p style="color: var(--gold); font-weight: 600; font-size: 14px;">Results will be uploaded here on 25th October 2026</p><p style="color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 6px;">Roll Number: ${selectedRollNumber}</p></div><div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;"><button class="btn btn-primary" onclick="showPage('home')">Return Home</button><button class="btn btn-secondary" onclick="showPage('results')">Check Results</button></div></div>`;
+                }
+                return;
+            }
+            clearInterval(countdownTimer);
+            timeLeft = 30;
+            document.getElementById('quizTimer').innerText = timeLeft;
+            document.getElementById('quizTimer').classList.remove('warning');
+            const q = currentQuizData[currentQuestionIndex];
+            const total = currentQuizData.length;
+            const progress = ((currentQuestionIndex + 1) / total) * 100;
+            document.getElementById('questionTitle').innerText = `Q${currentQuestionIndex + 1} of ${total}`;
+            document.getElementById('questionText').innerText = q.question;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').innerText = Math.round(progress) + '%';
+            const letters = ['A', 'B', 'C', 'D'];
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                container.innerHTML += `<label class="opt" onclick="selectOption(this)"><input type="radio" name="quizOption" value="${opt}"><span class="opt-letter">${letters[idx]}</span>${opt}</label>`;
+            });
+            countdownTimer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('quizTimer').innerText = timeLeft;
+                if (timeLeft <= 5) document.getElementById('quizTimer').classList.add('warning');
+                if (timeLeft <= 0) { clearInterval(countdownTimer); submitCurrentMcq(); }
+            }, 1000);
+        }
+
+        function selectOption(el) {
+            document.querySelectorAll('.opt').forEach(opt => opt.classList.remove('selected'));
+            el.classList.add('selected');
+            el.querySelector('input').checked = true;
+        }
+
+        function submitCurrentMcq() {
+            clearInterval(countdownTimer);
+            const selected = document.querySelector('input[name="quizOption"]:checked');
+            const answer = selected ? selected.value : null;
+            const currentQ = currentQuizData[currentQuestionIndex];
+            const isCorrect = answer === currentQ.answer;
+            if (isCorrect) studentResults[selectedRollNumber].totalMarks += 1;
+            studentResults[selectedRollNumber].answers.push({ questionId: currentQ.id, question: currentQ.question, selected: answer, correct: currentQ.answer, isCorrect: isCorrect });
+            saveResultsToLocalStorage();
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function checkResult() {
+            const input = document.getElementById('resultRollInput');
+            const roll = input.value.trim();
+            const box = document.getElementById('resultDisplayBox');
+            if (!roll) { showToast('Please enter your Roll Number.', 'warning', 'Roll Number Required'); input.focus(); return; }
+            let result = null;
+            if (studentResults[roll]) result = studentResults[roll];
+            else {
+                try {
+                    const saved = localStorage.getItem('studentResults');
+                    if (saved) { const parsed = JSON.parse(saved); if (parsed[roll]) { result = parsed[roll]; studentResults[roll] = result; } }
+                } catch (e) {}
+            }
+            if (result && result.testCompleted === true) {
+                box.classList.add('show');
+                document.getElementById('rRoll').textContent = roll;
+                document.getElementById('rName').textContent = result.studentName || 'N/A';
+                document.getElementById('rMarks').textContent = result.totalMarks || 0;
+                document.getElementById('rTotal').textContent = result.totalQuestions || 100;
+                document.getElementById('rPercentage').textContent = (result.percentage || 0).toFixed(2) + '%';
+                const statusBadge = document.getElementById('resultStatusBadge');
+                const statusText = document.getElementById('rStatus');
+                const percentage = result.percentage || 0;
+                if (percentage >= 60) { statusText.textContent = '✅ Passed'; statusText.className = 'r-value secondary'; statusBadge.className = 'result-status pass'; statusBadge.textContent = '🎉 Congratulations! You have passed.'; }
+                else if (percentage >= 40) { statusText.textContent = '⏳ Under Review'; statusText.className = 'r-value gold'; statusBadge.className = 'result-status pending'; statusBadge.textContent = '📋 Your result is under review.'; }
+                else { statusText.textContent = '❌ Not Eligible'; statusText.className = 'r-value'; statusBadge.className = 'result-status fail'; statusBadge.textContent = 'Sorry, you did not qualify this time.'; }
+                showToast(`Result found for Roll Number: ${roll}`, 'success', '✅ Result Retrieved');
+            } else if (result && result.testStarted === true && result.testCompleted === false) {
+                box.classList.remove('show');
+                showModal(`Test is not completed yet. Please complete your test first.`, 'warning', '⏳ Test Incomplete',
+                    `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">In Progress</span></div></div>`,
+                    `<button class="btn btn-primary" onclick="closeModal(); showPage('take-test-portal');">Continue Test</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+                return;
+            } else {
+                box.classList.remove('show');
+                showModal(`No result found for Roll Number: ${roll}. Please make sure you have registered and completed the test.`, 'error', '❌ Result Not Found',
+                    `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Not Found</span></div></div>`,
+                    `<button class="btn btn-primary" onclick="closeModal(); showPage('apply');">Register Now</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 20) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        window.addEventListener('load', function() {
+            loadSavedResults();
+            loadUsedTrxIds();
+            startCountdown();
+            document.getElementById('resultRollInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') checkResult();
+            });
+            document.getElementById('verifyRollNo').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') verifyRollAndStartTest();
+            });
+        });
+
+        window.addEventListener('beforeunload', function() {
+            saveResultsToLocalStorage();
+            saveUsedTrxIds();
+        });
+
+        // ===== EXPOSE FUNCTIONS TO GLOBAL SCOPE =====
+        window.showPage = showPage;
+        window.handleApplySubmit = handleApplySubmit;
+        window.verifyRollAndStartTest = verifyRollAndStartTest;
+        window.submitCurrentMcq = submitCurrentMcq;
+        window.selectOption = selectOption;
+        window.checkResult = checkResult;
+        window.continueTest = continueTest;
+        window.exitTest = exitTest;
+        window.showToast = showToast;
+        window.showModal = showModal;
+        window.closeModal = closeModal;
+    </script>
+</body>
+</html>
