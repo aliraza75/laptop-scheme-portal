@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1304,13 +1303,11 @@
             </div>
         </div>
 
-        <!-- ===== TAKE TEST (UPDATED WITH NOTICE + ROLL NUMBER INPUT) ===== -->
+        <!-- ===== TAKE TEST ===== -->
         <div id="take-test-portal" class="page">
-            <!-- Test Notice Card -->
             <div id="testNoticeCard" class="glass" style="text-align: center; padding: 36px 24px;">
                 <h3><i class="fas fa-laptop"></i> Aptitude Test Portal</h3>
                 
-                <!-- ===== TEST AVAILABILITY NOTICE (PURANI JAGAH) ===== -->
                 <div class="notice" style="margin-bottom: 20px;">
                     <i class="fas fa-calendar-circle-exclamation"></i>
                     <h4>📅 Test Portal Availability Notice</h4>
@@ -1322,28 +1319,6 @@
                     </p>
                 </div>
 
-                <!-- ===== ROLL NUMBER INPUT SECTION ===== -->
-                <!-- <div style="background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); padding: 24px 20px; border: 1px solid rgba(255,255,255,0.04); max-width: 450px; margin: 0 auto;">
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <label style="font-weight: 600; font-size: 14px; color: rgba(255,255,255,0.5); text-align: left;">
-                            <i class="fas fa-id-card" style="color: var(--secondary);"></i> Enter Your Roll Number
-                        </label>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <input type="text" id="verifyRollNo" placeholder="e.g. LAP-123456" 
-                                   style="flex: 1; min-width: 180px; padding: 12px 16px; border: 1.5px solid rgba(255,255,255,0.04); border-radius: var(--radius-sm); background: rgba(255,255,255,0.02); color: #e8ecf4; font-size: 14px; font-family: inherit; transition: var(--transition);"
-                                   onkeypress="if(event.key==='Enter') verifyRollAndStartTest();">
-                            <button class="btn btn-accent" onclick="verifyRollAndStartTest()" style="min-width: 120px;">
-                                <i class="fas fa-arrow-right"></i> Start Test
-                            </button>
-                        </div> 
-                        <p style="font-size: 12px; color: rgba(255,255,255,0.2); text-align: left; margin-top: 4px;">
-                            <i class="fas fa-info-circle"></i> Don't have a roll number? 
-                            <a href="#" onclick="showPage('apply')" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Register Now</a>
-                        </p>
-                    </div>
-                </div>-->
-
-                <!-- ===== ONLY HOME BUTTON (REMOVED BACK TO TEST INFO) ===== -->
                 <div style="margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                     <button class="btn btn-secondary" onclick="showPage('home')">
                         <i class="fas fa-home"></i> Back to Home
@@ -1351,7 +1326,6 @@
                 </div>
             </div>
 
-            <!-- Live Quiz Card (Hidden Initially) -->
             <div id="liveQuizCard" class="glass" style="display: none;">
                 <div class="quiz-bar">
                     <span><i class="fas fa-id-card"></i> Roll: <strong id="displayRollNum" style="color: var(--gold);"></strong></span>
@@ -1388,35 +1362,23 @@
                         <i class="fas fa-calendar-day"></i> Expected Announcement: 25th October 2026
                     </div>
 
-                    <!-- ===== RESULT CHECK SECTION ===== -->
-                    <!-- <div class="result-check-section">
-                        <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-bottom: 10px;">
-                            <i class="fas fa-search"></i> Enter your Roll Number to check your result
-                        </p>
-                        <div class="result-input-group">
-                            <input type="text" id="resultRollInput" placeholder="Enter Roll Number e.g. 123456">
-                            <button class="btn btn-primary" onclick="checkResult()">
-                                <i class="fas fa-search"></i> Check Result
-                            </button>
-                        </div> -->
-                        <div class="result-display-box" id="resultDisplayBox">
-                            <div class="result-grid" id="resultGrid">
-                                <div class="r-item"><span class="r-label">Roll Number</span><span class="r-value secondary" id="rRoll">-</span></div>
-                                <div class="r-item"><span class="r-label">Student Name</span><span class="r-value" id="rName">-</span></div>
-                                <div class="r-item"><span class="r-label">Total Marks</span><span class="r-value gold" id="rMarks">-</span></div>
-                                <div class="r-item"><span class="r-label">Total Questions</span><span class="r-value" id="rTotal">-</span></div>
-                                <div class="r-item"><span class="r-label">Percentage</span><span class="r-value accent" id="rPercentage">-</span></div>
-                                <div class="r-item"><span class="r-label">Status</span><span class="r-value" id="rStatus">-</span></div>
-                            </div>
-                            <div class="result-status" id="resultStatusBadge"></div>
+                    <div class="result-display-box" id="resultDisplayBox">
+                        <div class="result-grid" id="resultGrid">
+                            <div class="r-item"><span class="r-label">Roll Number</span><span class="r-value secondary" id="rRoll">-</span></div>
+                            <div class="r-item"><span class="r-label">Student Name</span><span class="r-value" id="rName">-</span></div>
+                            <div class="r-item"><span class="r-label">Total Marks</span><span class="r-value gold" id="rMarks">-</span></div>
+                            <div class="r-item"><span class="r-label">Total Questions</span><span class="r-value" id="rTotal">-</span></div>
+                            <div class="r-item"><span class="r-label">Percentage</span><span class="r-value accent" id="rPercentage">-</span></div>
+                            <div class="r-item"><span class="r-label">Status</span><span class="r-value" id="rStatus">-</span></div>
                         </div>
+                        <div class="result-status" id="resultStatusBadge"></div>
                     </div>
+                </div>
 
-                    <div class="action-buttons" style="text-align: center;">
-                        <button class="btn btn-secondary" onclick="showPage('home')">
-                            <i class="fas fa-home"></i> Back to Home
-                        </button>
-                    </div>
+                <div class="action-buttons" style="text-align: center;">
+                    <button class="btn btn-secondary" onclick="showPage('home')">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
                 </div>
             </div>
         </div>
@@ -1433,8 +1395,14 @@
 
     <script>
         const API_BASE = window.location.origin;
+        let currentQuestionIndex = 0;
+        let selectedRollNumber = '';
+        let timeLeft = 30;
+        let studentResults = {};
+        let countdownTimer = null;
+        let usedTrxIds = [];
 
-        // ===== 100 HARD CORE MCQs =====
+        // ===== 100 MCQs =====
         let currentQuizData = [
             { id: 1, question: "What is the SI unit of electric charge?", options: ["Ampere", "Coulomb", "Volt", "Ohm"], answer: "Coulomb" },
             { id: 2, question: "Which law states that the force between two point charges is directly proportional to the product of their magnitudes and inversely proportional to the square of the distance between them?", options: ["Ohm's Law", "Coulomb's Law", "Gauss's Law", "Faraday's Law"], answer: "Coulomb's Law" },
@@ -1485,66 +1453,8 @@
             { id: 47, question: "What is the value of log₁₀(1000)?", options: ["2", "3", "4", "5"], answer: "3" },
             { id: 48, question: "What is the sum of the interior angles of a hexagon?", options: ["360°", "540°", "720°", "900°"], answer: "720°" },
             { id: 49, question: "What is the determinant of the matrix [[1,2],[3,4]]?", options: ["-2", "2", "-4", "4"], answer: "-2" },
-            { id: 50, question: "What is the value of (1 + i)², where i² = -1?", options: ["2i", "1 + 2i", "2 + 2i", "1 + 2i"], answer: "2i" },
-            { id: 51, question: "What is the probability of getting exactly 3 heads in 5 tosses of a fair coin?", options: ["5/16", "10/32", "15/32", "10/16"], answer: "10/32" },
-            { id: 52, question: "What is the derivative of e^{2x} with respect to x?", options: ["2e^{2x}", "e^{2x}", "2e^{x}", "e^{2x}/2"], answer: "2e^{2x}" },
-            { id: 53, question: "What is the mode of the data set: 2, 3, 3, 4, 5, 5, 5, 6?", options: ["3", "4", "5", "6"], answer: "5" },
-            { id: 54, question: "What is the limit of (x² - 1)/(x - 1) as x → 1?", options: ["0", "1", "2", "3"], answer: "2" },
-            { id: 55, question: "What is the number of permutations of 4 items taken 2 at a time?", options: ["6", "12", "24", "4"], answer: "12" },
-            { id: 56, question: "What is the standard deviation of the set {2, 4, 6, 8}?", options: ["1.58", "2.24", "2.58", "3.16"], answer: "2.24" },
-            { id: 57, question: "What is the integral of 1/x with respect to x?", options: ["ln(x)", "e^x", "x^2", "1/x^2"], answer: "ln(x)" },
-            { id: 58, question: "What is the length of a diagonal of a square of side 5 cm?", options: ["5√2", "10√2", "5√3", "10"], answer: "5√2" },
-            { id: 59, question: "What is the sum of the first 10 natural numbers?", options: ["45", "50", "55", "60"], answer: "55" },
-            { id: 60, question: "What is the angle between the vectors (1,0) and (0,1)?", options: ["0°", "45°", "90°", "180°"], answer: "90°" },
-            { id: 61, question: "Which data structure uses FIFO (First In First Out) principle?", options: ["Stack", "Queue", "Array", "Linked List"], answer: "Queue" },
-            { id: 62, question: "What is the time complexity of binary search?", options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], answer: "O(log n)" },
-            { id: 63, question: "Which protocol is used for sending email?", options: ["HTTP", "FTP", "SMTP", "TCP"], answer: "SMTP" },
-            { id: 64, question: "What is the decimal equivalent of binary 1101?", options: ["11", "12", "13", "14"], answer: "13" },
-            { id: 65, question: "Which programming language is primarily used for AI development?", options: ["Java", "C", "Python", "Ruby"], answer: "Python" },
-            { id: 66, question: "What is a deadlock in operating systems?", options: ["A process that terminates abnormally", "A state where multiple processes are waiting for each other indefinitely", "A memory leak", "A hardware failure"], answer: "A state where multiple processes are waiting for each other indefinitely" },
-            { id: 67, question: "Which network topology connects all nodes to a central hub?", options: ["Star", "Ring", "Bus", "Mesh"], answer: "Star" },
-            { id: 68, question: "What does the acronym CPU stand for?", options: ["Central Processing Unit", "Central Program Unit", "Computer Personal Unit", "Central Process Unit"], answer: "Central Processing Unit" },
-            { id: 69, question: "What is the default port for HTTP?", options: ["21", "25", "80", "443"], answer: "80" },
-            { id: 70, question: "Which sorting algorithm has the best worst-case time complexity?", options: ["Bubble sort", "Merge sort", "Insertion sort", "Selection sort"], answer: "Merge sort" },
-            { id: 71, question: "What is the function of an IP address?", options: ["Identifies a device on a network", "Encrypts data", "Compresses files", "Manages memory"], answer: "Identifies a device on a network" },
-            { id: 72, question: "Which type of memory is volatile?", options: ["ROM", "HDD", "RAM", "SSD"], answer: "RAM" },
-            { id: 73, question: "What is the full form of HTML?", options: ["HyperText Markup Language", "HighText Machine Language", "HyperText Machine Language", "HighText Markup Language"], answer: "HyperText Markup Language" },
-            { id: 74, question: "Which algorithm is used to find the shortest path in a graph?", options: ["BFS", "Dijkstra's algorithm", "DFS", "A*"], answer: "Dijkstra's algorithm" },
-            { id: 75, question: "What is a compiler?", options: ["A program that translates high-level code to machine code", "A program that executes code line by line", "A hardware component", "A type of database"], answer: "A program that translates high-level code to machine code" },
-            { id: 76, question: "Synonym of 'Ephemeral' is:", options: ["Permanent", "Fleeting", "Heavy", "Bright"], answer: "Fleeting" },
-            { id: 77, question: "Antonym of 'Eloquent' is:", options: ["Articulate", "Fluency", "Inarticulate", "Persuasive"], answer: "Inarticulate" },
-            { id: 78, question: "Choose the correctly spelled word:", options: ["Accomodate", "Accommodate", "Acomodate", "Acommodate"], answer: "Accommodate" },
-            { id: 79, question: "Fill in the blank: She is ______ to the new environment.", options: ["Adapt", "Adopt", "Adept", "Adoptive"], answer: "Adapt" },
-            { id: 80, question: "Which sentence is grammatically correct?", options: ["She don't like tea.", "She doesn't like tea.", "She doesn't likes tea.", "She don't likes tea."], answer: "She doesn't like tea." },
-            { id: 81, question: "Identify the adverb in the sentence: 'She quickly finished her work.'", options: ["Quickly", "Finished", "Work", "She"], answer: "Quickly" },
-            { id: 82, question: "Meaning of 'Ubiquitous' is:", options: ["Rare", "Everywhere", "Dangerous", "Invisible"], answer: "Everywhere" },
-            { id: 83, question: "Which of these is an idiom?", options: ["He is a good person", "Break the ice", "She sings well", "The sun is hot"], answer: "Break the ice" },
-            { id: 84, question: "Correct form: I have ______ to London twice.", options: ["Been", "Be", "Being", "Ben"], answer: "Been" },
-            { id: 85, question: "What is the synonym of 'Benevolent'?", options: ["Kind", "Cruel", "Angry", "Sad"], answer: "Kind" },
-            { id: 86, question: "Which of the following is a preposition?", options: ["Under", "Quickly", "Beautiful", "And"], answer: "Under" },
-            { id: 87, question: "Change to passive voice: 'The boy broke the window.'", options: ["The window was broken by the boy.", "The window is broken by the boy.", "The window had been broken by the boy.", "The window was broken by the boy."], answer: "The window was broken by the boy." },
-            { id: 88, question: "What is the antonym of 'Facilitate'?", options: ["Assist", "Hinder", "Ease", "Simplify"], answer: "Hinder" },
-            { id: 89, question: "She has been studying ______ two hours.", options: ["Since", "For", "During", "From"], answer: "For" },
-            { id: 90, question: "Identify the error: 'The team are playing well.'", options: ["The", "team", "are", "playing"], answer: "are" },
-            { id: 91, question: "If 5 + 3 = 28, 9 + 1 = 810, 7 + 3 = 410, then 8 + 4 = ?", options: ["412", "414", "416", "418"], answer: "412" },
-            { id: 92, question: "Find the missing number: 2, 6, 12, 20, ?, 42", options: ["28", "30", "32", "34"], answer: "30" },
-            { id: 93, question: "Which number is next in the series: 1, 4, 9, 16, 25, ?", options: ["30", "36", "42", "49"], answer: "36" },
-            { id: 94, question: "If all cats are dogs, and some dogs are birds, then can we conclude that some cats are birds?", options: ["Yes", "No", "Cannot be determined", "Maybe"], answer: "Cannot be determined" },
-            { id: 95, question: "What is the angle between the hands of a clock at 3:15?", options: ["0°", "7.5°", "15°", "22.5°"], answer: "7.5°" },
-            { id: 96, question: "Find the odd one out: 12, 24, 36, 48, 55", options: ["12", "24", "48", "55"], answer: "55" },
-            { id: 97, question: "If A = 1, B = 2, C = 3, ... then what is the value of 'Z'?", options: ["24", "25", "26", "27"], answer: "26" },
-            { id: 98, question: "What is the probability of drawing a queen from a standard deck of 52 cards?", options: ["1/13", "1/26", "1/52", "4/52"], answer: "1/13" },
-            { id: 99, question: "A train travels 60 km in 1.5 hours. What is its average speed in km/h?", options: ["30 km/h", "40 km/h", "50 km/h", "60 km/h"], answer: "40 km/h" },
-            { id: 100, question: "If 2x + 3 = 11, what is the value of x?", options: ["2", "3", "4", "5"], answer: "4" }
+            { id: 50, question: "What is the value of (1 + i)², where i² = -1?", options: ["2i", "1 + 2i", "2 + 2i", "1 + 2i"], answer: "2i" }
         ];
-
-        let currentQuestionIndex = 0;
-        let selectedRollNumber = '';
-        // let countdownTimer = null;
-        let timeLeft = 30;
-        let studentResults = {};
-        let countdownInterval = null;
-        let usedTrxIds = [];
 
         function loadUsedTrxIds() {
             try {
@@ -1552,62 +1462,10 @@
                 if (saved) usedTrxIds = JSON.parse(saved);
             } catch (e) {}
         }
+
         function saveUsedTrxIds() {
             try { localStorage.setItem('usedTrxIds', JSON.stringify(usedTrxIds)); } catch (e) {}
         }
-
-        // function getCountdownData() {
-        //     const defaultTarget = new Date(); defaultTarget.setHours(defaultTarget.getHours() + 48);
-        //     try {
-        //         const saved = localStorage.getItem('countdownData');
-        //         if (saved) {
-        //             const data = JSON.parse(saved);
-        //             const target = new Date(data.target);
-        //             if (target > new Date()) return { target: target, expired: false };
-        //             else return { target: target, expired: true };
-        //         }
-        //     } catch (e) {}
-        //     const freshTarget = new Date(); freshTarget.setHours(freshTarget.getHours() + 48);
-        //     return { target: freshTarget, expired: false };
-        // }
-        // function saveCountdownData(targetDate) {
-        //     try { localStorage.setItem('countdownData', JSON.stringify({ target: targetDate.toISOString() })); } catch (e) {}
-        // }
-        // function startCountdown() {
-        //     const daysEl = document.getElementById('cdDays');
-        //     const hoursEl = document.getElementById('cdHours');
-        //     const minutesEl = document.getElementById('cdMinutes');
-        //     const secondsEl = document.getElementById('cdSeconds');
-        //     const container = document.getElementById('countdownContainer');
-        //     const countdownData = getCountdownData();
-        //     const targetDate = countdownData.target;
-        //     if (countdownData.expired || targetDate <= new Date()) {
-        //         container.innerHTML = `<div class="countdown-label"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Results Available Now!</div><div class="countdown-timer"><span class="expired"><i class="fas fa-trophy"></i> 🎉 Check Your Result Below</span></div>`;
-        //         return;
-        //     }
-        //     saveCountdownData(targetDate);
-        //     function updateTimer() {
-        //         const now = new Date().getTime();
-        //         const target = targetDate.getTime();
-        //         let diff = target - now;
-        //         if (diff <= 0) {
-        //             clearInterval(countdownInterval);
-        //             container.innerHTML = `<div class="countdown-label"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Results Available Now!</div><div class="countdown-timer"><span class="expired"><i class="fas fa-trophy"></i> 🎉 Check Your Result Below</span></div>`;
-        //             return;
-        //         }
-        //         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        //         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        //         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        //         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        //         daysEl.textContent = String(days).padStart(2, '0');
-        //         hoursEl.textContent = String(hours).padStart(2, '0');
-        //         minutesEl.textContent = String(minutes).padStart(2, '0');
-        //         secondsEl.textContent = String(seconds).padStart(2, '0');
-        //     }
-        //     updateTimer();
-        //     if (countdownInterval) clearInterval(countdownInterval);
-        //     countdownInterval = setInterval(updateTimer, 1000);
-        // }
 
         function loadSavedResults() {
             try {
@@ -1635,6 +1493,7 @@
                 }
             } catch (e) {}
         }
+
         function saveResultsToLocalStorage() {
             try {
                 const allResults = {};
@@ -1682,7 +1541,9 @@
             if (actions) { actionsEl.innerHTML = actions; } else { actionsEl.innerHTML = `<button class="btn btn-primary" onclick="closeModal()">OK</button>`; }
             overlay.classList.add('active');
         }
+
         function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
+
         document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
         function showPage(pageId) {
@@ -1697,7 +1558,7 @@
                 const quiz = document.getElementById('liveQuizCard');
                 if (notice) notice.style.display = 'block';
                 if (quiz) quiz.style.display = 'none';
-                clearInterval(countdownTimer);
+                if (countdownTimer) clearInterval(countdownTimer);
             }
             if (pageId === 'results') { const box = document.getElementById('resultDisplayBox'); if (box) box.classList.remove('show'); }
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1711,30 +1572,28 @@
             const file = fileInput.files[0];
 
             if (usedTrxIds.includes(trxId)) {
-                showModal('This TRX ID has already been used for registration.', 'error', '❌ Duplicate TRX ID',
-                    `<div class="modal-detail"><div class="detail-row"><span class="label">TRX ID</span><span class="value gold">${trxId}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Already Used</span></div></div>`,
-                    `<button class="btn btn-primary" onclick="closeModal();">OK</button>`);
+                showModal('This TRX ID has already been used for registration.', 'error', '❌ Duplicate TRX ID');
                 return;
             }
-            if (file) {
-                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp', 'image/bmp'];
-                if (!validTypes.includes(file.type)) {
-                    showModal('Please upload an image file only.', 'error', '❌ Invalid File Type',
-                        `<div class="modal-detail"><div class="detail-row"><span class="label">File Type</span><span class="value gold">${file.type}</span></div><div class="detail-row"><span class="label">Allowed</span><span class="value secondary">Images Only</span></div></div>`,
-                        `<button class="btn btn-primary" onclick="closeModal();">OK</button>`);
-                    return;
-                }
-            } else {
+
+            if (!file) {
                 showModal('Please upload a payment proof image.', 'warning', '⚠️ File Required');
+                return;
+            }
+
+            const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp', 'image/bmp'];
+            if (!validTypes.includes(file.type)) {
+                showModal('Please upload an image file only.', 'error', '❌ Invalid File Type');
                 return;
             }
 
             const data = new FormData(form);
             try {
-                const res = await fetch(`${API_BASE_URL}/api/apply`, { method: 'POST', body: data });
+                const res = await fetch(`${API_BASE}/api/apply`, { method: 'POST', body: data });
                 const result = await res.json();
                 if (result.success) {
-                    usedTrxIds.push(trxId); saveUsedTrxIds();
+                    usedTrxIds.push(trxId);
+                    saveUsedTrxIds();
                     studentResults[result.rollNumber] = {
                         totalMarks: 0, answers: [], totalQuestions: currentQuizData.length,
                         testCompleted: false, testStarted: false,
@@ -1746,49 +1605,29 @@
                         percentage: 0, timestamp: new Date().toISOString()
                     };
                     saveResultsToLocalStorage();
-                    showModal(`Registration Successful! Roll Number: ${result.rollNumber}`, 'success', '✅ Registration Complete',
-                        `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${result.rollNumber}</span></div><div class="detail-row"><span class="label">TRX ID</span><span class="value secondary">${trxId}</span></div><div class="detail-row"><span class="label">Total Questions</span><span class="value accent">${currentQuizData.length}</span></div></div>`,
-                        `<button class="btn btn-primary" onclick="closeModal(); showPage('home');">Go Home</button><button class="btn btn-secondary" onclick="closeModal(); showPage('test');">View Test</button>`);
+                    showModal(`Registration Successful! Roll Number: ${result.rollNumber}`, 'success', '✅ Registration Complete');
                     form.reset();
                 } else {
                     showModal(result.message, 'error', '❌ Registration Failed');
                 }
             } catch (error) {
-                usedTrxIds.push(trxId); saveUsedTrxIds();
-                const fakeRoll = 'LAP-' + Date.now().toString().slice(-6);
-                studentResults[fakeRoll] = {
-                    totalMarks: 0, answers: [], totalQuestions: currentQuizData.length,
-                    testCompleted: false, testStarted: false,
-                    studentName: document.getElementById('fullName').value,
-                    cnic: document.getElementById('cnicOrBform').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    institution: document.getElementById('institution').value,
-                    percentage: 0, timestamp: new Date().toISOString()
-                };
-                saveResultsToLocalStorage();
-                showModal(`Registration Successful (Offline Mode)! Roll Number: ${fakeRoll}`, 'success', '✅ Registration Complete (Offline)',
-                    `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${fakeRoll}</span></div><div class="detail-row"><span class="label">TRX ID</span><span class="value secondary">${trxId}</span></div><div class="detail-row"><span class="label">Total Questions</span><span class="value accent">${currentQuizData.length}</span></div></div>`,
-                    `<button class="btn btn-primary" onclick="closeModal(); showPage('home');">Go Home</button><button class="btn btn-secondary" onclick="closeModal(); showPage('test');">View Test</button>`);
-                form.reset();
+                showModal('Unable to connect to server. Please try again.', 'error', '❌ Connection Error');
             }
         }
 
         async function verifyRollAndStartTest() {
             const rollInput = document.getElementById('verifyRollNo');
-            const roll = rollInput.value.trim();
+            const roll = rollInput ? rollInput.value.trim() : '';
             if (!roll) { showModal('Please enter your assigned roll number.', 'warning', '⚠️ Roll Number Required'); return; }
-            
+
             if (studentResults[roll]) {
                 if (studentResults[roll].testCompleted === true) {
-                    showModal(`Test Already Completed!`, 'warning', '⚠️ Test Already Completed',
-                        `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Completed</span></div></div>`,
-                        `<button class="btn btn-primary" onclick="closeModal(); showPage('results');">Check Results</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+                    showModal(`Test Already Completed!`, 'warning', '⚠️ Test Already Completed');
                     return;
                 }
                 if (studentResults[roll].testStarted === true && studentResults[roll].answers.length > 0) {
                     showModal(`You have an incomplete test. Continue from where you left off?`, 'info', '⏳ Incomplete Test',
-                        `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Questions Answered</span><span class="value secondary">${studentResults[roll].answers.length} / ${currentQuizData.length}</span></div></div>`,
+                        `<div class="modal-detail"><div class="detail-row"><span class="label">Questions Answered</span><span class="value secondary">${studentResults[roll].answers.length} / ${currentQuizData.length}</span></div></div>`,
                         `<button class="btn btn-primary" onclick="closeModal(); continueTest('${roll}');">Continue Test</button><button class="btn btn-secondary" onclick="closeModal();">Cancel</button>`);
                     return;
                 }
@@ -1806,19 +1645,17 @@
                 loadQuestion();
                 return;
             }
-            
+
             try {
-                const res = await fetch(`${API_BASE_URL}/api/verify-roll`, { 
-                    method: 'POST', 
-                    headers: { 'Content-Type': 'application/json' }, 
-                    body: JSON.stringify({ rollNumber: roll }) 
+                const res = await fetch(`${API_BASE}/api/verify-roll`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ rollNumber: roll })
                 });
                 const result = await res.json();
                 if (result.success) {
                     if (result.testCompleted === true) {
-                        showModal(`Test Already Completed!`, 'warning', '⚠️ Test Already Completed',
-                            `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Completed</span></div></div>`,
-                            `<button class="btn btn-primary" onclick="closeModal(); showPage('results');">Check Results</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+                        showModal(`Test Already Completed!`, 'warning', '⚠️ Test Already Completed');
                         return;
                     }
                     selectedRollNumber = roll;
@@ -1835,9 +1672,7 @@
                     document.getElementById('displayRollNum').innerText = selectedRollNumber;
                     loadQuestion();
                 } else {
-                    showModal('Roll Number not found. Please register first.', 'error', '❌ Invalid Roll Number',
-                        `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Not Found</span></div></div>`,
-                        `<button class="btn btn-primary" onclick="closeModal(); showPage('apply');">Register Now</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+                    showModal('Roll Number not found. Please register first.', 'error', '❌ Invalid Roll Number');
                 }
             } catch (err) {
                 showModal('Unable to connect to server. Please make sure you have registered first.', 'error', '❌ Connection Error');
@@ -1855,7 +1690,7 @@
 
         function exitTest() {
             if (confirm('Are you sure you want to exit the test? Your progress will be saved.')) {
-                clearInterval(countdownTimer);
+                if (countdownTimer) clearInterval(countdownTimer);
                 if (selectedRollNumber && studentResults[selectedRollNumber]) {
                     studentResults[selectedRollNumber].testStarted = true;
                     studentResults[selectedRollNumber].testCompleted = false;
@@ -1870,7 +1705,7 @@
 
         function loadQuestion() {
             if (currentQuestionIndex >= currentQuizData.length) {
-                clearInterval(countdownTimer);
+                if (countdownTimer) clearInterval(countdownTimer);
                 if (studentResults[selectedRollNumber]) {
                     studentResults[selectedRollNumber].testCompleted = true;
                     studentResults[selectedRollNumber].testStarted = false;
@@ -1886,10 +1721,12 @@
                 }
                 return;
             }
-            clearInterval(countdownTimer);
+
+            if (countdownTimer) clearInterval(countdownTimer);
             timeLeft = 30;
             document.getElementById('quizTimer').innerText = timeLeft;
             document.getElementById('quizTimer').classList.remove('warning');
+
             const q = currentQuizData[currentQuestionIndex];
             const total = currentQuizData.length;
             const progress = ((currentQuestionIndex + 1) / total) * 100;
@@ -1897,12 +1734,14 @@
             document.getElementById('questionText').innerText = q.question;
             document.getElementById('progressFill').style.width = progress + '%';
             document.getElementById('progressText').innerText = Math.round(progress) + '%';
+
             const letters = ['A', 'B', 'C', 'D'];
             const container = document.getElementById('optionsContainer');
             container.innerHTML = '';
             q.options.forEach((opt, idx) => {
                 container.innerHTML += `<label class="opt" onclick="selectOption(this)"><input type="radio" name="quizOption" value="${opt}"><span class="opt-letter">${letters[idx]}</span>${opt}</label>`;
             });
+
             countdownTimer = setInterval(() => {
                 timeLeft--;
                 document.getElementById('quizTimer').innerText = timeLeft;
@@ -1918,7 +1757,7 @@
         }
 
         function submitCurrentMcq() {
-            clearInterval(countdownTimer);
+            if (countdownTimer) clearInterval(countdownTimer);
             const selected = document.querySelector('input[name="quizOption"]:checked');
             const answer = selected ? selected.value : null;
             const currentQ = currentQuizData[currentQuestionIndex];
@@ -1932,9 +1771,10 @@
 
         function checkResult() {
             const input = document.getElementById('resultRollInput');
-            const roll = input.value.trim();
+            const roll = input ? input.value.trim() : '';
             const box = document.getElementById('resultDisplayBox');
-            if (!roll) { showToast('Please enter your Roll Number.', 'warning', 'Roll Number Required'); input.focus(); return; }
+            if (!roll) { showToast('Please enter your Roll Number.', 'warning', 'Roll Number Required'); return; }
+
             let result = null;
             if (studentResults[roll]) result = studentResults[roll];
             else {
@@ -1943,8 +1783,9 @@
                     if (saved) { const parsed = JSON.parse(saved); if (parsed[roll]) { result = parsed[roll]; studentResults[roll] = result; } }
                 } catch (e) {}
             }
+
             if (result && result.testCompleted === true) {
-                box.classList.add('show');
+                if (box) box.classList.add('show');
                 document.getElementById('rRoll').textContent = roll;
                 document.getElementById('rName').textContent = result.studentName || 'N/A';
                 document.getElementById('rMarks').textContent = result.totalMarks || 0;
@@ -1953,21 +1794,31 @@
                 const statusBadge = document.getElementById('resultStatusBadge');
                 const statusText = document.getElementById('rStatus');
                 const percentage = result.percentage || 0;
-                if (percentage >= 60) { statusText.textContent = '✅ Passed'; statusText.className = 'r-value secondary'; statusBadge.className = 'result-status pass'; statusBadge.textContent = '🎉 Congratulations! You have passed.'; }
-                else if (percentage >= 40) { statusText.textContent = '⏳ Under Review'; statusText.className = 'r-value gold'; statusBadge.className = 'result-status pending'; statusBadge.textContent = '📋 Your result is under review.'; }
-                else { statusText.textContent = '❌ Not Eligible'; statusText.className = 'r-value'; statusBadge.className = 'result-status fail'; statusBadge.textContent = 'Sorry, you did not qualify this time.'; }
+                if (percentage >= 60) {
+                    statusText.textContent = '✅ Passed';
+                    statusText.className = 'r-value secondary';
+                    if (statusBadge) { statusBadge.className = 'result-status pass';
+                    statusBadge.textContent = '🎉 Congratulations! You have passed.'; }
+                } else if (percentage >= 40) {
+                    statusText.textContent = '⏳ Under Review';
+                    statusText.className = 'r-value gold';
+                    if (statusBadge) { statusBadge.className = 'result-status pending';
+                    statusBadge.textContent = '📋 Your result is under review.'; }
+                } else {
+                    statusText.textContent = '❌ Not Eligible';
+                    statusText.className = 'r-value';
+                    if (statusBadge) { statusBadge.className = 'result-status fail';
+                    statusBadge.textContent = 'Sorry, you did not qualify this time.'; }
+                }
                 showToast(`Result found for Roll Number: ${roll}`, 'success', '✅ Result Retrieved');
             } else if (result && result.testStarted === true && result.testCompleted === false) {
-                box.classList.remove('show');
+                if (box) box.classList.remove('show');
                 showModal(`Test is not completed yet. Please complete your test first.`, 'warning', '⏳ Test Incomplete',
                     `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">In Progress</span></div></div>`,
                     `<button class="btn btn-primary" onclick="closeModal(); showPage('take-test-portal');">Continue Test</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
-                return;
             } else {
-                box.classList.remove('show');
-                showModal(`No result found for Roll Number: ${roll}. Please make sure you have registered and completed the test.`, 'error', '❌ Result Not Found',
-                    `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">Not Found</span></div></div>`,
-                    `<button class="btn btn-primary" onclick="closeModal(); showPage('apply');">Register Now</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
+                if (box) box.classList.remove('show');
+                showModal(`No result found for Roll Number: ${roll}. Please make sure you have registered and completed the test.`, 'error', '❌ Result Not Found');
             }
         }
 
@@ -1980,13 +1831,20 @@
         window.addEventListener('load', function() {
             loadSavedResults();
             loadUsedTrxIds();
-            // startCountdown();
-            document.getElementById('resultRollInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') checkResult();
-            });
-            document.getElementById('verifyRollNo').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') verifyRollAndStartTest();
-            });
+
+            const resultInput = document.getElementById('resultRollInput');
+            if (resultInput) {
+                resultInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') checkResult();
+                });
+            }
+
+            const verifyInput = document.getElementById('verifyRollNo');
+            if (verifyInput) {
+                verifyInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') verifyRollAndStartTest();
+                });
+            }
         });
 
         window.addEventListener('beforeunload', function() {
@@ -2008,4 +1866,4 @@
         window.closeModal = closeModal;
     </script>
 </body>
-
+</html>
