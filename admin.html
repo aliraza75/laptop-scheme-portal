@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Laptop Scheme</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== YOUR EXISTING STYLES HERE (same as before) ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #050810; color: #e8ecf4; min-height: 100vh; }
+        
+        /* ===== LOGIN OVERLAY STYLES ===== */
+        #loginOverlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-box {
+            background: rgba(10, 14, 26, 0.95);
+            padding: 50px 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.06);
+            width: 380px;
+            max-width: 92%;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+        }
+        
+        .login-box .icon {
+            text-align: center;
+            font-size: 48px;
+            color: #00f5b0;
+            margin-bottom: 10px;
+        }
+        
+        .login-box h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+        
+        .login-box .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+        
+        .login-box input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: 1.5px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.02);
+            color: #fff;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .login-box input:focus {
+            outline: none;
+            border-color: #00f5b0;
+            background: rgba(255,255,255,0.04);
+        }
+        
+        .login-box input::placeholder {
+            color: rgba(255,255,255,0.2);
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #00f5b0, #00c992);
+            border: none;
+            border-radius: 12px;
+            color: #050810;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 4px;
+        }
+        
+        .login-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 30px rgba(0,245,176,0.3);
+        }
+        
+        .login-error {
+            color: #ef4444;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            display: none;
+        }
+        
+        .login-error.show {
+            display: block;
+        }
+        
+        .login-box .footer-text {
+            text-align: center;
+            color: rgba(255,255,255,0.15);
+            font-size: 11px;
+            margin-top: 16px;
+        }
+        
+        /* ===== ADMIN CONTAINER ===== */
+        .admin-container {
+            display: none;
+            min-height: 100vh;
+        }
+        
+        .admin-container.show {
+            display: flex;
+        }
+        
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 260px;
+            background: rgba(10, 14, 26, 0.95);
+            border-right: 1px solid rgba(255,255,255,0.04);
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-brand i { font-size: 28px; color: #00f5b0; }
+        .sidebar-brand h1 { font-size: 18px; font-weight: 800; }
+        .sidebar-brand h1 span { color: #00f5b0; }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li { margin-bottom: 4px; }
+        
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .sidebar-menu li a:hover {
+            background: rgba(255,255,255,0.04);
+            color: #fff;
+        }
+        
+        .sidebar-menu li a.active {
+            background: rgba(0,245,176,0.06);
+            color: #00f5b0;
+        }
+        
+        .sidebar-menu li a i { width: 20px; }
+        
+        .sidebar-menu .badge {
+            margin-left: auto;
+            background: rgba(0,245,176,0.1);
+            color: #00f5b0;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .logout-btn {
+            color: #ef4444 !important;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(239,68,68,0.1) !important;
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            margin-left: 260px;
+            padding: 30px;
+            width: 100%;
+        }
+        
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 30px;
+        }
+        
+        .top-bar h2 { font-size: 24px; font-weight: 800; }
+        
+        .top-bar .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .top-bar .admin-info .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00f5b0, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #050810;
+        }
+        
+        /* ===== STATS CARDS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            background: rgba(255,255,255,0.04);
+            transform: translateY(-2px);
+        }
+        
+        .stat-card .label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: 800;
+            margin-top: 6px;
+        }
+        
+        .stat-card .value.green { color: #00f5b0; }
+        .stat-card .value.gold { color: #fbbf24; }
+        .stat-card .value.pink { color: #ec4899; }
+        .stat-card .value.blue { color: #60a5fa; }
+        .stat-card .value.red { color: #ef4444; }
+        
+        /* ===== TABLES ===== */
+        .table-container {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .table-header {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .table-header h3 { font-size: 16px; font-weight: 700; }
+        
+        .table-header .filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .table-header .filters input,
+        .table-header .filters select {
+            padding: 8px 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            color: #e8ecf4;
+            font-size: 13px;
+            font-family: inherit;
+            outline: none;
+        }
+        
+        .table-header .filters input:focus,
+        .table-header .filters select:focus {
+            border-color: #00f5b0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255,255,255,0.3);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        
+        table td {
+            padding: 12px 16px;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+            color: rgba(255,255,255,0.7);
+        }
+        
+        table tr:hover td { background: rgba(255,255,255,0.02); }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .status-badge.completed { background: rgba(0,245,176,0.1); color: #00f5b0; }
+        .status-badge.pending { background: rgba(251,191,36,0.1); color: #fbbf24; }
+        .status-badge.top100 { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .status-badge.rank { background: rgba(139,92,246,0.1); color: #a78bfa; }
+        
+        .action-btn {
+            padding: 4px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 2px;
+        }
+        
+        .action-btn.view { background: rgba(60,130,246,0.1); color: #60a5fa; }
+        .action-btn.view:hover { background: rgba(60,130,246,0.2); }
+        .action-btn.edit { background: rgba(251,191,36,0.1); color: #fbbf24; }
+        .action-btn.edit:hover { background: rgba(251,191,36,0.2); }
+        .action-btn.delete { background: rgba(239,68,68,0.1); color: #ef4444; }
+        .action-btn.delete:hover { background: rgba(239,68,68,0.2); }
+        .action-btn.complete { background: rgba(0,245,176,0.1); color: #00f5b0; }
+        .action-btn.complete:hover { background: rgba(0,245,176,0.2); }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        
+        .pagination button {
+            padding: 6px 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.02);
+            color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+        
+        .pagination button:hover { background: rgba(255,255,255,0.04); color: #fff; }
+        .pagination button.active { background: rgba(0,245,176,0.06); color: #00f5b0; border-color: rgba(0,245,176,0.1); }
+        
+        .page-content { display: none; animation: fadeIn 0.4s ease; }
+        .page-content.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-overlay.active { display: flex; }
+        
+        .modal {
+            background: #0a0e1a;
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        
+        .modal-header h3 { font-size: 18px; font-weight: 700; }
+        .modal-close { background: none; border: none; color: rgba(255,255,255,0.3); font-size: 24px; cursor: pointer; }
+        .modal-close:hover { color: #fff; }
+        
+        .modal-body .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+        
+        .modal-body .detail-row .label { color: rgba(255,255,255,0.3); font-weight: 500; }
+        .modal-body .detail-row .value { color: #fff; font-weight: 600; }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 99999;
+            animation: slideUp 0.4s ease;
+            max-width: 400px;
+        }
+        
+        .toast.success { background: rgba(0,245,176,0.15); border: 1px solid #00f5b0; color: #00f5b0; }
+        .toast.error { background: rgba(239,68,68,0.15); border: 1px solid #ef4444; color: #ef4444; }
+        .toast.info { background: rgba(96,165,250,0.15); border: 1px solid #60a5fa; color: #60a5fa; }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Server Status Indicator */
+        .server-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .server-status.online {
+            background: rgba(0,245,176,0.1);
+            color: #00f5b0;
+        }
+        
+        .server-status.offline {
+            background: rgba(239,68,68,0.1);
+            color: #ef4444;
+        }
+        
+        .server-status .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .server-status.online .dot {
+            background: #00f5b0;
+            animation: pulse 2s infinite;
+        }
+        
+        .server-status.offline .dot {
+            background: #ef4444;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .table-header { flex-direction: column; align-items: stretch; }
+            .table-header .filters { flex-direction: column; }
+            table { font-size: 12px; }
+            table th, table td { padding: 8px 10px; }
+            .login-box { padding: 30px 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .login-box { padding: 24px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== LOGIN OVERLAY ===== -->
+<div id="loginOverlay">
+    <div class="login-box">
+        <div class="icon"><i class="fas fa-laptop"></i></div>
+        <h2>Admin Login</h2>
+        <p class="subtitle">Enter credentials to access admin panel</p>
+        
+        <input id="adminUser" type="text" placeholder="👤 Username" value="admin">
+        <input id="adminPass" type="password" placeholder="🔒 Password" value="admin123">
+        
+        <button class="login-btn" onclick="adminLogin()">
+            <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+        
+        <p class="login-error" id="loginError">❌ Invalid credentials! Use admin / admin123</p>
+        <p class="footer-text">Default: admin / admin123</p>
+    </div>
+</div>
+
+<!-- ===== ADMIN CONTAINER ===== -->
+<div class="admin-container" id="adminContainer">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-laptop"></i>
+            <h1>Admin <span>Panel</span></h1>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a class="active" onclick="showPage('dashboard')"><i class="fas fa-chart-simple"></i> Dashboard</a></li>
+            <li><a onclick="showPage('students')"><i class="fas fa-users"></i> Students <span class="badge" id="studentCount">0</span></a></li>
+            <li><a onclick="showPage('top100')"><i class="fas fa-trophy"></i> Top 100 <span class="badge" id="top100Count">0</span></a></li>
+            <li><a onclick="showPage('analytics')"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a onclick="showPage('financial')"><i class="fas fa-money-bill"></i> Financial</a></li>
+            <li style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 12px;">
+                <a class="logout-btn" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+            <li>
+                <a href="/" target="_blank"><i class="fas fa-globe"></i> View Site</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <h2 id="pageTitle">Dashboard</h2>
+            <div class="admin-info">
+                <span id="currentTime" style="font-size: 13px; color: rgba(255,255,255,0.3);"></span>
+                <span id="serverStatus" class="server-status online">
+                    <span class="dot"></span> Server Online
+                </span>
+                <div class="avatar">A</div>
+            </div>
+        </div>
+
+        <!-- ===== DASHBOARD ===== -->
+        <div id="page-dashboard" class="page-content active">
+            <div class="stats-grid" id="dashboardStats"></div>
+            <div class="table-container">
+                <div class="table-header"><h3>Recent Registrations</h3></div>
+                <div id="recentStudents"><p style="padding:20px;text-align:center;color:rgba(255,255,255,0.3);">Loading...</p></div>
+            </div>
+        </div>
+
+        <!-- ===== STUDENTS ===== -->
+        <div id="page-students" class="page-content">
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>All Students</h3>
+                    <div class="filters">
+                        <input type="text" id="searchInput" placeholder="Search by name, roll..." onkeyup="loadStudents()">
+                        <select id="statusFilter" onchange="loadStudents()">
+                            <option value="">All Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                        <select id="top100Filter" onchange="loadStudents()">
+                            <option value="">All</option>
+                            <option value="true">Top 100 Only</option>
+                        </select>
+                        <button onclick="loadStudents()" style="padding:8px 16px;background:rgba(0,245,176,0.1);border:1px solid rgba(0,245,176,0.1);border-radius:8px;color:#00f5b0;cursor:pointer;">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="studentsTable"></div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </div>
+
+        <!-- ===== TOP 100 ===== -->
+        <div id="page-top100" class="page-content">
+            <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);">
+                <div class="stat-card"><div class="label">Top 100 Students</div><div class="value gold" id="top100Total">0</div></div>
+                <div class="stat-card"><div class="label">Average Marks</div><div class="value green" id="top100Avg">0</div></div>
+                <div class="stat-card"><div class="label">Highest Score</div><div class="value gold" id="top100Highest">0</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-header"><h3>🏆 Top 100 Students</h3></div>
+                <div id="top100Table"></div>
+            </div>
+        </div>
+
+        <!-- ===== ANALYTICS ===== -->
+        <div id="page-analytics" class="page-content">
+            <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);" id="analyticsStats"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;">
+                <div class="table-container">
+                    <div class="table-header"><h3>Marks Distribution</h3></div>
+                    <div id="marksDistribution" style="padding:20px;"></div>
+                </div>
+                <div class="table-container">
+                    <div class="table-header"><h3>Hardest Questions</h3></div>
+                    <div id="hardestQuestions" style="padding:20px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FINANCIAL ===== -->
+        <div id="page-financial" class="page-content">
+            <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);" id="financialStats"></div>
+            <div class="table-container">
+                <div class="table-header"><h3>Monthly Breakdown</h3></div>
+                <div id="monthlyBreakdown" style="padding:20px;"></div>
+            </div>
+            <div class="table-container" style="margin-top:20px;">
+                <div class="table-header"><h3>Financial Summary</h3></div>
+                <div id="financialSummary" style="padding:20px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h3>Student Details</h3>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody">Loading...</div>
+    </div>
+</div>
+
+<script>
+const API_BASE = 'http://localhost:3000';
+let currentPage = 1;
+let keepAliveInterval = null;
+let lastPingStatus = true;
+
+// ============================================================
+// TOAST NOTIFICATION
+// ============================================================
+function showToast(message, type = 'info') {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => toast.remove(), 4000);
+}
+
+// ============================================================
+// SERVER STATUS INDICATOR
+// ============================================================
+function updateServerStatus(isOnline) {
+    const statusEl = document.getElementById('serverStatus');
+    if (isOnline) {
+        statusEl.className = 'server-status online';
+        statusEl.innerHTML = '<span class="dot"></span> Server Online';
+    } else {
+        statusEl.className = 'server-status offline';
+        statusEl.innerHTML = '<span class="dot"></span> Server Offline';
+    }
+    lastPingStatus = isOnline;
+}
+
+// ============================================================
+// RENDER KEEP-ALIVE SYSTEM (IMPROVED)
+// ============================================================
+function startKeepAlive() {
+    if (keepAliveInterval) return;
+    
+    console.log('🔄 Starting Render keep-alive service...');
+    updateServerStatus(true);
+    
+    // Immediate ping on start
+    pingServer();
+    
+    // Ping every 4 minutes (Render sleeps after 15 min)
+    keepAliveInterval = setInterval(pingServer, 4 * 60 * 1000);
+}
+
+function stopKeepAlive() {
+    if (keepAliveInterval) {
+        clearInterval(keepAliveInterval);
+        keepAliveInterval = null;
+        console.log('🛑 Keep-alive stopped');
+    }
+}
+
+async function pingServer() {
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+        
+        const response = await fetch(`${API_BASE}/api/dashboard-stats`, {
+            signal: controller.signal,
+            headers: { 'Cache-Control': 'no-cache' }
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+                console.log('✅ Server ping successful at:', new Date().toLocaleTimeString());
+                updateServerStatus(true);
+                
+                // If dashboard is active, update data silently
+                const activePage = document.querySelector('.page-content.active');
+                if (activePage && activePage.id === 'page-dashboard') {
+                    loadDashboard();
+                }
+                return;
+            }
+        }
+        throw new Error('Server response invalid');
+        
+    } catch (error) {
+        console.log('⚠️ Server ping failed:', error.message);
+        updateServerStatus(false);
+        
+        // Try to reconnect after 30 seconds
+        setTimeout(() => {
+            console.log('🔄 Retrying server connection...');
+            pingServer();
+        }, 30000);
+    }
+}
+
+// ============================================================
+// ADMIN LOGIN
+// ============================================================
+function adminLogin() {
+    const username = document.getElementById('adminUser').value.trim();
+    const password = document.getElementById('adminPass').value.trim();
+    
+    if (username === 'admin' && password === 'admin123') {
+        localStorage.setItem('adminLoggedIn', 'true');
+        document.getElementById('loginOverlay').style.display = 'none';
+        document.getElementById('adminContainer').classList.add('show');
+        loadDashboard();
+        document.getElementById('loginError').classList.remove('show');
+        startKeepAlive(); // Start keep-alive after login
+        return;
+    }
+    
+    fetch(`${API_BASE}/api/admin/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            localStorage.setItem('adminLoggedIn', 'true');
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.getElementById('adminContainer').classList.add('show');
+            loadDashboard();
+            document.getElementById('loginError').classList.remove('show');
+            startKeepAlive(); // Start keep-alive after login
+        } else {
+            document.getElementById('loginError').classList.add('show');
+        }
+    })
+    .catch(() => {
+        document.getElementById('loginError').classList.add('show');
+    });
+}
+
+// ============================================================
+// ADMIN LOGOUT (Modified)
+// ============================================================
+function adminLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+        stopKeepAlive(); // Stop keep-alive on logout
+        localStorage.removeItem('adminLoggedIn');
+        location.reload();
+    }
+}
+
+// ============================================================
+// CHECK LOGIN STATUS ON LOAD
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
+    
+    if (isLoggedIn) {
+        document.getElementById('loginOverlay').style.display = 'none';
+        document.getElementById('adminContainer').classList.add('show');
+        loadDashboard();
+        startKeepAlive(); // Start keep-alive automatically
+    } else {
+        document.getElementById('loginOverlay').style.display = 'flex';
+        document.getElementById('adminContainer').classList.remove('show');
+    }
+});
+
+// ============================================================
+// SHOW PAGE
+// ============================================================
+function showPage(page) {
+    document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
+    document.querySelector(`.sidebar-menu a[onclick="showPage('${page}')"]`)?.classList.add('active');
+    document.getElementById('pageTitle').textContent = page.charAt(0).toUpperCase() + page.slice(1);
+    
+    switch(page) {
+        case 'dashboard': loadDashboard(); break;
+        case 'students': loadStudents(); break;
+        case 'top100': loadTop100(); break;
+        case 'analytics': loadAnalytics(); break;
+        case 'financial': loadFinancial(); break;
+    }
+}
+
+// ============================================================
+// LOAD DASHBOARD
+// ============================================================
+async function loadDashboard() {
+    try {
+        const res = await fetch(`${API_BASE}/api/dashboard-stats`);
+        const data = await res.json();
+        if (data.success) {
+            const stats = data.stats;
+            document.getElementById('dashboardStats').innerHTML = `
+                <div class="stat-card"><div class="label">Total Students</div><div class="value blue">${stats.totalStudents}</div></div>
+                <div class="stat-card"><div class="label">Test Completed</div><div class="value green">${stats.totalCompleted}</div></div>
+                <div class="stat-card"><div class="label">Top 100</div><div class="value gold">${stats.top100}</div></div>
+                <div class="stat-card"><div class="label">Average Marks</div><div class="value pink">${stats.averageMarks?.toFixed(1) || 0}</div></div>
+                <div class="stat-card"><div class="label">Highest Score</div><div class="value gold">${stats.highestScore?.totalMarks || 0}</div></div>
+                <div class="stat-card"><div class="label">Pending Tests</div><div class="value red">${stats.totalStudents - stats.totalCompleted}</div></div>
+            `;
+            document.getElementById('studentCount').textContent = stats.totalStudents;
+            document.getElementById('top100Count').textContent = stats.top100;
+            
+            const studentsRes = await fetch(`${API_BASE}/api/admin/students?limit=5`);
+            const studentsData = await studentsRes.json();
+            if (studentsData.success) {
+                const recentHTML = studentsData.students.map(s => `
+                    <tr>
+                        <td>${s.rollNumber}</td>
+                        <td>${s.fullName}</td>
+                        <td>${s.email}</td>
+                        <td><span class="status-badge ${s.testCompleted ? 'completed' : 'pending'}">${s.testCompleted ? '✅ Completed' : '⏳ Pending'}</span></td>
+                        <td>${s.testCompleted ? s.totalMarks : '-'}</td>
+                        <td><button class="action-btn view" onclick="viewStudent(${s.rollNumber})"><i class="fas fa-eye"></i></button></td>
+                    </tr>
+                `).join('');
+                document.getElementById('recentStudents').innerHTML = `
+                    <table>
+                        <thead><tr><th>Roll</th><th>Name</th><th>Email</th><th>Status</th><th>Marks</th><th>Action</th></tr></thead>
+                        <tbody>${recentHTML || '<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,0.3);padding:30px;">No students found</td></tr>'}</tbody>
+                    </table>
+                `;
+            }
+        }
+    } catch (err) {
+        console.error('Error loading dashboard:', err);
+        document.getElementById('dashboardStats').innerHTML = '<p style="color:rgba(255,255,255,0.3);">Failed to load dashboard</p>';
+    }
+}
+
+// ============================================================
+// LOAD STUDENTS
+// ============================================================
+async function loadStudents(page = 1) {
+    currentPage = page;
+    const search = document.getElementById('searchInput').value;
+    const status = document.getElementById('statusFilter').value;
+    const top100 = document.getElementById('top100Filter').value;
+    
+    try {
+        let url = `${API_BASE}/api/admin/students?page=${page}&limit=20`;
+        if (search) url += `&search=${encodeURIComponent(search)}`;
+        if (status) url += `&testStatus=${status}`;
+        if (top100) url += `&top100=${top100}`;
+        
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.success) {
+            const studentsHTML = data.students.map(s => `
+                <tr>
+                    <td><strong>${s.rollNumber}</strong></td>
+                    <td>${s.fullName}</td>
+                    <td>${s.email}</td>
+                    <td>${s.cnicOrBform}</td>
+                    <td><span class="status-badge ${s.testCompleted ? 'completed' : 'pending'}">${s.testCompleted ? '✅ Completed' : '⏳ Pending'}</span></td>
+                    <td>${s.testCompleted ? s.totalMarks : '-'}</td>
+                    <td>${s.testCompleted ? s.percentage?.toFixed(1) + '%' : '-'}</td>
+                    <td>${s.isTop100 ? '<span class="status-badge top100">🏆 Top 100</span>' : '-'}</td>
+                    <td>${s.testCompleted ? s.rank || '-' : '-'}</td>
+                    <td>
+                        <button class="action-btn view" onclick="viewStudent(${s.rollNumber})"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn edit" onclick="editStudent(${s.rollNumber})"><i class="fas fa-edit"></i></button>
+                        <button class="action-btn complete" onclick="quickComplete(${s.rollNumber})"><i class="fas fa-check-circle"></i></button>
+                        <button class="action-btn delete" onclick="deleteStudent(${s.rollNumber})"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+            
+            document.getElementById('studentsTable').innerHTML = `
+                <table>
+                    <thead><tr><th>Roll</th><th>Name</th><th>Email</th><th>CNIC</th><th>Status</th><th>Marks</th><th>%</th><th>Top 100</th><th>Rank</th><th>Actions</th></tr></thead>
+                    <tbody>${studentsHTML || '<tr><td colspan="10" style="text-align:center;color:rgba(255,255,255,0.3);padding:30px;">No students found</td></tr>'}</tbody>
+                </table>
+            `;
+            
+            const pag = data.pagination;
+            let pagHTML = '';
+            for (let i = 1; i <= pag.pages; i++) {
+                pagHTML += `<button class="${i === pag.page ? 'active' : ''}" onclick="loadStudents(${i})">${i}</button>`;
+            }
+            document.getElementById('pagination').innerHTML = pagHTML;
+        }
+    } catch (err) {
+        console.error('Error loading students:', err);
+        document.getElementById('studentsTable').innerHTML = '<p style="padding:20px;text-align:center;color:rgba(255,255,255,0.3);">Failed to load students</p>';
+    }
+}
+
+// ============================================================
+// LOAD TOP 100
+// ============================================================
+async function loadTop100() {
+    try {
+        const res = await fetch(`${API_BASE}/api/top-100`);
+        const data = await res.json();
+        if (data.success) {
+            document.getElementById('top100Total').textContent = data.count;
+            const avg = data.top100.reduce((sum, s) => sum + s.totalMarks, 0) / (data.count || 1);
+            document.getElementById('top100Avg').textContent = avg.toFixed(1);
+            document.getElementById('top100Highest').textContent = data.top100[0]?.totalMarks || 0;
+            
+            const top100HTML = data.top100.map((s, i) => `
+                <tr>
+                    <td><span class="status-badge rank">#${i + 1}</span></td>
+                    <td><strong>${s.rollNumber}</strong></td>
+                    <td>${s.fullName}</td>
+                    <td>${s.totalMarks}</td>
+                    <td>${s.totalQuestions}</td>
+                    <td>${s.percentage?.toFixed(1)}%</td>
+                    <td><span class="status-badge top100">🏆 Top 100</span></td>
+                </tr>
+            `).join('');
+            document.getElementById('top100Table').innerHTML = `
+                <table>
+                    <thead><tr><th>Rank</th><th>Roll</th><th>Name</th><th>Marks</th><th>Total</th><th>%</th><th>Status</th></tr></thead>
+                    <tbody>${top100HTML || '<tr><td colspan="7" style="text-align:center;color:rgba(255,255,255,0.3);padding:30px;">No students in Top 100 yet</td></tr>'}</tbody>
+                </table>
+            `;
+        }
+    } catch (err) {
+        console.error('Error loading top 100:', err);
+        document.getElementById('top100Table').innerHTML = '<p style="padding:20px;text-align:center;color:rgba(255,255,255,0.3);">Failed to load top 100</p>';
+    }
+}
+
+// ============================================================
+// LOAD ANALYTICS
+// ============================================================
+async function loadAnalytics() {
+    try {
+        const res = await fetch(`${API_BASE}/api/admin/analytics`);
+        const data = await res.json();
+        if (data.success) {
+            const analytics = data.analytics;
+            document.getElementById('analyticsStats').innerHTML = `
+                <div class="stat-card"><div class="label">Total Test Takers</div><div class="value blue">${analytics.totalTestTakers}</div></div>
+                <div class="stat-card"><div class="label">Avg Marks</div><div class="value green">${analytics.totalTestTakers > 0 ? 'N/A' : 'N/A'}</div></div>
+                <div class="stat-card"><div class="label">Top Scorer</div><div class="value gold">${analytics.questionStats[0]?.percentage?.toFixed(0) || 0}%</div></div>
+            `;
+            
+            const dist = analytics.marksDistribution || {};
+            const distHTML = Object.entries(dist).map(([range, count]) => `
+                <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.02);">
+                    <span>${range}</span><span><strong>${count}</strong> students</span>
+                </div>
+            `).join('');
+            document.getElementById('marksDistribution').innerHTML = distHTML || '<p style="color:rgba(255,255,255,0.3);">No data available</p>';
+            
+            const hardest = analytics.questionStats?.slice(0, 10) || [];
+            const hardestHTML = hardest.map(q => `
+                <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.02);">
+                    <span>Q${q.questionId}: ${q.question}</span>
+                    <span style="color:${q.percentage < 30 ? '#ef4444' : q.percentage < 60 ? '#fbbf24' : '#00f5b0'}">${q.percentage.toFixed(0)}% correct</span>
+                </div>
+            `).join('');
+            document.getElementById('hardestQuestions').innerHTML = hardestHTML || '<p style="color:rgba(255,255,255,0.3);">No data available</p>';
+        }
+    } catch (err) {
+        console.error('Error loading analytics:', err);
+    }
+}
+
+// ============================================================
+// LOAD FINANCIAL
+// ============================================================
+async function loadFinancial() {
+    try {
+        const res = await fetch(`${API_BASE}/api/admin/financial`);
+        const data = await res.json();
+        if (data.success) {
+            const fin = data.financial;
+            document.getElementById('financialStats').innerHTML = `
+                <div class="stat-card"><div class="label">Total Revenue</div><div class="value green">PKR ${fin.totalRevenue.toLocaleString()}</div></div>
+                <div class="stat-card"><div class="label">Total Laptop Cost</div><div class="value red">PKR ${fin.totalLaptopCost.toLocaleString()}</div></div>
+                <div class="stat-card"><div class="label">Profit/Loss</div><div class="value ${fin.profitLoss >= 0 ? 'green' : 'red'}">PKR ${fin.profitLoss.toLocaleString()}</div></div>
+                <div class="stat-card"><div class="label">Break-even</div><div class="value gold">${Math.ceil(fin.totalLaptopCost / fin.registrationFee)} students</div></div>
+            `;
+            
+            const monthlyHTML = fin.monthlyStats?.map(m => `
+                <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.02);">
+                    <span>${m.month}</span>
+                    <span>Registrations: <strong>${m.registrations}</strong></span>
+                    <span>Completed: <strong>${m.completed}</strong></span>
+                    <span>Revenue: <strong>PKR ${(m.registrations * fin.registrationFee).toLocaleString()}</strong></span>
+                </div>
+            `).join('') || '<p style="color:rgba(255,255,255,0.3);">No data available</p>';
+            document.getElementById('monthlyBreakdown').innerHTML = monthlyHTML;
+            
+            document.getElementById('financialSummary').innerHTML = `
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;padding:10px;">
+                    <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;">
+                        <p style="color:rgba(255,255,255,0.3);font-size:12px;">Registration Fee</p>
+                        <p style="font-size:24px;font-weight:800;color:#fff;">PKR ${fin.registrationFee}</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;">
+                        <p style="color:rgba(255,255,255,0.3);font-size:12px;">Laptop Cost</p>
+                        <p style="font-size:24px;font-weight:800;color:#fff;">PKR ${fin.laptopCost.toLocaleString()}</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;">
+                        <p style="color:rgba(255,255,255,0.3);font-size:12px;">Top 100 Students</p>
+                        <p style="font-size:24px;font-weight:800;color:#fbbf24;">${fin.top100Count}</p>
+                    </div>
+                </div>
+            `;
+        }
+    } catch (err) {
+        console.error('Error loading financial:', err);
+    }
+}
+
+// ============================================================
+// VIEW STUDENT
+// ============================================================
+async function viewStudent(rollNumber) {
+    try {
+        const res = await fetch(`${API_BASE}/api/admin/student/${rollNumber}`);
+        const data = await res.json();
+        if (data.success) {
+            const s = data.student;
+            document.getElementById('modalBody').innerHTML = `
+                <div class="detail-row"><span class="label">Roll Number</span><span class="value">${s.rollNumber}</span></div>
+                <div class="detail-row"><span class="label">Full Name</span><span class="value">${s.fullName}</span></div>
+                <div class="detail-row"><span class="label">CNIC/B-Form</span><span class="value">${s.cnicOrBform}</span></div>
+                <div class="detail-row"><span class="label">Email</span><span class="value">${s.email}</span></div>
+                <div class="detail-row"><span class="label">Phone</span><span class="value">${s.phone}</span></div>
+                <div class="detail-row"><span class="label">Institution</span><span class="value">${s.institution}</span></div>
+                <div class="detail-row"><span class="label">TRX ID</span><span class="value">${s.paymentTrxId}</span></div>
+                <div class="detail-row"><span class="label">Test Status</span><span class="value">${s.testCompleted ? '✅ Completed' : '⏳ Pending'}</span></div>
+                ${s.testCompleted ? `
+                    <div class="detail-row"><span class="label">Total Marks</span><span class="value">${s.totalMarks}</span></div>
+                    <div class="detail-row"><span class="label">Percentage</span><span class="value">${s.percentage?.toFixed(1)}%</span></div>
+                    <div class="detail-row"><span class="label">Rank</span><span class="value">${s.rank || '-'}</span></div>
+                    <div class="detail-row"><span class="label">Top 100</span><span class="value">${s.isTop100 ? '🏆 Yes' : 'No'}</span></div>
+                    <div class="detail-row"><span class="label">Test Date</span><span class="value">${s.testDate ? new Date(s.testDate).toLocaleString() : '-'}</span></div>
+                ` : ''}
+                <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.04);">
+                    <p style="font-size:11px;color:rgba(255,255,255,0.3);">Registered: ${new Date(s.createdAt).toLocaleString()}</p>
+                </div>
+            `;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+    } catch (err) {
+        console.error('Error viewing student:', err);
+        showToast('Failed to load student details', 'error');
+    }
+}
+
+// ============================================================
+// EDIT STUDENT
+// ============================================================
+function editStudent(rollNumber) {
+    const action = prompt(
+        '📝 Edit Student Options:\n\n' +
+        '1. Enter "marks" to update marks\n' +
+        '2. Enter "complete" to mark test as COMPLETED\n' +
+        '3. Enter "pending" to mark test as PENDING\n' +
+        '4. Enter "marks-complete" to set marks AND complete\n\n' +
+        'Enter your choice:'
+    );
+    
+    if (action === null) return;
+    
+    const choice = action.toLowerCase().trim();
+    
+    if (choice === 'marks') {
+        const newMarks = prompt('Enter new total marks for this student (0-100):');
+        if (newMarks !== null) {
+            const marks = parseInt(newMarks);
+            if (!isNaN(marks) && marks >= 0 && marks <= 100) {
+                fetch(`${API_BASE}/api/admin/student/${rollNumber}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ totalMarks: marks })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(`✅ Marks updated to ${marks} for student ${rollNumber}`, 'success');
+                        loadStudents(currentPage);
+                    } else {
+                        showToast('❌ Failed to update marks', 'error');
+                    }
+                })
+                .catch(err => showToast('❌ Error: ' + err.message, 'error'));
+            } else {
+                showToast('❌ Please enter a valid number between 0 and 100', 'error');
+            }
+        }
+        return;
+    }
+    
+    if (choice === 'complete') {
+        if (confirm(`Mark student ${rollNumber} as test COMPLETED?`)) {
+            fetch(`${API_BASE}/api/admin/student/${rollNumber}/test-status`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ testCompleted: true })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(`✅ Student ${rollNumber} marked as COMPLETED!`, 'success');
+                    loadStudents(currentPage);
+                } else {
+                    showToast('❌ Failed to update test status', 'error');
+                }
+            })
+            .catch(err => showToast('❌ Error: ' + err.message, 'error'));
+        }
+        return;
+    }
+    
+    if (choice === 'pending') {
+        if (confirm(`Mark student ${rollNumber} as test PENDING?`)) {
+            fetch(`${API_BASE}/api/admin/student/${rollNumber}/test-status`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ testCompleted: false })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(`⏳ Student ${rollNumber} marked as PENDING`, 'info');
+                    loadStudents(currentPage);
+                } else {
+                    showToast('❌ Failed to update test status', 'error');
+                }
+            })
+            .catch(err => showToast('❌ Error: ' + err.message, 'error'));
+        }
+        return;
+    }
+    
+    if (choice === 'marks-complete') {
+        const newMarks = prompt('Enter total marks for this student (0-100):');
+        if (newMarks !== null) {
+            const marks = parseInt(newMarks);
+            if (!isNaN(marks) && marks >= 0 && marks <= 100) {
+                fetch(`${API_BASE}/api/admin/student/${rollNumber}/test-status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        testCompleted: true,
+                        totalMarks: marks
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(`✅ Student ${rollNumber} completed with ${marks} marks!`, 'success');
+                        loadStudents(currentPage);
+                    } else {
+                        showToast('❌ Failed to update', 'error');
+                    }
+                })
+                .catch(err => showToast('❌ Error: ' + err.message, 'error'));
+            } else {
+                showToast('❌ Please enter a valid number between 0 and 100', 'error');
+            }
+        }
+        return;
+    }
+    
+    showToast('❌ Invalid choice. Please enter: marks, complete, pending, or marks-complete', 'error');
+}
+
+// ============================================================
+// QUICK COMPLETE
+// ============================================================
+function quickComplete(rollNumber) {
+    if (confirm(`Quick complete test for student ${rollNumber}?\n\nThis will mark the test as completed with random marks (40-100).`)) {
+        fetch(`${API_BASE}/api/admin/quick-complete/${rollNumber}`, {
+            method: 'POST'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                showToast(`✅ Student ${rollNumber} completed with ${data.student.totalMarks} marks!`, 'success');
+                loadStudents(currentPage);
+            } else {
+                showToast('❌ Failed to complete test', 'error');
+            }
+        })
+        .catch(err => showToast('❌ Error: ' + err.message, 'error'));
+    }
+}
+
+// ============================================================
+// DELETE STUDENT
+// ============================================================
+function deleteStudent(rollNumber) {
+    if (confirm(`⚠️ Are you sure you want to delete student ${rollNumber}? This cannot be undone!`)) {
+        fetch(`${API_BASE}/api/admin/student/${rollNumber}`, { method: 'DELETE' })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                showToast(`🗑️ Student ${rollNumber} deleted successfully!`, 'success');
+                loadStudents(currentPage);
+            } else {
+                showToast('❌ Failed to delete student', 'error');
+            }
+        })
+        .catch(err => showToast('❌ Error: ' + err.message, 'error'));
+    }
+}
+
+// ============================================================
+// CLOSE MODAL
+// ============================================================
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+}
+
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+
+// ============================================================
+// CURRENT TIME
+// ============================================================
+function updateTime() {
+    document.getElementById('currentTime').textContent = new Date().toLocaleString();
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// Enter key to login
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && document.getElementById('loginOverlay').style.display !== 'none') {
+        adminLogin();
+    }
+});
+
+console.log('🔒 Admin Panel Loaded - Login Required');
+console.log('👤 Username: admin');
+console.log('🔑 Password: admin123');
+console.log('');
+console.log('🔄 Server Keep-Alive Active (every 4 minutes)');
+console.log('📊 Server status indicator in top bar');
+console.log('');
+console.log('📝 Edit Options:');
+console.log('   - "marks" = Update marks only');
+console.log('   - "complete" = Mark test as completed');
+console.log('   - "pending" = Mark test as pending');
+console.log('   - "marks-complete" = Set marks + complete');
+console.log('');
+console.log('⚡ Quick Complete button also available in actions!');
+</script>
+</body>
+</html>
