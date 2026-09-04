@@ -26,37 +26,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static(path.join(__dirname)));
+// ✅ MongoDB URI
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://ar8388622_db_user:jGPrTR9dt9WxWzK7@cluster0.do113fy.mongodb.net/laptop_scheme_db?retryWrites=true&w=majority';
 
-// ============================================================
-// Multer Setup
-// ============================================================
-const storage = multer.memoryStorage();
-const upload = multer({
-    storage: storage,
-    limits: { fileSize: 5 * 1024 * 1024 },
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype.startsWith('image/')) {
-            cb(null, true);
-        } else {
-            cb(new Error('Only images are allowed'), false);
-        }
-    }
-});
-
-// ============================================================
-// ✅ FIXED: MongoDB Connection (NO deprecated options)
-// ============================================================
-const MONGO_URI = 'mongodb+srv://ar8388622_db_user:jGPrTR9dt9WxWzK7@cluster0.do113fy.mongodb.net/laptop_scheme_db?retryWrites=true&w=majority';
-
-// ✅ SIMPLE CONNECTION - No deprecated options
+// ✅ MongoDB Connection
 mongoose.connect(MONGO_URI)
     .then(() => console.log('✅ MongoDB Atlas Connected Successfully'))
     .catch(err => console.error('❌ MongoDB Connection Error:', err.message));
 
-// ============================================================
-// Student Schema
-// ============================================================
+// ✅ Student Schema
 const StudentSchema = new mongoose.Schema({
     rollNumber: { type: Number, required: true, unique: true },
     fullName: { type: String, required: true },
@@ -141,13 +119,185 @@ async function recalculateRanks() {
 }
 
 // ============================================================
-// API ROUTES - All your existing routes here...
+// API ROUTES
 // ============================================================
 
-// ... (All your API routes stay the same) ...
+// ============================================================
+// Serve Static Files
+// ============================================================
+app.use(express.static(path.join(__dirname)));
 
 // ============================================================
-// Serve HTML Files
+// ✅ POST: Register Student
+// ============================================================
+const storage = multer.memoryStorage();
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 5 * 1024 * 1024 },
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype.startsWith('image/')) {
+            cb(null, true);
+        } else {
+            cb(new Error('Only images are allowed'), false);
+        }
+    }
+});
+
+app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
+    try {
+        const { fullName, cnicOrBform, email, phone, institution, paymentTrxId } = req.body;
+
+        if (!req.file) {
+            return res.status(400).json({ success: false, message: 'Payment proof is required!' });
+        }
+
+        const existing = await Student.findOne({ cnicOrBform });
+        if (existing) {
+            return res.status(400).json({ success: false, message: 'CNIC already registered!' });
+        }
+
+        const lastStudent = await Student.findOne().sort({ rollNumber: -1 });
+        const newRollNumber = lastStudent ? lastStudent.rollNumber + 1 : 190100;
+
+        const base64Image = req.file.buffer.toString('base64');
+
+        const student = new Student({
+            rollNumber: newRollNumber,
+            fullName,
+            cnicOrBform,
+            email,
+            phone,
+            institution,
+            paymentTrxId,
+            paymentProof: {
+                data: base64Image,
+                contentType: req.file.mimetype
+            }
+        });
+
+        await student.save();
+        res.json({ success: true, rollNumber: newRollNumber, message: 'Registration Successful!' });
+    } catch (err) {
+        console.error('❌ Registration Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ GET: Dashboard Stats
+// ============================================================
+app.get('/api/dashboard-stats', async (req, res) => {
+    try {
+        const totalStudents = await Student.countDocuments();
+        const totalCompleted = await Student.countDocuments({ testCompleted: true });
+        const top100 = await Student.countDocuments({ isTop100: true, percentage: { $gte: 70 } });
+
+        const highestScore = await Student.findOne({ testCompleted: true })
+            .sort({ totalMarks: -1 })
+            .select('fullName rollNumber totalMarks totalQuestions percentage');
+
+        const avgResult = await Student.aggregate([
+            { $match: { testCompleted: true } },
+            { $group: { _id: null, avg: { $avg: '$totalMarks' } } }
+        ]);
+
+        res.json({
+            success: true,
+            stats: {
+                totalStudents,
+                totalCompleted,
+                top100,
+                averageMarks: avgResult.length > 0 ? avgResult[0].avg : 0,
+                highestScore: highestScore || null
+            }
+        });
+    } catch (err) {
+        console.error('❌ Dashboard Stats Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ GET: Top 100
+// ============================================================
+app.get('/api/top-100', async (req, res) => {
+    try {
+        const students = await Student.find({ isTop100: true, percentage: { $gte: 70 } })
+            .sort({ rank: 1 })
+            .select('fullName rollNumber totalMarks totalQuestions percentage rank');
+
+        res.json({ success: true, count: students.length, top100: students });
+    } catch (err) {
+        console.error('❌ Top 100 Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ GET: Admin Students
+// ============================================================
+app.get('/api/admin/students', async (req, res) => {
+    try {
+        const { search, page = 1, limit = 20, testStatus, top100 } = req.query;
+        const query = {};
+
+        if (search) {
+            query.$or = [
+                { fullName: { $regex: search, $options: 'i' } },
+                { email: { $regex: search, $options: 'i' } },
+                { cnicOrBform: { $regex: search, $options: 'i' } }
+            ];
+            if (!isNaN(search)) {
+                query.$or.push({ rollNumber: Number(search) });
+            }
+        }
+
+        if (testStatus === 'completed') query.testCompleted = true;
+        else if (testStatus === 'pending') query.testCompleted = false;
+        if (top100 === 'true') {
+            query.isTop100 = true;
+            query.percentage = { $gte: 70 };
+        }
+
+        const skip = (parseInt(page) - 1) * parseInt(limit);
+        const students = await Student.find(query)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(parseInt(limit))
+            .select('-paymentProof.data -testAnswers');
+
+        const total = await Student.countDocuments(query);
+
+        res.json({
+            success: true,
+            students,
+            pagination: {
+                total,
+                page: parseInt(page),
+                limit: parseInt(limit),
+                pages: Math.ceil(total / parseInt(limit))
+            }
+        });
+    } catch (err) {
+        console.error('❌ Admin Students Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ POST: Admin Login
+// ============================================================
+app.post('/api/admin/login', (req, res) => {
+    const { username, password } = req.body;
+    if (username === 'admin' && password === 'admin123') {
+        res.json({ success: true, message: 'Login successful' });
+    } else {
+        res.status(401).json({ success: false, message: 'Invalid credentials' });
+    }
+});
+
+// ============================================================
+// ✅ Serve HTML Files
 // ============================================================
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin.html'));
@@ -158,26 +308,11 @@ app.get('/', (req, res) => {
 });
 
 // ============================================================
-// ✅ FOR VERCEL - Export the app (Add this at the end)
+// ✅ FOR VERCEL - Export the app (MUST BE AT THE END)
 // ============================================================
 module.exports = app;
 
-// Local development
-if (process.env.NODE_ENV !== 'production') {
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-        console.log(`🚀 Server running on port ${PORT}`);
-        console.log(`✅ MongoDB Connected`);
-        console.log(`✅ 100 MCQs Loaded`);
-        console.log(`🔗 http://localhost:${PORT}/`);
-        console.log(`🔗 Admin Panel: http://localhost:${PORT}/admin`);
-        console.log(`🔑 Admin: admin / admin123`);
-    });
-}
-// ✅ FOR VERCEL - Export the app
-module.exports = app;
-
-// Local development
+// Local development (Only runs when not on Vercel)
 if (process.env.NODE_ENV !== 'production') {
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
