@@ -1540,7 +1540,7 @@
 
         let currentQuestionIndex = 0;
         let selectedRollNumber = '';
-        let countdownTimer = null;
+        // let countdownTimer = null;
         let timeLeft = 30;
         let studentResults = {};
         let countdownInterval = null;
@@ -1556,58 +1556,58 @@
             try { localStorage.setItem('usedTrxIds', JSON.stringify(usedTrxIds)); } catch (e) {}
         }
 
-        function getCountdownData() {
-            const defaultTarget = new Date(); defaultTarget.setHours(defaultTarget.getHours() + 48);
-            try {
-                const saved = localStorage.getItem('countdownData');
-                if (saved) {
-                    const data = JSON.parse(saved);
-                    const target = new Date(data.target);
-                    if (target > new Date()) return { target: target, expired: false };
-                    else return { target: target, expired: true };
-                }
-            } catch (e) {}
-            const freshTarget = new Date(); freshTarget.setHours(freshTarget.getHours() + 48);
-            return { target: freshTarget, expired: false };
-        }
-        function saveCountdownData(targetDate) {
-            try { localStorage.setItem('countdownData', JSON.stringify({ target: targetDate.toISOString() })); } catch (e) {}
-        }
-        function startCountdown() {
-            const daysEl = document.getElementById('cdDays');
-            const hoursEl = document.getElementById('cdHours');
-            const minutesEl = document.getElementById('cdMinutes');
-            const secondsEl = document.getElementById('cdSeconds');
-            const container = document.getElementById('countdownContainer');
-            const countdownData = getCountdownData();
-            const targetDate = countdownData.target;
-            if (countdownData.expired || targetDate <= new Date()) {
-                container.innerHTML = `<div class="countdown-label"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Results Available Now!</div><div class="countdown-timer"><span class="expired"><i class="fas fa-trophy"></i> 🎉 Check Your Result Below</span></div>`;
-                return;
-            }
-            saveCountdownData(targetDate);
-            function updateTimer() {
-                const now = new Date().getTime();
-                const target = targetDate.getTime();
-                let diff = target - now;
-                if (diff <= 0) {
-                    clearInterval(countdownInterval);
-                    container.innerHTML = `<div class="countdown-label"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Results Available Now!</div><div class="countdown-timer"><span class="expired"><i class="fas fa-trophy"></i> 🎉 Check Your Result Below</span></div>`;
-                    return;
-                }
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                daysEl.textContent = String(days).padStart(2, '0');
-                hoursEl.textContent = String(hours).padStart(2, '0');
-                minutesEl.textContent = String(minutes).padStart(2, '0');
-                secondsEl.textContent = String(seconds).padStart(2, '0');
-            }
-            updateTimer();
-            if (countdownInterval) clearInterval(countdownInterval);
-            countdownInterval = setInterval(updateTimer, 1000);
-        }
+        // function getCountdownData() {
+        //     const defaultTarget = new Date(); defaultTarget.setHours(defaultTarget.getHours() + 48);
+        //     try {
+        //         const saved = localStorage.getItem('countdownData');
+        //         if (saved) {
+        //             const data = JSON.parse(saved);
+        //             const target = new Date(data.target);
+        //             if (target > new Date()) return { target: target, expired: false };
+        //             else return { target: target, expired: true };
+        //         }
+        //     } catch (e) {}
+        //     const freshTarget = new Date(); freshTarget.setHours(freshTarget.getHours() + 48);
+        //     return { target: freshTarget, expired: false };
+        // }
+        // function saveCountdownData(targetDate) {
+        //     try { localStorage.setItem('countdownData', JSON.stringify({ target: targetDate.toISOString() })); } catch (e) {}
+        // }
+        // function startCountdown() {
+        //     const daysEl = document.getElementById('cdDays');
+        //     const hoursEl = document.getElementById('cdHours');
+        //     const minutesEl = document.getElementById('cdMinutes');
+        //     const secondsEl = document.getElementById('cdSeconds');
+        //     const container = document.getElementById('countdownContainer');
+        //     const countdownData = getCountdownData();
+        //     const targetDate = countdownData.target;
+        //     if (countdownData.expired || targetDate <= new Date()) {
+        //         container.innerHTML = `<div class="countdown-label"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Results Available Now!</div><div class="countdown-timer"><span class="expired"><i class="fas fa-trophy"></i> 🎉 Check Your Result Below</span></div>`;
+        //         return;
+        //     }
+        //     saveCountdownData(targetDate);
+        //     function updateTimer() {
+        //         const now = new Date().getTime();
+        //         const target = targetDate.getTime();
+        //         let diff = target - now;
+        //         if (diff <= 0) {
+        //             clearInterval(countdownInterval);
+        //             container.innerHTML = `<div class="countdown-label"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Results Available Now!</div><div class="countdown-timer"><span class="expired"><i class="fas fa-trophy"></i> 🎉 Check Your Result Below</span></div>`;
+        //             return;
+        //         }
+        //         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        //         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        //         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        //         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        //         daysEl.textContent = String(days).padStart(2, '0');
+        //         hoursEl.textContent = String(hours).padStart(2, '0');
+        //         minutesEl.textContent = String(minutes).padStart(2, '0');
+        //         secondsEl.textContent = String(seconds).padStart(2, '0');
+        //     }
+        //     updateTimer();
+        //     if (countdownInterval) clearInterval(countdownInterval);
+        //     countdownInterval = setInterval(updateTimer, 1000);
+        // }
 
         function loadSavedResults() {
             try {
@@ -1980,7 +1980,7 @@
         window.addEventListener('load', function() {
             loadSavedResults();
             loadUsedTrxIds();
-            startCountdown();
+            // startCountdown();
             document.getElementById('resultRollInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') checkResult();
             });
