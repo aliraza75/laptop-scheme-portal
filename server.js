@@ -297,6 +297,404 @@ app.post('/api/admin/login', (req, res) => {
 });
 
 // ============================================================
+// ✅ GET: Student Details (Admin)
+// ============================================================
+app.get('/api/admin/student/:rollNumber', async (req, res) => {
+    try {
+        const student = await Student.findOne({ rollNumber: Number(req.params.rollNumber) });
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+        res.json({ success: true, student });
+    } catch (err) {
+        console.error('❌ Admin Student Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ PUT: Update Student (Admin)
+// ============================================================
+app.put('/api/admin/student/:rollNumber', async (req, res) => {
+    try {
+        const student = await Student.findOne({ rollNumber: Number(req.params.rollNumber) });
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+
+        const { totalMarks, testCompleted } = req.body;
+
+        if (totalMarks !== undefined) {
+            student.totalMarks = totalMarks;
+            student.percentage = (totalMarks / 100) * 100;
+        }
+
+        if (testCompleted !== undefined) {
+            student.testCompleted = testCompleted;
+            if (testCompleted) student.testDate = new Date();
+        }
+
+        await student.save();
+        await recalculateRanks();
+
+        res.json({ success: true, message: 'Student updated successfully!' });
+    } catch (err) {
+        console.error('❌ Admin Update Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ DELETE: Delete Student (Admin)
+// ============================================================
+app.delete('/api/admin/student/:rollNumber', async (req, res) => {
+    try {
+        const student = await Student.findOneAndDelete({ rollNumber: Number(req.params.rollNumber) });
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+        await recalculateRanks();
+        res.json({ success: true, message: 'Student deleted successfully!' });
+    } catch (err) {
+        console.error('❌ Delete Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ GET: Student Results
+// ============================================================
+app.get('/api/student-results/:rollNumber', async (req, res) => {
+    try {
+        const student = await Student.findOne({ rollNumber: Number(req.params.rollNumber) });
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+        res.json({
+            success: true,
+            student: {
+                fullName: student.fullName,
+                rollNumber: student.rollNumber,
+                totalMarks: student.totalMarks,
+                totalQuestions: student.totalQuestions,
+                percentage: student.percentage,
+                testCompleted: student.testCompleted,
+                isTop100: student.isTop100,
+                rank: student.rank,
+                testDate: student.testDate,
+                answers: student.testAnswers
+            }
+        });
+    } catch (err) {
+        console.error('❌ Get Results Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ GET: All Results
+// ============================================================
+app.get('/api/all-results', async (req, res) => {
+    try {
+        const students = await Student.find({ testCompleted: true })
+            .sort({ totalMarks: -1 })
+            .select('fullName rollNumber totalMarks totalQuestions percentage isTop100 rank testDate');
+
+        res.json({ success: true, count: students.length, results: students });
+    } catch (err) {
+        console.error('❌ All Results Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ POST: Submit MCQ Answer
+// ============================================================
+app.post('/api/submit-answer', async (req, res) => {
+    try {
+        const { rollNumber, questionId, answer, isCorrect, currentMarks } = req.body;
+        const student = await Student.findOne({ rollNumber: Number(rollNumber) });
+
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+
+        const allQuestions = getAllMCQs();
+        const question = allQuestions.find(q => q.id === questionId);
+
+        const answerObj = {
+            questionId: questionId,
+            question: question ? question.question : 'N/A',
+            selectedOption: answer || 'Not Answered',
+            correctAnswer: question ? question.answer : 'N/A',
+            isCorrect: isCorrect || false
+        };
+
+        const existingIndex = student.testAnswers.findIndex(a => a.questionId === questionId);
+        if (existingIndex !== -1) {
+            student.testAnswers[existingIndex] = answerObj;
+        } else {
+            student.testAnswers.push(answerObj);
+        }
+
+        student.totalMarks = currentMarks || student.totalMarks;
+        student.totalQuestions = 100;
+        student.percentage = (student.totalMarks / 100) * 100;
+
+        await student.save();
+
+        res.json({
+            success: true,
+            totalMarks: student.totalMarks,
+            totalQuestions: student.totalQuestions,
+            percentage: student.percentage
+        });
+    } catch (err) {
+        console.error('❌ Submit Answer Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ POST: Submit Final Result
+// ============================================================
+app.post('/api/submit-final-result', async (req, res) => {
+    try {
+        const { rollNumber, totalMarks, totalQuestions, percentage, answers } = req.body;
+        const student = await Student.findOne({ rollNumber: Number(rollNumber) });
+
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+
+        student.totalMarks = totalMarks || student.totalMarks;
+        student.totalQuestions = totalQuestions || 100;
+        student.percentage = percentage || ((student.totalMarks / 100) * 100);
+        student.testCompleted = true;
+        student.testDate = new Date();
+
+        if (answers && answers.length > 0) {
+            student.testAnswers = answers;
+        }
+
+        await student.save();
+        await recalculateRanks();
+
+        const updated = await Student.findOne({ rollNumber: Number(rollNumber) });
+
+        res.json({
+            success: true,
+            message: 'Test completed successfully!',
+            totalMarks: updated.totalMarks,
+            totalQuestions: updated.totalQuestions,
+            percentage: updated.percentage,
+            rank: updated.rank,
+            isTop100: updated.isTop100
+        });
+    } catch (err) {
+        console.error('❌ Final Result Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ POST: Verify Roll Number
+// ============================================================
+app.post('/api/verify-roll', async (req, res) => {
+    try {
+        const { rollNumber } = req.body;
+        const student = await Student.findOne({ rollNumber: Number(rollNumber) });
+
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Roll number not found!' });
+        }
+
+        if (student.testCompleted) {
+            return res.json({
+                success: true,
+                testCompleted: true,
+                studentName: student.fullName,
+                totalMarks: student.totalMarks,
+                totalQuestions: student.totalQuestions,
+                percentage: student.percentage,
+                rank: student.rank,
+                isTop100: student.isTop100
+            });
+        }
+
+        res.json({
+            success: true,
+            testCompleted: false,
+            studentName: student.fullName,
+            rollNumber: student.rollNumber,
+            questions: getAllMCQs(),
+            totalQuestions: 100
+        });
+    } catch (err) {
+        console.error('❌ Verify Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ GET: Quick Complete (Admin)
+// ============================================================
+app.post('/api/admin/quick-complete/:rollNumber', async (req, res) => {
+    try {
+        const student = await Student.findOne({ rollNumber: Number(req.params.rollNumber) });
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+
+        const marks = Math.floor(Math.random() * 60) + 40;
+        student.totalMarks = marks;
+        student.totalQuestions = 100;
+        student.percentage = marks;
+        student.testCompleted = true;
+        student.testDate = new Date();
+
+        await student.save();
+        await recalculateRanks();
+
+        res.json({ success: true, message: `Student completed with ${marks} marks!` });
+    } catch (err) {
+        console.error('❌ Quick Complete Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ GET: Financial Dashboard (Admin)
+// ============================================================
+app.get('/api/admin/financial', async (req, res) => {
+    try {
+        const totalStudents = await Student.countDocuments();
+        const top100Count = await Student.countDocuments({ isTop100: true, percentage: { $gte: 70 } });
+
+        const registrationFee = 500;
+        const laptopCost = 50000;
+        const totalRevenue = totalStudents * registrationFee;
+        const totalLaptopCost = top100Count * laptopCost;
+
+        const monthlyStats = await Student.aggregate([
+            {
+                $group: {
+                    _id: {
+                        year: { $year: '$createdAt' },
+                        month: { $month: '$createdAt' }
+                    },
+                    registrations: { $sum: 1 },
+                    completed: { $sum: { $cond: ['$testCompleted', 1, 0] } }
+                }
+            },
+            { $sort: { '_id.year': 1, '_id.month': 1 } }
+        ]);
+
+        res.json({
+            success: true,
+            financial: {
+                registrationFee,
+                laptopCost,
+                totalStudents,
+                top100Count,
+                totalRevenue,
+                totalLaptopCost,
+                profitLoss: totalRevenue - totalLaptopCost,
+                monthlyStats: monthlyStats.map(m => ({
+                    month: `${m._id.year}-${String(m._id.month).padStart(2, '0')}`,
+                    registrations: m.registrations,
+                    completed: m.completed
+                }))
+            }
+        });
+    } catch (err) {
+        console.error('❌ Financial Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ GET: Analytics (Admin)
+// ============================================================
+app.get('/api/admin/analytics', async (req, res) => {
+    try {
+        const allStudents = await Student.find({ testCompleted: true });
+        const questions = getAllMCQs();
+
+        const questionStats = questions.map(q => {
+            let correct = 0;
+            let total = 0;
+            allStudents.forEach(student => {
+                const answer = student.testAnswers.find(a => a.questionId === q.id);
+                if (answer) {
+                    total++;
+                    if (answer.isCorrect) correct++;
+                }
+            });
+            return {
+                questionId: q.id,
+                question: q.question.substring(0, 50) + '...',
+                correct,
+                total,
+                percentage: total > 0 ? (correct / total) * 100 : 0
+            };
+        });
+
+        const marksDistribution = {
+            '0-20': await Student.countDocuments({ testCompleted: true, totalMarks: { $lte: 20 } }),
+            '21-40': await Student.countDocuments({ testCompleted: true, totalMarks: { $gt: 20, $lte: 40 } }),
+            '41-60': await Student.countDocuments({ testCompleted: true, totalMarks: { $gt: 40, $lte: 60 } }),
+            '61-80': await Student.countDocuments({ testCompleted: true, totalMarks: { $gt: 60, $lte: 80 } }),
+            '81-100': await Student.countDocuments({ testCompleted: true, totalMarks: { $gt: 80, $lte: 100 } })
+        };
+
+        res.json({
+            success: true,
+            analytics: {
+                totalTestTakers: allStudents.length,
+                questionStats: questionStats.slice(0, 20),
+                marksDistribution
+            }
+        });
+    } catch (err) {
+        console.error('❌ Analytics Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ POST: Update Test Status (Admin)
+// ============================================================
+app.put('/api/admin/student/:rollNumber/test-status', async (req, res) => {
+    try {
+        const student = await Student.findOne({ rollNumber: Number(req.params.rollNumber) });
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+
+        const { testCompleted, totalMarks } = req.body;
+
+        if (testCompleted !== undefined) {
+            student.testCompleted = testCompleted;
+            if (testCompleted) student.testDate = new Date();
+        }
+
+        if (totalMarks !== undefined) {
+            student.totalMarks = totalMarks;
+            student.percentage = (totalMarks / 100) * 100;
+        }
+
+        await student.save();
+        await recalculateRanks();
+
+        res.json({ success: true, message: 'Test status updated!' });
+    } catch (err) {
+        console.error('❌ Update Test Status Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
 // ✅ Serve HTML Files
 // ============================================================
 app.get('/admin', (req, res) => {
