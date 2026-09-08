@@ -6,6 +6,17 @@
     <title>National Laptop Distribution Scheme & Aptitude Test Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Yeh description Google search results mein dikhega -->
+    <meta name="description" content="Apply online for Nation Trust Laptop Scheme (ntlspunjab). Check eligibility, registration process, and get latest updates for Punjab laptop scheme 2026.">
+    
+    <!-- Yeh keywords Google ko batate hain ke website kis baare mein hai -->
+    <meta name="keywords" content="Nation Trust, Laptop Scheme, Punjab Laptop Scheme 2026, Maryam Nawaz Laptop Scheme, Free Laptop Scheme, ntlspunjab, CM Laptop Scheme">
+    
+    <!-- Yeh Google ko batata hai ke website mobile-friendly hai -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Yeh search engines ko batata hai ke website index karein -->
+    <meta name="robots" content="index, follow">
     <style>
         /* ============================================================
                    ROOT VARIABLES - Premium Dark Theme
@@ -378,6 +389,44 @@
             gap: 10px;
         }
         .glass h3 i { color: var(--secondary); font-size: 20px; }
+
+        /* ===== AFFILIATION BADGE - New Style ===== */
+        .affiliation-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 215, 0, 0.06);
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            border-radius: var(--radius-full);
+            padding: 10px 28px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--gold-light);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+        }
+        .affiliation-badge i {
+            font-size: 18px;
+            color: var(--gold);
+        }
+        .affiliation-badge:hover {
+            background: rgba(255, 215, 0, 0.10);
+            border-color: rgba(255, 215, 0, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 24px rgba(255, 215, 0, 0.08);
+        }
+        .affiliation-badge .crown {
+            color: var(--gold);
+            font-size: 16px;
+        }
+        .affiliation-badge .separator {
+            color: rgba(255, 215, 0, 0.2);
+            font-weight: 300;
+            margin: 0 4px;
+        }
 
         .btn {
             display: inline-flex;
@@ -817,6 +866,7 @@
             .countdown-container { min-width: auto; width: 100%; padding: 16px 18px; }
             .countdown-container .countdown-timer { font-size: 28px; }
             .countdown-container .countdown-timer .time-block { min-width: 40px; padding: 2px 8px; }
+            .affiliation-badge { font-size: 13px; padding: 8px 18px; flex-wrap: wrap; text-align: center; }
         }
         @media (max-width: 480px) {
             .hero h2 { font-size: 20px; }
@@ -844,6 +894,8 @@
             .countdown-container .countdown-timer { font-size: 22px; }
             .countdown-container .countdown-timer .time-block { min-width: 30px; padding: 2px 6px; }
             .countdown-container .countdown-timer .time-label { font-size: 9px; }
+            .affiliation-badge { font-size: 11px; padding: 6px 12px; gap: 8px; }
+            .affiliation-badge i { font-size: 14px; }
         }
 
         .text-center { text-align: center; }
@@ -1139,6 +1191,17 @@
                 </div>
                 <h2>Free Laptop Scheme for <span class="glow">Top 100 Students</span></h2>
                 <p class="glow">Register online, complete the registration payment, and attempt the aptitude test to secure your position among the top 100 candidates on the merit list.</p>
+                
+                <!-- ===== AFFILIATION BADGE ADDED HERE ===== -->
+                <div class="affiliation-badge">
+                    <i class="fas fa-crown crown"></i>
+                    <span>Affiliated by</span>
+                    <span class="separator">|</span>
+                    <i class="fas fa-graduation-cap"></i>
+                    <strong>Royal Educational Institution</strong>
+                    <i class="fas fa-verified" style="font-size: 14px;"></i>
+                </div>
+                
                 <div class="hero-buttons">
                     <button class="btn btn-primary" onclick="showPage('apply')">
                         <i class="fas fa-arrow-right"></i> Apply Now
