@@ -303,31 +303,134 @@
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-        .badge-premium {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 8px 22px;
-            border-radius: var(--radius-full);
-            font-weight: 700;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            margin-bottom: 18px;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-        .badge-premium::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(0, 245, 176, 0.06), transparent);
-            animation: shimmerBadge 3s ease-in-out infinite;
-            transform: translateX(-100%);
-        }
+        /* ===== AFFILIATION BADGE - Premium ===== */
+.affiliation-badge-premium {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-full);
+    padding: 10px 24px 10px 20px;
+    margin: 16px auto 22px auto;
+    max-width: 480px;
+    backdrop-filter: blur(12px);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow effect on hover */
+.affiliation-badge-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-full);
+    padding: 1.5px;
+    background: linear-gradient(135deg, rgba(0, 245, 176, 0.2), rgba(139, 92, 246, 0.2), rgba(251, 191, 36, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.affiliation-badge-premium:hover::before {
+    opacity: 1;
+}
+
+.affiliation-badge-premium:hover {
+    transform: translateY(-2px) scale(1.01);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 245, 176, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.affiliation-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 245, 176, 0.12), rgba(139, 92, 246, 0.12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--secondary);
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 245, 176, 0.08);
+}
+
+.affiliation-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.3;
+}
+
+.affiliation-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.affiliation-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #ffffff 0%, #e8ecf4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.affiliation-verified {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--secondary);
+    background: rgba(0, 245, 176, 0.06);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(0, 245, 176, 0.08);
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+}
+
+.affiliation-verified i {
+    font-size: 12px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .affiliation-badge-premium {
+        flex-wrap: wrap;
+        padding: 10px 16px;
+        gap: 10px;
+        max-width: 100%;
+        border-radius: var(--radius-sm);
+    }
+    .affiliation-text {
+        align-items: center;
+        text-align: center;
+    }
+    .affiliation-name {
+        font-size: 13px;
+    }
+    .affiliation-verified {
+        font-size: 9px;
+        padding: 3px 10px;
+    }
+    .affiliation-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+    }
+}
         @keyframes shimmerBadge {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
@@ -1192,14 +1295,18 @@
                 <h2>Free Laptop Scheme for <span class="glow">Top 100 Students</span></h2>
                 <p class="glow">Register online, complete the registration payment, and attempt the aptitude test to secure your position among the top 100 candidates on the merit list.</p>
                 
-                <!-- ===== AFFILIATION BADGE ADDED HERE ===== -->
-                <div class="affiliation-badge">
-                    <i class="fas fa-crown crown"></i>
-                    <span>Affiliated by</span>
-                    <span class="separator">|</span>
-                    <i class="fas fa-graduation-cap"></i>
-                    <strong>Royal Educational Institution</strong>
-                    <i class="fas fa-verified" style="font-size: 14px;"></i>
+               <!-- ===== AFFILIATION BADGE - Premium ===== -->
+                <div class="affiliation-badge-premium">
+                 <div class="affiliation-icon">
+                 <i class="fas fa-award"></i>
+                </div>
+                <div class="affiliation-text">
+                <span class="affiliation-label">Officially Affiliated With</span>
+                <strong class="affiliation-name">Royal Educational Institution</strong>
+                </div>
+                <div class="affiliation-verified">
+                <i class="fas fa-circle-check"></i> Verified
+                </div>
                 </div>
                 
                 <div class="hero-buttons">
