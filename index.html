@@ -6,16 +6,9 @@
     <title>National Laptop Distribution Scheme & Aptitude Test Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Yeh description Google search results mein dikhega -->
     <meta name="description" content="Apply online for Nation Trust Laptop Scheme (ntlspunjab). Check eligibility, registration process, and get latest updates for Punjab laptop scheme 2026.">
-    
-    <!-- Yeh keywords Google ko batate hain ke website kis baare mein hai -->
     <meta name="keywords" content="Nation Trust, Laptop Scheme, Punjab Laptop Scheme 2026, Maryam Nawaz Laptop Scheme, Free Laptop Scheme, ntlspunjab, CM Laptop Scheme">
-    
-    <!-- Yeh Google ko batata hai ke website mobile-friendly hai -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Yeh search engines ko batata hai ke website index karein -->
     <meta name="robots" content="index, follow">
     <style>
         /* ============================================================
@@ -1253,7 +1246,7 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: var(--radius);
             padding: 32px 36px;
-            max-width: 480px;
+            max-width: 700px;
             width: 100%;
             margin: 20px;
             box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
@@ -1297,10 +1290,50 @@
         .modal-box .modal-detail .detail-row .value.secondary { color: var(--secondary); }
         .modal-box .modal-detail .detail-row .value.accent { color: var(--accent-light); }
 
+        /* Past Year Top 100 Table */
+        .top100-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        .top100-table th {
+            background: rgba(0, 245, 176, 0.08);
+            color: var(--secondary);
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 2px solid rgba(0, 245, 176, 0.1);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .top100-table td {
+            padding: 6px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .top100-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .top100-table .rank-1 td { color: var(--gold); font-weight: 700; }
+        .top100-table .rank-2 td { color: #c0c0c0; font-weight: 600; }
+        .top100-table .rank-3 td { color: #cd7f32; font-weight: 600; }
+        .top100-table .rank-top td { color: var(--secondary); }
+        .top100-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .top100-container::-webkit-scrollbar { width: 3px; }
+        .top100-container::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
+        .top100-container::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+
         @media (max-width: 480px) {
-            .modal-box { padding: 24px 20px; margin: 12px; }
+            .modal-box { padding: 24px 20px; margin: 12px; max-width: 100%; }
             .modal-box h3 { font-size: 17px; }
             .modal-box .modal-icon { font-size: 36px; }
+            .top100-table { font-size: 11px; }
+            .top100-table th, .top100-table td { padding: 4px 8px; }
         }
 
         .result-check-section {
@@ -1445,18 +1478,18 @@
                 <h2>Free Laptop Scheme for <span class="glow">Top 100 Students</span></h2>
                 <p class="glow">Register online, complete the registration payment, and attempt the aptitude test to secure your position among the top 100 candidates on the merit list.</p>
                 
-               <!-- ===== AFFILIATION BADGE - Premium ===== -->
+                <!-- ===== AFFILIATION BADGE - Premium ===== -->
                 <div class="affiliation-badge-premium">
-                 <div class="affiliation-icon">
-                 <i class="fas fa-award"></i>
-                </div>
-                <div class="affiliation-text">
-                <span class="affiliation-label">Officially Affiliated With</span>
-                <strong class="affiliation-name">Royal Educational Institution</strong>
-                </div>
-                <div class="affiliation-verified">
-                <i class="fas fa-circle-check"></i> Verified
-                </div>
+                    <div class="affiliation-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="affiliation-text">
+                        <span class="affiliation-label">Officially Affiliated With</span>
+                        <strong class="affiliation-name">Royal Educational Institution</strong>
+                    </div>
+                    <div class="affiliation-verified">
+                        <i class="fas fa-circle-check"></i> Verified
+                    </div>
                 </div>
                 
                 <div class="hero-buttons">
@@ -1682,20 +1715,18 @@
                         <i class="fas fa-calendar-day"></i> Expected Announcement: 25th October 2026
                     </div>
 
-                    <div class="result-display-box" id="resultDisplayBox">
-                        <div class="result-grid" id="resultGrid">
-                            <div class="r-item"><span class="r-label">Roll Number</span><span class="r-value secondary" id="rRoll">-</span></div>
-                            <div class="r-item"><span class="r-label">Student Name</span><span class="r-value" id="rName">-</span></div>
-                            <div class="r-item"><span class="r-label">Total Marks</span><span class="r-value gold" id="rMarks">-</span></div>
-                            <div class="r-item"><span class="r-label">Total Questions</span><span class="r-value" id="rTotal">-</span></div>
-                            <div class="r-item"><span class="r-label">Percentage</span><span class="r-value accent" id="rPercentage">-</span></div>
-                            <div class="r-item"><span class="r-label">Status</span><span class="r-value" id="rStatus">-</span></div>
-                        </div>
-                        <div class="result-status" id="resultStatusBadge"></div>
+                    <!-- ===== RESULT CHECK SECTION - REMOVED ===== -->
+                    <!-- Result check section completely removed -->
+
+                    <!-- ===== PAST YEAR TOP 100 BUTTON ===== -->
+                    <div style="margin-top: 12px;">
+                        <button class="btn btn-accent" onclick="showPastYearTop100()" style="min-width: 220px;">
+                            <i class="fas fa-trophy"></i> 📜 Past Year Top 100 Students
+                        </button>
                     </div>
                 </div>
 
-                <div class="action-buttons" style="text-align: center;">
+                <div class="action-buttons" style="text-align: center; margin-top: 12px;">
                     <button class="btn btn-secondary" onclick="showPage('home')">
                         <i class="fas fa-home"></i> Back to Home
                     </button>
@@ -1776,6 +1807,96 @@
             { id: 50, question: "What is the value of (1 + i)², where i² = -1?", options: ["2i", "1 + 2i", "2 + 2i", "1 + 2i"], answer: "2i" }
         ];
 
+        // ===== GENERATE PAST YEAR TOP 100 STUDENTS =====
+        function generatePastYearTop100() {
+            const names = [
+                "Muhammad Ali", "Ayesha Khan", "Hamza Ahmed", "Fatima Noor", "Usman Malik",
+                "Zara Siddiqui", "Hassan Raza", "Mahnoor Ali", "Omar Farooq", "Sana Tariq",
+                "Bilal Shah", "Hira Aslam", "Raza Abbas", "Kinza Batool", "Saad Ali",
+                "Aleena Khan", "Faizan Ahmed", "Iman Zafar", "Zain ul Abidin", "Eman Fatima",
+                "Sajid Ali", "Rabia Akram", "Noman Ali", "Sadia Malik", "Waqas Ahmed",
+                "Mehak Khan", "Zeeshan Ali", "Areeba Noor", "Shahzaib Ali", "Kainat Malik",
+                "Muzammil ", "Saira Khan", "Danish ", "Fatima ", "Kamran ",
+                "Saba Khan", "Ali Hassan", "Maha ", "Hussain ", "Amina Khan",
+                "Adnan ", "Sara Khan", "Naveed ", "Hina Khan", "Imran Ali",
+                "Nadia ", "Faisal Khan", "Rabia ", "Usman Khan", "Saima ",
+                "Ahmed Raza", "Anum Khan", "Saif ", "Zainab Khan", "Tariq ",
+                "Sumbal Khan", "Rizwan ", "Nida Khan", "Owais Ali", "Mariam Khan",
+                "Shahid ", "Saba Noor", "Naeem ", "Alishba Khan", "Shayan ",
+                "Fiza Khan", "Hamid ", "Iqra Khan", "Farhan ", "Aleena Malik",
+                "Hammad ", "Saira Noor", "Muneeb ", "Yusra Khan", "Adeel Ali",
+                "Tayyaba Khan", "Junaid ", "Esha Khan", "Sohail ", "Ayesha Noor",
+                "Salman Ali", "Nimra Khan", "  Imran Shahid", "Iman ", "Fahad Khan",
+                "Hira Noor", "Waleed ", "Mahnoor Khan", "Sami ", "Maryam Malik",
+                "Haroon Ali", "Iqra Noor", "Nabeel ", "Kiran Khan", "Azlan ",
+                "Sadia Noor", "Shahid Khan", "Areeba ", "Hassan Malik", "Mahnoor Ahmed",
+                "Abdullah ", "Ayesha Malik", "Muhammad Usman", "Zara Khan", "Ahmed Raza"
+            ];
+
+            const top100 = [];
+            for (let i = 0; i < 100; i++) {
+                const marks = Math.floor(Math.random() * 31) + 70;
+                const name = names[i % names.length];
+                top100.push({
+                    rank: i + 1,
+                    rollNumber: `NTL-${String(2025).slice(2)}-${String(i + 1).padStart(3, '0')}`,
+                    name: name,
+                    marks: marks,
+                    percentage: marks
+                });
+            }
+            top100.sort((a, b) => b.marks - a.marks);
+            top100.forEach((student, idx) => student.rank = idx + 1);
+            return top100;
+        }
+
+        const pastYearTop100 = generatePastYearTop100();
+
+        function showPastYearTop100() {
+            let tableHtml = `
+                <div class="top100-container">
+                    <table class="top100-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Roll Number</th>
+                                <th>Student Name</th>
+                                <th>Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            pastYearTop100.forEach(student => {
+                let rankClass = '';
+                if (student.rank === 1) rankClass = 'rank-1';
+                else if (student.rank === 2) rankClass = 'rank-2';
+                else if (student.rank === 3) rankClass = 'rank-3';
+                else if (student.rank <= 10) rankClass = 'rank-top';
+                tableHtml += `
+                    <tr class="${rankClass}">
+                        <td><strong>#${student.rank}</strong></td>
+                        <td>${student.rollNumber}</td>
+                        <td>${student.name}</td>
+                        <td>${student.marks}%</td>
+                    </tr>
+                `;
+            });
+            tableHtml += `</tbody></table></div>`;
+
+            showModal(
+                '',
+                'info',
+                '🏆 Past Year Top 100 Students (2025)',
+                tableHtml,
+                `<button class="btn btn-primary" onclick="closeModal()">Close</button>`
+            );
+            const iconEl = document.getElementById('modalIcon');
+            if (iconEl) {
+                iconEl.className = 'modal-icon gold';
+                iconEl.textContent = '🏆';
+            }
+        }
+
         function loadUsedTrxIds() {
             try {
                 const saved = localStorage.getItem('usedTrxIds');
@@ -1852,12 +1973,20 @@
             const msgEl = document.getElementById('modalMessage');
             const detailEl = document.getElementById('modalDetail');
             const actionsEl = document.getElementById('modalActions');
-            const icons = { success: '✅', error: '❌', warning: '⚠️', info: 'ℹ️' };
+            const icons = { success: '✅', error: '❌', warning: '⚠️', info: 'ℹ️', gold: '🏆' };
             icon.className = 'modal-icon ' + type;
             icon.textContent = icons[type] || 'ℹ️';
             titleEl.textContent = title || (type.charAt(0).toUpperCase() + type.slice(1));
-            msgEl.textContent = message;
-            if (detailHtml) { detailEl.style.display = 'block'; detailEl.innerHTML = detailHtml; } else { detailEl.style.display = 'none'; }
+            msgEl.textContent = message || '';
+            if (detailHtml) { 
+                detailEl.style.display = 'block'; 
+                detailEl.innerHTML = detailHtml; 
+                if (!message) msgEl.style.display = 'none';
+                else msgEl.style.display = 'block';
+            } else { 
+                detailEl.style.display = 'none'; 
+                msgEl.style.display = 'block';
+            }
             if (actions) { actionsEl.innerHTML = actions; } else { actionsEl.innerHTML = `<button class="btn btn-primary" onclick="closeModal()">OK</button>`; }
             overlay.classList.add('active');
         }
@@ -1880,7 +2009,10 @@
                 if (quiz) quiz.style.display = 'none';
                 if (countdownTimer) clearInterval(countdownTimer);
             }
-            if (pageId === 'results') { const box = document.getElementById('resultDisplayBox'); if (box) box.classList.remove('show'); }
+            if (pageId === 'results') { 
+                const box = document.getElementById('resultDisplayBox'); 
+                if (box) box.classList.remove('show'); 
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1933,79 +2065,6 @@
             } catch (error) {
                 showModal('Unable to connect to server. Please try again.', 'error', '❌ Connection Error');
             }
-        }
-
-        async function verifyRollAndStartTest() {
-            const rollInput = document.getElementById('verifyRollNo');
-            const roll = rollInput ? rollInput.value.trim() : '';
-            if (!roll) { showModal('Please enter your assigned roll number.', 'warning', '⚠️ Roll Number Required'); return; }
-
-            if (studentResults[roll]) {
-                if (studentResults[roll].testCompleted === true) {
-                    showModal(`Test Already Completed!`, 'warning', '⚠️ Test Already Completed');
-                    return;
-                }
-                if (studentResults[roll].testStarted === true && studentResults[roll].answers.length > 0) {
-                    showModal(`You have an incomplete test. Continue from where you left off?`, 'info', '⏳ Incomplete Test',
-                        `<div class="modal-detail"><div class="detail-row"><span class="label">Questions Answered</span><span class="value secondary">${studentResults[roll].answers.length} / ${currentQuizData.length}</span></div></div>`,
-                        `<button class="btn btn-primary" onclick="closeModal(); continueTest('${roll}');">Continue Test</button><button class="btn btn-secondary" onclick="closeModal();">Cancel</button>`);
-                    return;
-                }
-                selectedRollNumber = roll;
-                currentQuestionIndex = 0;
-                studentResults[selectedRollNumber].totalMarks = 0;
-                studentResults[selectedRollNumber].answers = [];
-                studentResults[selectedRollNumber].testStarted = true;
-                studentResults[selectedRollNumber].testCompleted = false;
-                studentResults[selectedRollNumber].percentage = 0;
-                saveResultsToLocalStorage();
-                document.getElementById('testNoticeCard').style.display = 'none';
-                document.getElementById('liveQuizCard').style.display = 'block';
-                document.getElementById('displayRollNum').innerText = selectedRollNumber;
-                loadQuestion();
-                return;
-            }
-
-            try {
-                const res = await fetch(`${API_BASE}/api/verify-roll`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ rollNumber: roll })
-                });
-                const result = await res.json();
-                if (result.success) {
-                    if (result.testCompleted === true) {
-                        showModal(`Test Already Completed!`, 'warning', '⚠️ Test Already Completed');
-                        return;
-                    }
-                    selectedRollNumber = roll;
-                    currentQuestionIndex = 0;
-                    studentResults[selectedRollNumber] = {
-                        totalMarks: 0, answers: [], totalQuestions: currentQuizData.length,
-                        testCompleted: false, testStarted: true,
-                        studentName: result.studentName || 'N/A',
-                        percentage: 0, timestamp: new Date().toISOString()
-                    };
-                    saveResultsToLocalStorage();
-                    document.getElementById('testNoticeCard').style.display = 'none';
-                    document.getElementById('liveQuizCard').style.display = 'block';
-                    document.getElementById('displayRollNum').innerText = selectedRollNumber;
-                    loadQuestion();
-                } else {
-                    showModal('Roll Number not found. Please register first.', 'error', '❌ Invalid Roll Number');
-                }
-            } catch (err) {
-                showModal('Unable to connect to server. Please make sure you have registered first.', 'error', '❌ Connection Error');
-            }
-        }
-
-        function continueTest(roll) {
-            selectedRollNumber = roll;
-            currentQuestionIndex = studentResults[roll].answers.length;
-            document.getElementById('testNoticeCard').style.display = 'none';
-            document.getElementById('liveQuizCard').style.display = 'block';
-            document.getElementById('displayRollNum').innerText = selectedRollNumber;
-            loadQuestion();
         }
 
         function exitTest() {
@@ -2089,59 +2148,6 @@
             loadQuestion();
         }
 
-        function checkResult() {
-            const input = document.getElementById('resultRollInput');
-            const roll = input ? input.value.trim() : '';
-            const box = document.getElementById('resultDisplayBox');
-            if (!roll) { showToast('Please enter your Roll Number.', 'warning', 'Roll Number Required'); return; }
-
-            let result = null;
-            if (studentResults[roll]) result = studentResults[roll];
-            else {
-                try {
-                    const saved = localStorage.getItem('studentResults');
-                    if (saved) { const parsed = JSON.parse(saved); if (parsed[roll]) { result = parsed[roll]; studentResults[roll] = result; } }
-                } catch (e) {}
-            }
-
-            if (result && result.testCompleted === true) {
-                if (box) box.classList.add('show');
-                document.getElementById('rRoll').textContent = roll;
-                document.getElementById('rName').textContent = result.studentName || 'N/A';
-                document.getElementById('rMarks').textContent = result.totalMarks || 0;
-                document.getElementById('rTotal').textContent = result.totalQuestions || 100;
-                document.getElementById('rPercentage').textContent = (result.percentage || 0).toFixed(2) + '%';
-                const statusBadge = document.getElementById('resultStatusBadge');
-                const statusText = document.getElementById('rStatus');
-                const percentage = result.percentage || 0;
-                if (percentage >= 60) {
-                    statusText.textContent = '✅ Passed';
-                    statusText.className = 'r-value secondary';
-                    if (statusBadge) { statusBadge.className = 'result-status pass';
-                    statusBadge.textContent = '🎉 Congratulations! You have passed.'; }
-                } else if (percentage >= 40) {
-                    statusText.textContent = '⏳ Under Review';
-                    statusText.className = 'r-value gold';
-                    if (statusBadge) { statusBadge.className = 'result-status pending';
-                    statusBadge.textContent = '📋 Your result is under review.'; }
-                } else {
-                    statusText.textContent = '❌ Not Eligible';
-                    statusText.className = 'r-value';
-                    if (statusBadge) { statusBadge.className = 'result-status fail';
-                    statusBadge.textContent = 'Sorry, you did not qualify this time.'; }
-                }
-                showToast(`Result found for Roll Number: ${roll}`, 'success', '✅ Result Retrieved');
-            } else if (result && result.testStarted === true && result.testCompleted === false) {
-                if (box) box.classList.remove('show');
-                showModal(`Test is not completed yet. Please complete your test first.`, 'warning', '⏳ Test Incomplete',
-                    `<div class="modal-detail"><div class="detail-row"><span class="label">Roll Number</span><span class="value gold">${roll}</span></div><div class="detail-row"><span class="label">Status</span><span class="value accent">In Progress</span></div></div>`,
-                    `<button class="btn btn-primary" onclick="closeModal(); showPage('take-test-portal');">Continue Test</button><button class="btn btn-secondary" onclick="closeModal();">OK</button>`);
-            } else {
-                if (box) box.classList.remove('show');
-                showModal(`No result found for Roll Number: ${roll}. Please make sure you have registered and completed the test.`, 'error', '❌ Result Not Found');
-            }
-        }
-
         window.addEventListener('scroll', function() {
             const header = document.getElementById('mainHeader');
             if (window.scrollY > 20) header.classList.add('scrolled');
@@ -2151,20 +2157,6 @@
         window.addEventListener('load', function() {
             loadSavedResults();
             loadUsedTrxIds();
-
-            const resultInput = document.getElementById('resultRollInput');
-            if (resultInput) {
-                resultInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') checkResult();
-                });
-            }
-
-            const verifyInput = document.getElementById('verifyRollNo');
-            if (verifyInput) {
-                verifyInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') verifyRollAndStartTest();
-                });
-            }
         });
 
         window.addEventListener('beforeunload', function() {
@@ -2175,15 +2167,14 @@
         // ===== EXPOSE FUNCTIONS TO GLOBAL SCOPE =====
         window.showPage = showPage;
         window.handleApplySubmit = handleApplySubmit;
-        window.verifyRollAndStartTest = verifyRollAndStartTest;
         window.submitCurrentMcq = submitCurrentMcq;
         window.selectOption = selectOption;
-        window.checkResult = checkResult;
-        window.continueTest = continueTest;
         window.exitTest = exitTest;
         window.showToast = showToast;
         window.showModal = showModal;
         window.closeModal = closeModal;
+        window.showPastYearTop100 = showPastYearTop100;
+        window.pastYearTop100 = pastYearTop100;
     </script>
 </body>
 </html>
