@@ -34,7 +34,7 @@ mongoose.connect(MONGO_URI)
     .then(() => console.log('✅ MongoDB Atlas Connected Successfully'))
     .catch(err => console.error('❌ MongoDB Connection Error:', err.message));
 
-// ✅ Student Schema (WITH REFERRAL FIELDS)
+// ✅ Student Schema (WITH RANDOM REFERRAL CODE)
 const StudentSchema = new mongoose.Schema({
     rollNumber: { type: Number, required: true, unique: true },
     fullName: { type: String, required: true },
@@ -64,7 +64,8 @@ const StudentSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 
     // ===== REFERRAL FIELDS =====
-    referredBy: { type: Number, default: null },
+    referralCode: { type: String, unique: true, sparse: true },   // Student ka apna random code
+    referredBy: { type: String, default: null },                  // Jisne refer kiya (referralCode)
     referralCount: { type: Number, default: 0 },
     completedReferralCount: { type: Number, default: 0 },
     totalReward: { type: Number, default: 0 },
@@ -72,6 +73,41 @@ const StudentSchema = new mongoose.Schema({
 });
 
 const Student = mongoose.model('Student', StudentSchema);
+
+// ============================================================
+// Generate Random Referral Code (8 chars, alphanumeric)
+// Excludes confusing chars: O, 0, I, 1
+// ============================================================
+function generateReferralCode() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    for (let i = 0; i < 8; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return code;
+}
+
+// ============================================================
+// Generate UNIQUE Referral Code (checks DB, retries)
+// ============================================================
+async function generateUniqueReferralCode() {
+    let code;
+    let exists = true;
+    let attempts = 0;
+
+    while (exists && attempts < 15) {
+        code = generateReferralCode();
+        const existing = await Student.findOne({ referralCode: code });
+        exists = !!existing;
+        attempts++;
+    }
+
+    if (exists) {
+        throw new Error('Could not generate unique referral code after 15 attempts');
+    }
+
+    return code;
+}
 
 // ============================================================
 // Get 100 MCQs
@@ -131,7 +167,7 @@ async function recalculateRanks() {
 app.use(express.static(path.join(__dirname)));
 
 // ============================================================
-// ✅ POST: Register Student (WITH REFERRAL)
+// ✅ POST: Register Student (WITH RANDOM REFERRAL CODE)
 // ============================================================
 const storage = multer.memoryStorage();
 const upload = multer({
@@ -164,16 +200,20 @@ app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
 
         const base64Image = req.file.buffer.toString('base64');
 
-        // ===== CHECK REFERRAL CODE =====
-        let referredBy = null;
+        // ===== GENERATE UNIQUE RANDOM REFERRAL CODE =====
+        const newReferralCode = await generateUniqueReferralCode();
+        console.log(`🎫 Generated referral code for Roll ${newRollNumber}: ${newReferralCode}`);
+
+        // ===== CHECK IF REFERRED BY SOMEONE (via code) =====
+        let referredByCode = null;
         if (referralCode && referralCode.trim() !== '') {
-            const refRoll = parseInt(referralCode.trim());
-            if (!isNaN(refRoll)) {
-                const referrer = await Student.findOne({ rollNumber: refRoll });
-                if (referrer) {
-                    referredBy = refRoll;
-                    console.log(`🎁 Referral detected: New student ${newRollNumber} referred by ${refRoll}`);
-                }
+            const cleanCode = referralCode.trim().toUpperCase();
+            const referrer = await Student.findOne({ referralCode: cleanCode });
+            if (referrer) {
+                referredByCode = cleanCode;
+                console.log(`🎁 Referral detected: Roll ${newRollNumber} referred by code ${cleanCode} (Roll ${referrer.rollNumber})`);
+            } else {
+                console.log(`⚠️ Invalid referral code provided: ${cleanCode}`);
             }
         }
 
@@ -185,7 +225,8 @@ app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
             phone,
             institution,
             paymentTrxId,
-            referredBy: referredBy,
+            referralCode: newReferralCode,
+            referredBy: referredByCode,
             paymentProof: {
                 data: base64Image,
                 contentType: req.file.mimetype
@@ -195,9 +236,9 @@ app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
         await student.save();
 
         // ===== UPDATE REFERRER'S COUNT =====
-        if (referredBy) {
+        if (referredByCode) {
             await Student.updateOne(
-                { rollNumber: referredBy },
+                { referralCode: referredByCode },
                 { $inc: { referralCount: 1 } }
             );
         }
@@ -205,7 +246,8 @@ app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
         res.json({
             success: true,
             rollNumber: newRollNumber,
-            referralLink: `${req.protocol}://${req.get('host')}/?ref=${newRollNumber}`,
+            referralCode: newReferralCode,
+            referralLink: `${req.protocol}://${req.get('host')}/?ref=${newReferralCode}`,
             message: 'Registration Successful!'
         });
     } catch (err) {
@@ -276,7 +318,8 @@ app.get('/api/admin/students', async (req, res) => {
             query.$or = [
                 { fullName: { $regex: search, $options: 'i' } },
                 { email: { $regex: search, $options: 'i' } },
-                { cnicOrBform: { $regex: search, $options: 'i' } }
+                { cnicOrBform: { $regex: search, $options: 'i' } },
+                { referralCode: { $regex: search, $options: 'i' } }
             ];
             if (!isNaN(search)) {
                 query.$or.push({ rollNumber: Number(search) });
@@ -514,7 +557,8 @@ app.post('/api/submit-final-result', async (req, res) => {
         // ===== REFERRAL REWARD TRIGGER =====
         // Jab referred user test complete kare, referrer ka count update karo
         if (student.referredBy) {
-            const referrer = await Student.findOne({ rollNumber: student.referredBy });
+            // referredBy ab CODE hai, isliye code se referrer dhoondein
+            const referrer = await Student.findOne({ referralCode: student.referredBy });
             if (referrer) {
                 // Recalculate completed referral count (accurate count)
                 const completedCount = await Student.countDocuments({
@@ -523,14 +567,14 @@ app.post('/api/submit-final-result', async (req, res) => {
                 });
 
                 await Student.updateOne(
-                    { rollNumber: student.referredBy },
+                    { referralCode: student.referredBy },
                     {
                         completedReferralCount: completedCount,
-                        totalReward: completedCount * 50
+                        totalReward: completedCount * 100
                     }
                 );
 
-                console.log(`💰 Referral reward updated: Roll ${student.referredBy} → ${completedCount} completed, PKR ${completedCount * 50}`);
+                console.log(`💰 Referral reward updated: Code ${student.referredBy} (Roll ${referrer.rollNumber}) → ${completedCount} completed, PKR ${completedCount * 100}`);
             }
         }
 
@@ -760,8 +804,15 @@ app.get('/api/referral-stats/:rollNumber', async (req, res) => {
             return res.status(404).json({ success: false, message: 'Student not found!' });
         }
 
-        // Get all referrals
-        const referrals = await Student.find({ referredBy: rollNumber })
+        // Agar student ke paas referralCode nahi hai (purana student), to generate karo
+        if (!student.referralCode) {
+            student.referralCode = await generateUniqueReferralCode();
+            await student.save();
+            console.log(`🎫 Generated missing referral code for Roll ${rollNumber}: ${student.referralCode}`);
+        }
+
+        // Get all referrals (using referralCode)
+        const referrals = await Student.find({ referredBy: student.referralCode })
             .select('rollNumber fullName testCompleted totalMarks percentage createdAt')
             .sort({ createdAt: -1 });
 
@@ -778,7 +829,8 @@ app.get('/api/referral-stats/:rollNumber', async (req, res) => {
             success: true,
             rollNumber: student.rollNumber,
             fullName: student.fullName,
-            referralLink: `${req.protocol}://${req.get('host')}/?ref=${student.rollNumber}`,
+            referralCode: student.referralCode,
+            referralLink: `${req.protocol}://${req.get('host')}/?ref=${student.referralCode}`,
             totalReferrals: referrals.length,
             completedReferrals: completedReferrals.length,
             pendingReferrals: referrals.length - completedReferrals.length,
@@ -809,7 +861,7 @@ app.get('/api/referral-leaderboard', async (req, res) => {
         })
         .sort({ completedReferralCount: -1, referralCount: -1 })
         .limit(50)
-        .select('rollNumber fullName referralCount completedReferralCount totalReward');
+        .select('rollNumber fullName referralCode referralCount completedReferralCount totalReward');
 
         res.json({
             success: true,
@@ -818,6 +870,7 @@ app.get('/api/referral-leaderboard', async (req, res) => {
                 rank: idx + 1,
                 rollNumber: s.rollNumber,
                 name: s.fullName,
+                referralCode: s.referralCode,
                 totalReferrals: s.referralCount,
                 completedReferrals: s.completedReferralCount,
                 reward: s.completedReferralCount * 100
@@ -863,7 +916,7 @@ app.get('/api/admin/referral-payouts', async (req, res) => {
             completedReferralCount: { $gt: 0 }
         })
         .sort({ totalReward: -1 })
-        .select('rollNumber fullName referralCount completedReferralCount totalReward rewardPaid');
+        .select('rollNumber fullName referralCode referralCount completedReferralCount totalReward rewardPaid');
 
         const totalPayout = students.reduce((sum, s) => sum + (s.rewardPaid ? 0 : s.totalReward), 0);
         const paidCount = students.filter(s => s.rewardPaid).length;
@@ -877,6 +930,52 @@ app.get('/api/admin/referral-payouts', async (req, res) => {
         });
     } catch (err) {
         console.error('❌ Referral Payouts Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ ADMIN: Migrate Old Students to Have Referral Codes
+// (Run this ONCE to assign codes to existing students)
+// ============================================================
+app.post('/api/admin/migrate-referral-codes', async (req, res) => {
+    try {
+        const students = await Student.find({
+            $or: [
+                { referralCode: { $exists: false } },
+                { referralCode: null },
+                { referralCode: '' }
+            ]
+        });
+
+        let updated = 0;
+        let failed = 0;
+        const results = [];
+
+        for (const s of students) {
+            try {
+                const code = await generateUniqueReferralCode();
+                s.referralCode = code;
+                await s.save();
+                updated++;
+                results.push({ rollNumber: s.rollNumber, code });
+                console.log(`✅ Migrated Roll ${s.rollNumber} → Code ${code}`);
+            } catch (e) {
+                failed++;
+                console.error(`❌ Failed for Roll ${s.rollNumber}:`, e.message);
+            }
+        }
+
+        res.json({
+            success: true,
+            message: `Migration complete: ${updated} students updated, ${failed} failed`,
+            totalProcessed: students.length,
+            updated,
+            failed,
+            results: results.slice(0, 50)
+        });
+    } catch (err) {
+        console.error('❌ Migration Error:', err);
         res.status(500).json({ success: false, message: err.message });
     }
 });
@@ -904,7 +1003,8 @@ if (process.env.NODE_ENV !== 'production') {
         console.log(`🚀 Server running on port ${PORT}`);
         console.log(`✅ MongoDB Connected`);
         console.log(`✅ 100 MCQs Loaded`);
-        console.log(`✅ Referral Program Active (PKR 100 per referral)`);
+        console.log(`✅ Random Referral Codes Active`);
+        console.log(`✅ Reward: PKR 100 per successful referral`);
         console.log(`🔗 http://localhost:${PORT}/`);
         console.log(`🔗 Admin Panel: http://localhost:${PORT}/admin`);
         console.log(`🔑 Admin: admin / admin123`);
