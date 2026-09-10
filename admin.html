@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== YOUR EXISTING STYLES HERE (same as before) ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #050810; color: #e8ecf4; min-height: 100vh; }
-        
-        /* ===== LOGIN OVERLAY STYLES ===== */
+
+        /* ===== LOGIN OVERLAY ===== */
         #loginOverlay {
             position: fixed;
             inset: 0;
@@ -22,7 +21,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .login-box {
             background: rgba(10, 14, 26, 0.95);
             padding: 50px 40px;
@@ -32,28 +31,28 @@
             max-width: 92%;
             box-shadow: 0 30px 80px rgba(0,0,0,0.6);
         }
-        
+
         .login-box .icon {
             text-align: center;
             font-size: 48px;
             color: #00f5b0;
             margin-bottom: 10px;
         }
-        
+
         .login-box h2 {
             text-align: center;
             font-size: 24px;
             font-weight: 800;
             margin-bottom: 6px;
         }
-        
+
         .login-box .subtitle {
             text-align: center;
             color: rgba(255,255,255,0.3);
             font-size: 13px;
             margin-bottom: 24px;
         }
-        
+
         .login-box input {
             width: 100%;
             padding: 14px 16px;
@@ -66,17 +65,15 @@
             font-family: inherit;
             transition: all 0.3s ease;
         }
-        
+
         .login-box input:focus {
             outline: none;
             border-color: #00f5b0;
             background: rgba(255,255,255,0.04);
         }
-        
-        .login-box input::placeholder {
-            color: rgba(255,255,255,0.2);
-        }
-        
+
+        .login-box input::placeholder { color: rgba(255,255,255,0.2); }
+
         .login-btn {
             width: 100%;
             padding: 14px;
@@ -90,12 +87,12 @@
             transition: all 0.3s ease;
             margin-top: 4px;
         }
-        
+
         .login-btn:hover {
             transform: scale(1.02);
             box-shadow: 0 4px 30px rgba(0,245,176,0.3);
         }
-        
+
         .login-error {
             color: #ef4444;
             text-align: center;
@@ -103,28 +100,20 @@
             font-size: 13px;
             display: none;
         }
-        
-        .login-error.show {
-            display: block;
-        }
-        
+
+        .login-error.show { display: block; }
+
         .login-box .footer-text {
             text-align: center;
             color: rgba(255,255,255,0.15);
             font-size: 11px;
             margin-top: 16px;
         }
-        
+
         /* ===== ADMIN CONTAINER ===== */
-        .admin-container {
-            display: none;
-            min-height: 100vh;
-        }
-        
-        .admin-container.show {
-            display: flex;
-        }
-        
+        .admin-container { display: none; min-height: 100vh; }
+        .admin-container.show { display: flex; }
+
         /* ===== SIDEBAR ===== */
         .sidebar {
             width: 260px;
@@ -135,7 +124,7 @@
             height: 100vh;
             overflow-y: auto;
         }
-        
+
         .sidebar-brand {
             display: flex;
             align-items: center;
@@ -144,17 +133,14 @@
             border-bottom: 1px solid rgba(255,255,255,0.04);
             margin-bottom: 20px;
         }
-        
+
         .sidebar-brand i { font-size: 28px; color: #00f5b0; }
         .sidebar-brand h1 { font-size: 18px; font-weight: 800; }
         .sidebar-brand h1 span { color: #00f5b0; }
-        
-        .sidebar-menu {
-            list-style: none;
-        }
-        
+
+        .sidebar-menu { list-style: none; }
         .sidebar-menu li { margin-bottom: 4px; }
-        
+
         .sidebar-menu li a {
             display: flex;
             align-items: center;
@@ -168,19 +154,19 @@
             font-size: 14px;
             font-weight: 500;
         }
-        
+
         .sidebar-menu li a:hover {
             background: rgba(255,255,255,0.04);
             color: #fff;
         }
-        
+
         .sidebar-menu li a.active {
             background: rgba(0,245,176,0.06);
             color: #00f5b0;
         }
-        
+
         .sidebar-menu li a i { width: 20px; }
-        
+
         .sidebar-menu .badge {
             margin-left: auto;
             background: rgba(0,245,176,0.1);
@@ -190,22 +176,17 @@
             font-size: 11px;
             font-weight: 600;
         }
-        
-        .logout-btn {
-            color: #ef4444 !important;
-        }
-        
-        .logout-btn:hover {
-            background: rgba(239,68,68,0.1) !important;
-        }
-        
+
+        .logout-btn { color: #ef4444 !important; }
+        .logout-btn:hover { background: rgba(239,68,68,0.1) !important; }
+
         /* ===== MAIN CONTENT ===== */
         .main-content {
             margin-left: 260px;
             padding: 30px;
             width: 100%;
         }
-        
+
         .top-bar {
             display: flex;
             justify-content: space-between;
@@ -214,15 +195,15 @@
             border-bottom: 1px solid rgba(255,255,255,0.04);
             margin-bottom: 30px;
         }
-        
+
         .top-bar h2 { font-size: 24px; font-weight: 800; }
-        
+
         .top-bar .admin-info {
             display: flex;
             align-items: center;
             gap: 16px;
         }
-        
+
         .top-bar .admin-info .avatar {
             width: 40px;
             height: 40px;
@@ -234,7 +215,7 @@
             font-weight: 700;
             color: #050810;
         }
-        
+
         /* ===== STATS CARDS ===== */
         .stats-grid {
             display: grid;
@@ -242,7 +223,7 @@
             gap: 16px;
             margin-bottom: 30px;
         }
-        
+
         .stat-card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.04);
@@ -250,12 +231,12 @@
             padding: 20px;
             transition: all 0.3s ease;
         }
-        
+
         .stat-card:hover {
             background: rgba(255,255,255,0.04);
             transform: translateY(-2px);
         }
-        
+
         .stat-card .label {
             font-size: 12px;
             color: rgba(255,255,255,0.4);
@@ -263,19 +244,19 @@
             letter-spacing: 0.5px;
             font-weight: 600;
         }
-        
+
         .stat-card .value {
             font-size: 28px;
             font-weight: 800;
             margin-top: 6px;
         }
-        
+
         .stat-card .value.green { color: #00f5b0; }
         .stat-card .value.gold { color: #fbbf24; }
         .stat-card .value.pink { color: #ec4899; }
         .stat-card .value.blue { color: #60a5fa; }
         .stat-card .value.red { color: #ef4444; }
-        
+
         /* ===== TABLES ===== */
         .table-container {
             background: rgba(255,255,255,0.02);
@@ -284,7 +265,7 @@
             overflow: hidden;
             margin-top: 20px;
         }
-        
+
         .table-header {
             padding: 16px 20px;
             display: flex;
@@ -294,15 +275,15 @@
             flex-wrap: wrap;
             gap: 12px;
         }
-        
+
         .table-header h3 { font-size: 16px; font-weight: 700; }
-        
+
         .table-header .filters {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
         }
-        
+
         .table-header .filters input,
         .table-header .filters select {
             padding: 8px 14px;
@@ -314,17 +295,14 @@
             font-family: inherit;
             outline: none;
         }
-        
+
         .table-header .filters input:focus,
         .table-header .filters select:focus {
             border-color: #00f5b0;
         }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
+
+        table { width: 100%; border-collapse: collapse; }
+
         table th {
             text-align: left;
             padding: 12px 16px;
@@ -335,16 +313,16 @@
             font-weight: 600;
             border-bottom: 1px solid rgba(255,255,255,0.04);
         }
-        
+
         table td {
             padding: 12px 16px;
             font-size: 13px;
             border-bottom: 1px solid rgba(255,255,255,0.02);
             color: rgba(255,255,255,0.7);
         }
-        
+
         table tr:hover td { background: rgba(255,255,255,0.02); }
-        
+
         .status-badge {
             display: inline-block;
             padding: 3px 12px;
@@ -352,12 +330,14 @@
             font-size: 11px;
             font-weight: 600;
         }
-        
+
         .status-badge.completed { background: rgba(0,245,176,0.1); color: #00f5b0; }
         .status-badge.pending { background: rgba(251,191,36,0.1); color: #fbbf24; }
         .status-badge.top100 { background: rgba(251,191,36,0.15); color: #fbbf24; }
         .status-badge.rank { background: rgba(139,92,246,0.1); color: #a78bfa; }
-        
+        .status-badge.reward { background: rgba(236,72,153,0.1); color: #f472b6; }
+        .status-badge.paid { background: rgba(0,245,176,0.15); color: #00f5b0; }
+
         .action-btn {
             padding: 4px 12px;
             border: none;
@@ -367,7 +347,7 @@
             transition: all 0.3s ease;
             margin: 0 2px;
         }
-        
+
         .action-btn.view { background: rgba(60,130,246,0.1); color: #60a5fa; }
         .action-btn.view:hover { background: rgba(60,130,246,0.2); }
         .action-btn.edit { background: rgba(251,191,36,0.1); color: #fbbf24; }
@@ -376,7 +356,9 @@
         .action-btn.delete:hover { background: rgba(239,68,68,0.2); }
         .action-btn.complete { background: rgba(0,245,176,0.1); color: #00f5b0; }
         .action-btn.complete:hover { background: rgba(0,245,176,0.2); }
-        
+        .action-btn.pay { background: rgba(236,72,153,0.1); color: #f472b6; }
+        .action-btn.pay:hover { background: rgba(236,72,153,0.2); }
+
         .pagination {
             display: flex;
             justify-content: center;
@@ -384,7 +366,7 @@
             padding: 16px;
             border-top: 1px solid rgba(255,255,255,0.04);
         }
-        
+
         .pagination button {
             padding: 6px 14px;
             border: 1px solid rgba(255,255,255,0.06);
@@ -395,18 +377,18 @@
             transition: all 0.3s ease;
             font-size: 13px;
         }
-        
+
         .pagination button:hover { background: rgba(255,255,255,0.04); color: #fff; }
         .pagination button.active { background: rgba(0,245,176,0.06); color: #00f5b0; border-color: rgba(0,245,176,0.1); }
-        
+
         .page-content { display: none; animation: fadeIn 0.4s ease; }
         .page-content.active { display: block; }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
@@ -418,9 +400,9 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .modal-overlay.active { display: flex; }
-        
+
         .modal {
             background: #0a0e1a;
             border: 1px solid rgba(255,255,255,0.04);
@@ -431,7 +413,7 @@
             max-height: 80vh;
             overflow-y: auto;
         }
-        
+
         .modal-header {
             display: flex;
             justify-content: space-between;
@@ -440,22 +422,22 @@
             padding-bottom: 12px;
             border-bottom: 1px solid rgba(255,255,255,0.04);
         }
-        
+
         .modal-header h3 { font-size: 18px; font-weight: 700; }
         .modal-close { background: none; border: none; color: rgba(255,255,255,0.3); font-size: 24px; cursor: pointer; }
         .modal-close:hover { color: #fff; }
-        
+
         .modal-body .detail-row {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
             border-bottom: 1px solid rgba(255,255,255,0.02);
         }
-        
+
         .modal-body .detail-row .label { color: rgba(255,255,255,0.3); font-weight: 500; }
         .modal-body .detail-row .value { color: #fff; font-weight: 600; }
-        
-        /* Toast Notification */
+
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -467,17 +449,17 @@
             animation: slideUp 0.4s ease;
             max-width: 400px;
         }
-        
+
         .toast.success { background: rgba(0,245,176,0.15); border: 1px solid #00f5b0; color: #00f5b0; }
         .toast.error { background: rgba(239,68,68,0.15); border: 1px solid #ef4444; color: #ef4444; }
         .toast.info { background: rgba(96,165,250,0.15); border: 1px solid #60a5fa; color: #60a5fa; }
-        
+
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        /* Server Status Indicator */
+
+        /* Server Status */
         .server-status {
             display: inline-flex;
             align-items: center;
@@ -487,39 +469,32 @@
             font-size: 11px;
             font-weight: 600;
         }
-        
-        .server-status.online {
-            background: rgba(0,245,176,0.1);
-            color: #00f5b0;
-        }
-        
-        .server-status.offline {
-            background: rgba(239,68,68,0.1);
-            color: #ef4444;
-        }
-        
+
+        .server-status.online { background: rgba(0,245,176,0.1); color: #00f5b0; }
+        .server-status.offline { background: rgba(239,68,68,0.1); color: #ef4444; }
+
         .server-status .dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
             display: inline-block;
         }
-        
-        .server-status.online .dot {
-            background: #00f5b0;
-            animation: pulse 2s infinite;
-        }
-        
-        .server-status.offline .dot {
-            background: #ef4444;
-        }
-        
+
+        .server-status.online .dot { background: #00f5b0; animation: pulse 2s infinite; }
+        .server-status.offline .dot { background: #ef4444; }
+
         @keyframes pulse {
             0% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.5; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1); }
         }
-        
+
+        /* Referral specific */
+        .referral-highlight {
+            background: linear-gradient(135deg, rgba(251,191,36,0.08), rgba(236,72,153,0.08));
+            border: 1px solid rgba(251,191,36,0.15);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .sidebar { display: none; }
@@ -531,7 +506,7 @@
             table th, table td { padding: 8px 10px; }
             .login-box { padding: 30px 20px; }
         }
-        
+
         @media (max-width: 480px) {
             .stats-grid { grid-template-columns: 1fr; }
             .login-box { padding: 24px 16px; }
@@ -546,16 +521,16 @@
         <div class="icon"><i class="fas fa-laptop"></i></div>
         <h2>Admin Login</h2>
         <p class="subtitle">Enter credentials to access admin panel</p>
-        
+
         <input id="adminUser" type="text" placeholder="Username">
         <input id="adminPass" type="password" placeholder="Password">
-        
+
         <button class="login-btn" onclick="adminLogin()">
             <i class="fas fa-sign-in-alt"></i> Login
         </button>
-        
-        <p class="login-error" id="loginError">❌ Invalid credentials! Use admin / admin123</p>
-        <p class="footer-text">Default: admin / admin123</p>
+
+        <p class="login-error" id="loginError">❌ Invalid credentials!</p>
+        <!-- <p class="footer-text">Default: admin / admin123</p> -->
     </div>
 </div>
 
@@ -573,6 +548,7 @@
             <li><a onclick="showPage('top100')"><i class="fas fa-trophy"></i> Top 100 <span class="badge" id="top100Count">0</span></a></li>
             <li><a onclick="showPage('analytics')"><i class="fas fa-chart-bar"></i> Analytics</a></li>
             <li><a onclick="showPage('financial')"><i class="fas fa-money-bill"></i> Financial</a></li>
+            <li><a onclick="showPage('referrals')"><i class="fas fa-gift"></i> Referral Payouts <span class="badge" id="referralCount">0</span></a></li>
             <li style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 12px;">
                 <a class="logout-btn" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
@@ -670,6 +646,22 @@
                 <div id="financialSummary" style="padding:20px;"></div>
             </div>
         </div>
+
+        <!-- ===== REFERRAL PAYOUTS ===== -->
+        <div id="page-referrals" class="page-content">
+            <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);" id="referralStatsGrid"></div>
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>💰 Referral Payouts (PKR 100 per successful referral)</h3>
+                    <div class="filters">
+                        <button onclick="loadReferralPayouts()" style="padding:8px 16px;background:rgba(0,245,176,0.1);border:1px solid rgba(0,245,176,0.1);border-radius:8px;color:#00f5b0;cursor:pointer;">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                <div id="referralPayoutsTable"></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -696,17 +688,17 @@ let lastPingStatus = true;
 function showToast(message, type = 'info') {
     const existing = document.querySelector('.toast');
     if (existing) existing.remove();
-    
+
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
     toast.textContent = message;
     document.body.appendChild(toast);
-    
+
     setTimeout(() => toast.remove(), 4000);
 }
 
 // ============================================================
-// SERVER STATUS INDICATOR
+// SERVER STATUS
 // ============================================================
 function updateServerStatus(isOnline) {
     const statusEl = document.getElementById('serverStatus');
@@ -721,18 +713,13 @@ function updateServerStatus(isOnline) {
 }
 
 // ============================================================
-// RENDER KEEP-ALIVE SYSTEM (IMPROVED)
+// KEEP-ALIVE
 // ============================================================
 function startKeepAlive() {
     if (keepAliveInterval) return;
-    
     console.log('🔄 Starting Render keep-alive service...');
     updateServerStatus(true);
-    
-    // Immediate ping on start
     pingServer();
-    
-    // Ping every 4 minutes (Render sleeps after 15 min)
     keepAliveInterval = setInterval(pingServer, 4 * 60 * 1000);
 }
 
@@ -747,22 +734,21 @@ function stopKeepAlive() {
 async function pingServer() {
     try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
-        
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+
         const response = await fetch(`${API_BASE}/api/dashboard-stats`, {
             signal: controller.signal,
             headers: { 'Cache-Control': 'no-cache' }
         });
-        
+
         clearTimeout(timeoutId);
-        
+
         if (response.ok) {
             const data = await response.json();
             if (data.success) {
                 console.log('✅ Server ping successful at:', new Date().toLocaleTimeString());
                 updateServerStatus(true);
-                
-                // If dashboard is active, update data silently
+
                 const activePage = document.querySelector('.page-content.active');
                 if (activePage && activePage.id === 'page-dashboard') {
                     loadDashboard();
@@ -771,12 +757,9 @@ async function pingServer() {
             }
         }
         throw new Error('Server response invalid');
-        
     } catch (error) {
         console.log('⚠️ Server ping failed:', error.message);
         updateServerStatus(false);
-        
-        // Try to reconnect after 30 seconds
         setTimeout(() => {
             console.log('🔄 Retrying server connection...');
             pingServer();
@@ -790,17 +773,17 @@ async function pingServer() {
 function adminLogin() {
     const username = document.getElementById('adminUser').value.trim();
     const password = document.getElementById('adminPass').value.trim();
-    
+
     if (username === 'admin' && password === 'admin123') {
         localStorage.setItem('adminLoggedIn', 'true');
         document.getElementById('loginOverlay').style.display = 'none';
         document.getElementById('adminContainer').classList.add('show');
         loadDashboard();
         document.getElementById('loginError').classList.remove('show');
-        startKeepAlive(); // Start keep-alive after login
+        startKeepAlive();
         return;
     }
-    
+
     fetch(`${API_BASE}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -814,7 +797,7 @@ function adminLogin() {
             document.getElementById('adminContainer').classList.add('show');
             loadDashboard();
             document.getElementById('loginError').classList.remove('show');
-            startKeepAlive(); // Start keep-alive after login
+            startKeepAlive();
         } else {
             document.getElementById('loginError').classList.add('show');
         }
@@ -825,27 +808,27 @@ function adminLogin() {
 }
 
 // ============================================================
-// ADMIN LOGOUT (Modified)
+// ADMIN LOGOUT
 // ============================================================
 function adminLogout() {
     if (confirm('Are you sure you want to logout?')) {
-        stopKeepAlive(); // Stop keep-alive on logout
+        stopKeepAlive();
         localStorage.removeItem('adminLoggedIn');
         location.reload();
     }
 }
 
 // ============================================================
-// CHECK LOGIN STATUS ON LOAD
+// CHECK LOGIN ON LOAD
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
     const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
-    
+
     if (isLoggedIn) {
         document.getElementById('loginOverlay').style.display = 'none';
         document.getElementById('adminContainer').classList.add('show');
         loadDashboard();
-        startKeepAlive(); // Start keep-alive automatically
+        startKeepAlive();
     } else {
         document.getElementById('loginOverlay').style.display = 'flex';
         document.getElementById('adminContainer').classList.remove('show');
@@ -861,13 +844,14 @@ function showPage(page) {
     document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
     document.querySelector(`.sidebar-menu a[onclick="showPage('${page}')"]`)?.classList.add('active');
     document.getElementById('pageTitle').textContent = page.charAt(0).toUpperCase() + page.slice(1);
-    
+
     switch(page) {
         case 'dashboard': loadDashboard(); break;
         case 'students': loadStudents(); break;
         case 'top100': loadTop100(); break;
         case 'analytics': loadAnalytics(); break;
         case 'financial': loadFinancial(); break;
+        case 'referrals': loadReferralPayouts(); break;
     }
 }
 
@@ -890,7 +874,7 @@ async function loadDashboard() {
             `;
             document.getElementById('studentCount').textContent = stats.totalStudents;
             document.getElementById('top100Count').textContent = stats.top100;
-            
+
             const studentsRes = await fetch(`${API_BASE}/api/admin/students?limit=5`);
             const studentsData = await studentsRes.json();
             if (studentsData.success) {
@@ -926,13 +910,13 @@ async function loadStudents(page = 1) {
     const search = document.getElementById('searchInput').value;
     const status = document.getElementById('statusFilter').value;
     const top100 = document.getElementById('top100Filter').value;
-    
+
     try {
         let url = `${API_BASE}/api/admin/students?page=${page}&limit=20`;
         if (search) url += `&search=${encodeURIComponent(search)}`;
         if (status) url += `&testStatus=${status}`;
         if (top100) url += `&top100=${top100}`;
-        
+
         const res = await fetch(url);
         const data = await res.json();
         if (data.success) {
@@ -955,14 +939,14 @@ async function loadStudents(page = 1) {
                     </td>
                 </tr>
             `).join('');
-            
+
             document.getElementById('studentsTable').innerHTML = `
                 <table>
                     <thead><tr><th>Roll</th><th>Name</th><th>Email</th><th>CNIC</th><th>Status</th><th>Marks</th><th>%</th><th>Top 100</th><th>Rank</th><th>Actions</th></tr></thead>
                     <tbody>${studentsHTML || '<tr><td colspan="10" style="text-align:center;color:rgba(255,255,255,0.3);padding:30px;">No students found</td></tr>'}</tbody>
                 </table>
             `;
-            
+
             const pag = data.pagination;
             let pagHTML = '';
             for (let i = 1; i <= pag.pages; i++) {
@@ -988,7 +972,7 @@ async function loadTop100() {
             const avg = data.top100.reduce((sum, s) => sum + s.totalMarks, 0) / (data.count || 1);
             document.getElementById('top100Avg').textContent = avg.toFixed(1);
             document.getElementById('top100Highest').textContent = data.top100[0]?.totalMarks || 0;
-            
+
             const top100HTML = data.top100.map((s, i) => `
                 <tr>
                     <td><span class="status-badge rank">#${i + 1}</span></td>
@@ -1027,7 +1011,7 @@ async function loadAnalytics() {
                 <div class="stat-card"><div class="label">Avg Marks</div><div class="value green">${analytics.totalTestTakers > 0 ? 'N/A' : 'N/A'}</div></div>
                 <div class="stat-card"><div class="label">Top Scorer</div><div class="value gold">${analytics.questionStats[0]?.percentage?.toFixed(0) || 0}%</div></div>
             `;
-            
+
             const dist = analytics.marksDistribution || {};
             const distHTML = Object.entries(dist).map(([range, count]) => `
                 <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.02);">
@@ -1035,7 +1019,7 @@ async function loadAnalytics() {
                 </div>
             `).join('');
             document.getElementById('marksDistribution').innerHTML = distHTML || '<p style="color:rgba(255,255,255,0.3);">No data available</p>';
-            
+
             const hardest = analytics.questionStats?.slice(0, 10) || [];
             const hardestHTML = hardest.map(q => `
                 <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.02);">
@@ -1065,7 +1049,7 @@ async function loadFinancial() {
                 <div class="stat-card"><div class="label">Profit/Loss</div><div class="value ${fin.profitLoss >= 0 ? 'green' : 'red'}">PKR ${fin.profitLoss.toLocaleString()}</div></div>
                 <div class="stat-card"><div class="label">Break-even</div><div class="value gold">${Math.ceil(fin.totalLaptopCost / fin.registrationFee)} students</div></div>
             `;
-            
+
             const monthlyHTML = fin.monthlyStats?.map(m => `
                 <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.02);">
                     <span>${m.month}</span>
@@ -1075,7 +1059,7 @@ async function loadFinancial() {
                 </div>
             `).join('') || '<p style="color:rgba(255,255,255,0.3);">No data available</p>';
             document.getElementById('monthlyBreakdown').innerHTML = monthlyHTML;
-            
+
             document.getElementById('financialSummary').innerHTML = `
                 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;padding:10px;">
                     <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;">
@@ -1099,7 +1083,94 @@ async function loadFinancial() {
 }
 
 // ============================================================
-// VIEW STUDENT
+// LOAD REFERRAL PAYOUTS
+// ============================================================
+async function loadReferralPayouts() {
+    try {
+        const res = await fetch(`${API_BASE}/api/admin/referral-payouts`);
+        const data = await res.json();
+
+        if (data.success) {
+            // Stats grid
+            document.getElementById('referralStatsGrid').innerHTML = `
+                <div class="stat-card referral-highlight">
+                    <div class="label">Students with Rewards</div>
+                    <div class="value pink">${data.totalStudentsWithRewards}</div>
+                </div>
+                <div class="stat-card referral-highlight">
+                    <div class="label">Pending Payout</div>
+                    <div class="value gold">PKR ${data.totalPayoutPending.toLocaleString()}</div>
+                </div>
+                <div class="stat-card referral-highlight">
+                    <div class="label">Already Paid</div>
+                    <div class="value green">${data.paidCount} students</div>
+                </div>
+            `;
+
+            // Update badge
+            document.getElementById('referralCount').textContent = data.totalStudentsWithRewards;
+
+            // Table
+            const tableHTML = data.students.map(s => `
+                <tr>
+                    <td><strong>${s.rollNumber}</strong></td>
+                    <td>${s.fullName}</td>
+                    <td>${s.referralCount}</td>
+                    <td><span class="status-badge completed">${s.completedReferralCount}</span></td>
+                    <td style="color: #fbbf24; font-weight: 700;">PKR ${s.totalReward}</td>
+                    <td>
+                        ${s.rewardPaid
+                            ? '<span class="status-badge paid">✅ Paid</span>'
+                            : `<button class="action-btn pay" onclick="markRewardPaid(${s.rollNumber})"><i class="fas fa-money-bill"></i> Mark Paid</button>`
+                        }
+                    </td>
+                </tr>
+            `).join('');
+
+            document.getElementById('referralPayoutsTable').innerHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Roll</th>
+                            <th>Name</th>
+                            <th>Total Refs</th>
+                            <th>Completed</th>
+                            <th>Reward</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>${tableHTML || '<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,0.3);padding:30px;">No referral rewards yet</td></tr>'}</tbody>
+                </table>
+            `;
+        }
+    } catch (err) {
+        console.error('Error loading referral payouts:', err);
+        showToast('Failed to load referral payouts', 'error');
+    }
+}
+
+// ============================================================
+// MARK REWARD AS PAID
+// ============================================================
+async function markRewardPaid(rollNumber) {
+    if (!confirm(`Mark reward as PAID for student ${rollNumber}?\n\nThis will mark the reward as paid in the system.`)) return;
+
+    try {
+        const res = await fetch(`${API_BASE}/api/admin/mark-reward-paid/${rollNumber}`, { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+            showToast(data.message, 'success');
+            loadReferralPayouts();
+        } else {
+            showToast('Failed to mark as paid', 'error');
+        }
+    } catch (err) {
+        showToast('Error: ' + err.message, 'error');
+    }
+}
+
+// ============================================================
+// VIEW STUDENT (WITH REFERRAL INFO)
 // ============================================================
 async function viewStudent(rollNumber) {
     try {
@@ -1123,6 +1194,20 @@ async function viewStudent(rollNumber) {
                     <div class="detail-row"><span class="label">Top 100</span><span class="value">${s.isTop100 ? '🏆 Yes' : 'No'}</span></div>
                     <div class="detail-row"><span class="label">Test Date</span><span class="value">${s.testDate ? new Date(s.testDate).toLocaleString() : '-'}</span></div>
                 ` : ''}
+
+                ${s.referredBy || s.referralCount > 0 ? `
+                    <div style="margin-top:16px;padding:12px;background:rgba(251,191,36,0.06);border-radius:8px;border:1px solid rgba(251,191,36,0.15);">
+                        <p style="color:#fbbf24;font-weight:700;font-size:13px;margin-bottom:8px;">🎁 Referral Info</p>
+                        ${s.referredBy ? `<div class="detail-row"><span class="label">Referred By (Roll)</span><span class="value" style="color:#fbbf24;">${s.referredBy}</span></div>` : ''}
+                        ${s.referralCount > 0 ? `
+                            <div class="detail-row"><span class="label">Total Referrals</span><span class="value">${s.referralCount}</span></div>
+                            <div class="detail-row"><span class="label">Completed Referrals</span><span class="value" style="color:#00f5b0;">${s.completedReferralCount || 0}</span></div>
+                            <div class="detail-row"><span class="label">Total Reward</span><span class="value" style="color:#fbbf24;">PKR ${s.totalReward || 0}</span></div>
+                            <div class="detail-row"><span class="label">Reward Paid</span><span class="value">${s.rewardPaid ? '✅ Yes' : '⏳ Pending'}</span></div>
+                        ` : ''}
+                    </div>
+                ` : ''}
+
                 <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.04);">
                     <p style="font-size:11px;color:rgba(255,255,255,0.3);">Registered: ${new Date(s.createdAt).toLocaleString()}</p>
                 </div>
@@ -1147,11 +1232,10 @@ function editStudent(rollNumber) {
         '4. Enter "marks-complete" to set marks AND complete\n\n' +
         'Enter your choice:'
     );
-    
+
     if (action === null) return;
-    
     const choice = action.toLowerCase().trim();
-    
+
     if (choice === 'marks') {
         const newMarks = prompt('Enter new total marks for this student (0-100):');
         if (newMarks !== null) {
@@ -1178,7 +1262,7 @@ function editStudent(rollNumber) {
         }
         return;
     }
-    
+
     if (choice === 'complete') {
         if (confirm(`Mark student ${rollNumber} as test COMPLETED?`)) {
             fetch(`${API_BASE}/api/admin/student/${rollNumber}/test-status`, {
@@ -1199,7 +1283,7 @@ function editStudent(rollNumber) {
         }
         return;
     }
-    
+
     if (choice === 'pending') {
         if (confirm(`Mark student ${rollNumber} as test PENDING?`)) {
             fetch(`${API_BASE}/api/admin/student/${rollNumber}/test-status`, {
@@ -1220,7 +1304,7 @@ function editStudent(rollNumber) {
         }
         return;
     }
-    
+
     if (choice === 'marks-complete') {
         const newMarks = prompt('Enter total marks for this student (0-100):');
         if (newMarks !== null) {
@@ -1250,7 +1334,7 @@ function editStudent(rollNumber) {
         }
         return;
     }
-    
+
     showToast('❌ Invalid choice. Please enter: marks, complete, pending, or marks-complete', 'error');
 }
 
@@ -1265,7 +1349,7 @@ function quickComplete(rollNumber) {
         .then(res => res.json())
         .then(data => {
             if (data.success) {
-                showToast(`✅ Student ${rollNumber} completed with ${data.student.totalMarks} marks!`, 'success');
+                showToast(`✅ Student ${rollNumber} completed!`, 'success');
                 loadStudents(currentPage);
             } else {
                 showToast('❌ Failed to complete test', 'error');
@@ -1327,6 +1411,9 @@ console.log('🔑 Password: admin123');
 console.log('');
 console.log('🔄 Server Keep-Alive Active (every 4 minutes)');
 console.log('📊 Server status indicator in top bar');
+console.log('');
+console.log('🎁 Referral Program Active (PKR 50 per referral)');
+console.log('💰 Referral Payouts page available in sidebar');
 console.log('');
 console.log('📝 Edit Options:');
 console.log('   - "marks" = Update marks only');

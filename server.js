@@ -34,7 +34,7 @@ mongoose.connect(MONGO_URI)
     .then(() => console.log('✅ MongoDB Atlas Connected Successfully'))
     .catch(err => console.error('❌ MongoDB Connection Error:', err.message));
 
-// ✅ Student Schema
+// ✅ Student Schema (WITH REFERRAL FIELDS)
 const StudentSchema = new mongoose.Schema({
     rollNumber: { type: Number, required: true, unique: true },
     fullName: { type: String, required: true },
@@ -61,7 +61,14 @@ const StudentSchema = new mongoose.Schema({
     testDate: { type: Date },
     isTop100: { type: Boolean, default: false },
     rank: { type: Number, default: 0 },
-    createdAt: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now },
+
+    // ===== REFERRAL FIELDS =====
+    referredBy: { type: Number, default: null },
+    referralCount: { type: Number, default: 0 },
+    completedReferralCount: { type: Number, default: 0 },
+    totalReward: { type: Number, default: 0 },
+    rewardPaid: { type: Boolean, default: false }
 });
 
 const Student = mongoose.model('Student', StudentSchema);
@@ -119,16 +126,12 @@ async function recalculateRanks() {
 }
 
 // ============================================================
-// API ROUTES
-// ============================================================
-
-// ============================================================
 // Serve Static Files
 // ============================================================
 app.use(express.static(path.join(__dirname)));
 
 // ============================================================
-// ✅ POST: Register Student
+// ✅ POST: Register Student (WITH REFERRAL)
 // ============================================================
 const storage = multer.memoryStorage();
 const upload = multer({
@@ -145,7 +148,7 @@ const upload = multer({
 
 app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
     try {
-        const { fullName, cnicOrBform, email, phone, institution, paymentTrxId } = req.body;
+        const { fullName, cnicOrBform, email, phone, institution, paymentTrxId, referralCode } = req.body;
 
         if (!req.file) {
             return res.status(400).json({ success: false, message: 'Payment proof is required!' });
@@ -161,6 +164,19 @@ app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
 
         const base64Image = req.file.buffer.toString('base64');
 
+        // ===== CHECK REFERRAL CODE =====
+        let referredBy = null;
+        if (referralCode && referralCode.trim() !== '') {
+            const refRoll = parseInt(referralCode.trim());
+            if (!isNaN(refRoll)) {
+                const referrer = await Student.findOne({ rollNumber: refRoll });
+                if (referrer) {
+                    referredBy = refRoll;
+                    console.log(`🎁 Referral detected: New student ${newRollNumber} referred by ${refRoll}`);
+                }
+            }
+        }
+
         const student = new Student({
             rollNumber: newRollNumber,
             fullName,
@@ -169,6 +185,7 @@ app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
             phone,
             institution,
             paymentTrxId,
+            referredBy: referredBy,
             paymentProof: {
                 data: base64Image,
                 contentType: req.file.mimetype
@@ -176,7 +193,21 @@ app.post('/api/apply', upload.single('paymentProof'), async (req, res) => {
         });
 
         await student.save();
-        res.json({ success: true, rollNumber: newRollNumber, message: 'Registration Successful!' });
+
+        // ===== UPDATE REFERRER'S COUNT =====
+        if (referredBy) {
+            await Student.updateOne(
+                { rollNumber: referredBy },
+                { $inc: { referralCount: 1 } }
+            );
+        }
+
+        res.json({
+            success: true,
+            rollNumber: newRollNumber,
+            referralLink: `${req.protocol}://${req.get('host')}/?ref=${newRollNumber}`,
+            message: 'Registration Successful!'
+        });
     } catch (err) {
         console.error('❌ Registration Error:', err);
         res.status(500).json({ success: false, message: err.message });
@@ -456,7 +487,7 @@ app.post('/api/submit-answer', async (req, res) => {
 });
 
 // ============================================================
-// ✅ POST: Submit Final Result
+// ✅ POST: Submit Final Result (WITH REFERRAL REWARD TRIGGER)
 // ============================================================
 app.post('/api/submit-final-result', async (req, res) => {
     try {
@@ -479,6 +510,29 @@ app.post('/api/submit-final-result', async (req, res) => {
 
         await student.save();
         await recalculateRanks();
+
+        // ===== REFERRAL REWARD TRIGGER =====
+        // Jab referred user test complete kare, referrer ka count update karo
+        if (student.referredBy) {
+            const referrer = await Student.findOne({ rollNumber: student.referredBy });
+            if (referrer) {
+                // Recalculate completed referral count (accurate count)
+                const completedCount = await Student.countDocuments({
+                    referredBy: student.referredBy,
+                    testCompleted: true
+                });
+
+                await Student.updateOne(
+                    { rollNumber: student.referredBy },
+                    {
+                        completedReferralCount: completedCount,
+                        totalReward: completedCount * 50
+                    }
+                );
+
+                console.log(`💰 Referral reward updated: Roll ${student.referredBy} → ${completedCount} completed, PKR ${completedCount * 50}`);
+            }
+        }
 
         const updated = await Student.findOne({ rollNumber: Number(rollNumber) });
 
@@ -695,6 +749,139 @@ app.put('/api/admin/student/:rollNumber/test-status', async (req, res) => {
 });
 
 // ============================================================
+// ✅ REFERRAL: Get Stats for a Student
+// ============================================================
+app.get('/api/referral-stats/:rollNumber', async (req, res) => {
+    try {
+        const rollNumber = Number(req.params.rollNumber);
+        const student = await Student.findOne({ rollNumber });
+
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+
+        // Get all referrals
+        const referrals = await Student.find({ referredBy: rollNumber })
+            .select('rollNumber fullName testCompleted totalMarks percentage createdAt')
+            .sort({ createdAt: -1 });
+
+        const completedReferrals = referrals.filter(r => r.testCompleted);
+        const totalReward = completedReferrals.length * 100;
+
+        // Update the student's count (in case it's stale)
+        student.referralCount = referrals.length;
+        student.completedReferralCount = completedReferrals.length;
+        student.totalReward = totalReward;
+        await student.save();
+
+        res.json({
+            success: true,
+            rollNumber: student.rollNumber,
+            fullName: student.fullName,
+            referralLink: `${req.protocol}://${req.get('host')}/?ref=${student.rollNumber}`,
+            totalReferrals: referrals.length,
+            completedReferrals: completedReferrals.length,
+            pendingReferrals: referrals.length - completedReferrals.length,
+            totalReward: totalReward,
+            rewardPaid: student.rewardPaid,
+            referrals: referrals.map(r => ({
+                rollNumber: r.rollNumber,
+                name: r.fullName,
+                testCompleted: r.testCompleted,
+                marks: r.testCompleted ? r.totalMarks : null,
+                percentage: r.testCompleted ? r.percentage : null,
+                registeredAt: r.createdAt
+            }))
+        });
+    } catch (err) {
+        console.error('❌ Referral Stats Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ REFERRAL: Leaderboard
+// ============================================================
+app.get('/api/referral-leaderboard', async (req, res) => {
+    try {
+        const leaderboard = await Student.find({
+            referralCount: { $gt: 0 }
+        })
+        .sort({ completedReferralCount: -1, referralCount: -1 })
+        .limit(50)
+        .select('rollNumber fullName referralCount completedReferralCount totalReward');
+
+        res.json({
+            success: true,
+            count: leaderboard.length,
+            leaderboard: leaderboard.map((s, idx) => ({
+                rank: idx + 1,
+                rollNumber: s.rollNumber,
+                name: s.fullName,
+                totalReferrals: s.referralCount,
+                completedReferrals: s.completedReferralCount,
+                reward: s.completedReferralCount * 100
+            }))
+        });
+    } catch (err) {
+        console.error('❌ Leaderboard Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ ADMIN: Mark Reward as Paid
+// ============================================================
+app.post('/api/admin/mark-reward-paid/:rollNumber', async (req, res) => {
+    try {
+        const rollNumber = Number(req.params.rollNumber);
+        const student = await Student.findOne({ rollNumber });
+
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found!' });
+        }
+
+        student.rewardPaid = true;
+        await student.save();
+
+        res.json({
+            success: true,
+            message: `Reward of PKR ${student.totalReward} marked as PAID for Roll ${rollNumber}`
+        });
+    } catch (err) {
+        console.error('❌ Mark Reward Paid Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
+// ✅ ADMIN: Get All Referral Payouts
+// ============================================================
+app.get('/api/admin/referral-payouts', async (req, res) => {
+    try {
+        const students = await Student.find({
+            completedReferralCount: { $gt: 0 }
+        })
+        .sort({ totalReward: -1 })
+        .select('rollNumber fullName referralCount completedReferralCount totalReward rewardPaid');
+
+        const totalPayout = students.reduce((sum, s) => sum + (s.rewardPaid ? 0 : s.totalReward), 0);
+        const paidCount = students.filter(s => s.rewardPaid).length;
+
+        res.json({
+            success: true,
+            totalPayoutPending: totalPayout,
+            totalStudentsWithRewards: students.length,
+            paidCount,
+            students
+        });
+    } catch (err) {
+        console.error('❌ Referral Payouts Error:', err);
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// ============================================================
 // ✅ Serve HTML Files
 // ============================================================
 app.get('/admin', (req, res) => {
@@ -717,6 +904,7 @@ if (process.env.NODE_ENV !== 'production') {
         console.log(`🚀 Server running on port ${PORT}`);
         console.log(`✅ MongoDB Connected`);
         console.log(`✅ 100 MCQs Loaded`);
+        console.log(`✅ Referral Program Active (PKR 100 per referral)`);
         console.log(`🔗 http://localhost:${PORT}/`);
         console.log(`🔗 Admin Panel: http://localhost:${PORT}/admin`);
         console.log(`🔑 Admin: admin / admin123`);

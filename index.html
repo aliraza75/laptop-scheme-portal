@@ -1379,6 +1379,7 @@
                 <li><a id="nav-apply" onclick="showPage('apply')"><i class="fas fa-pen-to-square"></i> Apply</a></li>
                 <li><a id="nav-test" onclick="showPage('test')"><i class="fas fa-file-lines"></i> Test</a></li>
                 <li><a id="nav-results" onclick="showPage('results')"><i class="fas fa-chart-simple"></i> Results</a></li>
+                <li><a id="nav-referral" onclick="showPage('referral')"><i class="fas fa-gift"></i> Referral</a></li>
             </ul>
         </div>
     </header>
@@ -1427,7 +1428,6 @@
                         <i class="fas fa-eye"></i> View Method
                     </button>
                 </div>
-                <!-- CHANGED: inline grid style replaced with class -->
                 <div class="guidelines-grid">
                     <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
                         <span style="background: var(--gradient-secondary); color: #050810; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">1</span>
@@ -1524,6 +1524,14 @@
                             <label><i class="fas fa-building-columns"></i> Institution</label>
                             <input type="text" id="institution" name="institution" placeholder="School / College / University" required>
                         </div>
+                        <div class="form-group full">
+                            <label><i class="fas fa-gift"></i> Referral Code (Auto-filled from link)</label>
+                            <input type="text" id="referralCode" name="referralCode" placeholder="No referral code" readonly 
+                                style="background: rgba(0, 245, 176, 0.04); border-color: rgba(0, 245, 176, 0.2); cursor: not-allowed;">
+                            <small style="color: rgba(255,255,255,0.3); font-size: 11px; display: block; margin-top: 4px;">
+                                Ye code automatic aapke referral link se fill hota hai
+                            </small>
+                        </div>
                         <div class="form-group">
                             <label><i class="fas fa-receipt"></i> TRX ID</label>
                             <input type="text" id="paymentTrxId" name="paymentTrxId" placeholder="e.g. xxxx xxxxxxxx" required>
@@ -1545,7 +1553,6 @@
         <div id="test" class="page">
             <div class="glass">
                 <h3><i class="fas fa-file-lines"></i> Test Regulations</h3>
-                <!-- CHANGED: inline grid style replaced with class -->
                 <div class="test-grid">
                     <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); font-size: 14px;">
                         <i class="fas fa-calendar-day" style="color: var(--secondary); width: 18px;"></i>
@@ -1654,6 +1661,85 @@
             </div>
         </div>
 
+        <!-- ===== REFERRAL ===== -->
+        <div id="referral" class="page">
+            <div class="glass">
+                <div class="head">
+                    <h3><i class="fas fa-gift"></i> Referral Program</h3>
+                    <span style="color: var(--gold); font-weight: 700; font-size: 13px;">💰 PKR 100 per referral</span>
+                </div>
+                
+                <p style="color: rgba(255,255,255,0.5); margin-bottom: 18px; font-size: 14px;">
+                    Refer your freinds and earn<strong style="color: var(--gold);">PKR 100</strong> per refer. 
+                    Rewards will be sent to you the test has taken.
+                </p>
+
+                <!-- Check Referral Stats -->
+                <div class="result-check-section">
+                    <p style="color: rgba(255,255,255,0.5); margin-bottom: 12px; font-size: 13px;">
+                        <i class="fas fa-search" style="color: var(--secondary);"></i> Enter your Roll number to see your referral status :
+                    </p>
+                    <div class="result-input-group">
+                        <input type="text" id="referralRollInput" placeholder="e.g. 190100">
+                        <button class="btn btn-accent" onclick="checkReferralStats()">
+                            <i class="fas fa-chart-line"></i> Check Stats
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Display -->
+                <div id="referralStatsBox" class="result-display-box">
+                    <div style="text-align: center; margin-bottom: 16px;">
+                        <p style="color: rgba(255,255,255,0.4); font-size: 12px; margin-bottom: 6px;">
+                            🔗 Your referral link (Copy it and send to your freinds to earn)
+                        </p>
+                        <input type="text" id="myReferralLink" readonly 
+                            style="width: 100%; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(0, 245, 176, 0.2); border-radius: 8px; color: var(--secondary); font-size: 12px; font-family: monospace; text-align: center; margin: 8px 0;">
+                        <button class="btn btn-primary" onclick="copyMyReferralLink()" style="padding: 8px 18px; font-size: 12px; min-height: 34px;">
+                            <i class="fas fa-copy"></i> Copy Link
+                        </button>
+                    </div>
+                    
+                    <div class="result-grid">
+                        <div class="r-item">
+                            <span class="r-label">Total Referrals</span>
+                            <span class="r-value secondary" id="totalRefs">0</span>
+                        </div>
+                        <div class="r-item">
+                            <span class="r-label">Test Completed</span>
+                            <span class="r-value accent" id="completedRefs">0</span>
+                        </div>
+                        <div class="r-item">
+                            <span class="r-label">Pending</span>
+                            <span class="r-value" id="pendingRefs">0</span>
+                        </div>
+                        <div class="r-item">
+                            <span class="r-label">Total Reward</span>
+                            <span class="r-value gold" id="totalReward">PKR 0</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 16px;">
+                        <p style="color: rgba(255,255,255,0.4); font-size: 12px; margin-bottom: 8px;">
+                            <i class="fas fa-users"></i>Your Referrals:
+                        </p>
+                        <div id="referralListContainer" style="max-height: 250px; overflow-y: auto;"></div>
+                    </div>
+
+                    <p style="color: rgba(255,255,255,0.3); font-size: 11px; margin-top: 14px; text-align: center;">
+                        💰 Rewards will be distributed after test completion.
+                    </p>
+                </div>
+
+                <!-- Leaderboard Button -->
+                <div style="text-align: center; margin-top: 18px;">
+                    <button class="btn btn-secondary" onclick="showReferralLeaderboard()">
+                        <i class="fas fa-trophy"></i> View Leaderboard
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
@@ -1672,6 +1758,12 @@
         let studentResults = {};
         let countdownTimer = null;
         let usedTrxIds = [];
+
+        // ===== REFERRAL: URL se code auto-detect =====
+        function getReferralCodeFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('ref') || '';
+        }
 
         let currentQuizData = [
             { id: 1, question: "What is the SI unit of electric charge?", options: ["Ampere", "Coulomb", "Volt", "Ohm"], answer: "Coulomb" },
@@ -1961,9 +2053,11 @@
             try {
                 const res = await fetch(`${API_BASE}/api/apply`, { method: 'POST', body: data });
                 const result = await res.json();
+                
                 if (result.success) {
                     usedTrxIds.push(trxId);
                     saveUsedTrxIds();
+                    
                     studentResults[result.rollNumber] = {
                         totalMarks: 0, answers: [], totalQuestions: currentQuizData.length,
                         testCompleted: false, testStarted: false,
@@ -1975,13 +2069,155 @@
                         percentage: 0, timestamp: new Date().toISOString()
                     };
                     saveResultsToLocalStorage();
-                    showModal(`Registration Successful! Roll Number: ${result.rollNumber}`, 'success', '✅ Registration Complete');
+
+                    // ===== SHOW REFERRAL LINK IN MODAL =====
+                    const referralLink = result.referralLink || `${window.location.origin}/?ref=${result.rollNumber}`;
+                    const modalHtml = `
+                        <div style="text-align:center;">
+                            <p style="color: var(--secondary); font-size: 16px; font-weight: 700; margin-bottom: 12px;">
+                                🎉 Registration Successful!
+                            </p>
+                            <p style="color: #fff; font-size: 14px; margin-bottom: 18px;">
+                                Aapka Roll Number: <strong style="color: var(--gold); font-size: 18px;">${result.rollNumber}</strong>
+                            </p>
+                            
+                            <div style="background: rgba(0, 245, 176, 0.06); border: 1px dashed var(--secondary); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                                <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin-bottom: 8px;">
+                                    🔗 <strong>Aapka Referral Link</strong> (ise doston ko share karein)
+                                </p>
+                                <input type="text" id="referralLinkInput" value="${referralLink}" readonly 
+                                    style="width: 100%; padding: 10px; background: rgba(0,0,0,0.4); border: 1px solid rgba(0, 245, 176, 0.3); border-radius: 8px; color: var(--secondary); font-size: 12px; font-family: monospace; text-align: center; margin-bottom: 10px;">
+                                <button class="btn btn-primary" onclick="copyReferralLink()" style="padding: 10px 22px; font-size: 13px; min-height: 38px;">
+                                    <i class="fas fa-copy"></i> Copy Referral Link
+                                </button>
+                            </div>
+                            
+                            <p style="color: rgba(255,255,255,0.5); font-size: 12px; line-height: 1.7;">
+                                🎁 <strong style="color: var(--gold);">Har successful referral par PKR 50</strong><br>
+                                (Jab aapka referred dost test de de)
+                            </p>
+                        </div>
+                    `;
+                    
+                    showModal('', 'success', '✅ Registration Complete', modalHtml);
                     form.reset();
+                    
+                    // Reset referral code field
+                    const refCode = getReferralCodeFromURL();
+                    document.getElementById('referralCode').value = refCode;
                 } else {
                     showModal(result.message, 'error', '❌ Registration Failed');
                 }
             } catch (error) {
                 showModal('Unable to connect to server. Please try again.', 'error', '❌ Connection Error');
+            }
+        }
+
+        // ===== COPY REFERRAL LINK (Registration Modal) =====
+        function copyReferralLink() {
+            const input = document.getElementById('referralLinkInput');
+            if (input) {
+                input.select();
+                input.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(input.value).then(() => {
+                    showToast('Referral link copied! Share with friends.', 'success', '📋 Copied');
+                }).catch(() => {
+                    document.execCommand('copy');
+                    showToast('Referral link copied!', 'success', '📋 Copied');
+                });
+            }
+        }
+
+        // ===== REFERRAL: Check Stats =====
+        async function checkReferralStats() {
+            const rollNumber = document.getElementById('referralRollInput').value.trim();
+            if (!rollNumber) {
+                showToast('Please enter your Roll Number', 'warning');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/api/referral-stats/${rollNumber}`);
+                const data = await res.json();
+
+                if (!data.success) {
+                    showToast(data.message || 'Roll Number not found', 'error');
+                    return;
+                }
+
+                document.getElementById('myReferralLink').value = data.referralLink;
+                document.getElementById('totalRefs').textContent = data.totalReferrals;
+                document.getElementById('completedRefs').textContent = data.completedReferrals;
+                document.getElementById('pendingRefs').textContent = data.pendingReferrals;
+                document.getElementById('totalReward').textContent = 'PKR ' + data.totalReward;
+
+                let listHtml = '';
+                if (data.referrals.length === 0) {
+                    listHtml = '<p style="color: rgba(255,255,255,0.3); font-size: 12px; text-align: center; padding: 12px;">Abhi tak koi referral nahi. Apna link share karein!</p>';
+                } else {
+                    data.referrals.forEach(r => {
+                        const status = r.testCompleted 
+                            ? `<span style="color: var(--secondary); font-size: 11px;">✅ Test Diya${r.marks !== null ? ' (' + r.marks + ')' : ''}</span>` 
+                            : '<span style="color: var(--gold); font-size: 11px;">⏳ Pending</span>';
+                        listHtml += `
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px; margin-bottom: 6px; font-size: 12px;">
+                                <span style="color: #fff;">${r.name}</span>
+                                <span style="color: rgba(255,255,255,0.4); font-family: monospace;">${r.rollNumber}</span>
+                                ${status}
+                            </div>
+                        `;
+                    });
+                }
+                document.getElementById('referralListContainer').innerHTML = listHtml;
+                document.getElementById('referralStatsBox').classList.add('show');
+            } catch (error) {
+                showToast('Server error. Please try again.', 'error');
+            }
+        }
+
+        function copyMyReferralLink() {
+            const input = document.getElementById('myReferralLink');
+            if (input) {
+                input.select();
+                input.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(input.value).then(() => {
+                    showToast('Referral link copied!', 'success', '📋 Copied');
+                }).catch(() => {
+                    document.execCommand('copy');
+                    showToast('Referral link copied!', 'success', '📋 Copied');
+                });
+            }
+        }
+
+        // ===== REFERRAL: Leaderboard =====
+        async function showReferralLeaderboard() {
+            try {
+                const res = await fetch(`${API_BASE}/api/referral-leaderboard`);
+                const data = await res.json();
+
+                let html = '';
+                if (data.leaderboard.length === 0) {
+                    html = '<p style="text-align: center; color: rgba(255,255,255,0.4); padding: 20px;">Abhi tak koi referral nahi. Pehla banein!</p>';
+                } else {
+                    html = '<div class="top100-container"><table class="top100-table"><thead><tr><th>Rank</th><th>Roll</th><th>Name</th><th>Referrals</th><th>Reward</th></tr></thead><tbody>';
+                    data.leaderboard.forEach(s => {
+                        let cls = s.rank === 1 ? 'rank-1' : s.rank === 2 ? 'rank-2' : s.rank === 3 ? 'rank-3' : s.rank <= 10 ? 'rank-top' : '';
+                        html += `<tr class="${cls}">
+                            <td><strong>#${s.rank}</strong></td>
+                            <td>${s.rollNumber}</td>
+                            <td>${s.name}</td>
+                            <td>${s.completedReferrals} / ${s.totalReferrals}</td>
+                            <td style="color: var(--gold); font-weight: 700;">PKR ${s.reward}</td>
+                        </tr>`;
+                    });
+                    html += '</tbody></table></div>';
+                }
+
+                showModal('', 'info', '🏆 Referral Leaderboard', html, '<button class="btn btn-primary" onclick="closeModal()">Close</button>');
+                document.getElementById('modalIcon').className = 'modal-icon gold';
+                document.getElementById('modalIcon').textContent = '🏆';
+            } catch (error) {
+                showToast('Server error', 'error');
             }
         }
 
@@ -2011,6 +2247,21 @@
                     studentResults[selectedRollNumber].percentage = ((marks / total) * 100);
                     studentResults[selectedRollNumber].timestamp = new Date().toISOString();
                     saveResultsToLocalStorage();
+
+                    // ===== NOTIFY BACKEND (TRIGGER REFERRAL REWARD) =====
+                    fetch(`${API_BASE}/api/submit-final-result`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            rollNumber: selectedRollNumber,
+                            totalMarks: marks,
+                            totalQuestions: total,
+                            percentage: ((marks / total) * 100),
+                            answers: studentResults[selectedRollNumber].answers
+                        })
+                    }).then(res => res.json())
+                      .then(data => console.log('✅ Test result saved:', data))
+                      .catch(err => console.error('Reward trigger failed:', err));
                 }
                 const quizCard = document.getElementById('liveQuizCard');
                 if (quizCard) {
@@ -2075,6 +2326,18 @@
         window.addEventListener('load', function() {
             loadSavedResults();
             loadUsedTrxIds();
+            
+            // ===== AUTO-FILL REFERRAL CODE FROM URL =====
+            const refCode = getReferralCodeFromURL();
+            if (refCode) {
+                const refField = document.getElementById('referralCode');
+                if (refField) {
+                    refField.value = refCode;
+                    setTimeout(() => {
+                        showToast(`🎁 Referral code "${refCode}" auto-applied!`, 'success', 'Referral Applied');
+                    }, 800);
+                }
+            }
         });
 
         window.addEventListener('beforeunload', function() {
@@ -2082,6 +2345,7 @@
             saveUsedTrxIds();
         });
 
+        // ===== EXPOSE FUNCTIONS TO GLOBAL SCOPE =====
         window.showPage = showPage;
         window.handleApplySubmit = handleApplySubmit;
         window.submitCurrentMcq = submitCurrentMcq;
@@ -2092,6 +2356,11 @@
         window.closeModal = closeModal;
         window.showPastYearTop100 = showPastYearTop100;
         window.pastYearTop100 = pastYearTop100;
+        window.getReferralCodeFromURL = getReferralCodeFromURL;
+        window.copyReferralLink = copyReferralLink;
+        window.checkReferralStats = checkReferralStats;
+        window.copyMyReferralLink = copyMyReferralLink;
+        window.showReferralLeaderboard = showReferralLeaderboard;
     </script>
 </body>
 </html>
