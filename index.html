@@ -6,37 +6,17 @@
     <title>National Laptop Distribution Scheme & Aptitude Test Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <meta name="description" content="Apply online for Nation Trust Laptop Scheme (ntlspunjab). Check eligibility, registration process, and get latest updates for Punjab laptop scheme 2026.">
-    <meta name="keywords" content="Nation Trust, Laptop Scheme, Punjab Laptop Scheme 2026, Maryam Nawaz Laptop Scheme, Free Laptop Scheme, ntlspunjab, CM Laptop Scheme">
-    <meta name="robots" content="index, follow">
     <style>
         :root {
             --primary: #0a0e1a;
-            --primary-light: #141b33;
-            --primary-dark: #050810;
             --secondary: #00f5b0;
-            --secondary-dark: #00c992;
             --accent: #8b5cf6;
             --accent-light: #a78bfa;
-            --accent-dark: #6d28d9;
             --gold: #fbbf24;
-            --gold-light: #fcd34d;
-            --gold-dark: #d97706;
-            --pink: #ec4899;
-            --pink-light: #f472b6;
-            --gradient-primary: linear-gradient(145deg, #0a0e1a 0%, #141b33 40%, #1a2a5c 100%);
             --gradient-secondary: linear-gradient(135deg, #00f5b0 0%, #00c992 50%, #00f5b0 100%);
             --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 50%, #8b5cf6 100%);
-            --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fbbf24 100%);
-            --gradient-pink: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
             --gradient-hero: linear-gradient(145deg, #0a0e1a 0%, #141b33 30%, #1a2a5c 60%, #0a0e1a 100%);
-            --glass-bg: rgba(255, 255, 255, 0.02);
-            --glass-border: rgba(255, 255, 255, 0.04);
             --glass-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-            --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.6);
             --radius: 24px;
             --radius-sm: 14px;
             --radius-full: 9999px;
@@ -82,20 +62,15 @@
             100% { opacity: 1; transform: scale(1.05); }
         }
 
-        .particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
+        .particles { position: absolute; inset: 0; overflow: hidden; }
         .particles span {
             position: absolute;
-            width: 3px;
-            height: 3px;
+            width: 3px; height: 3px;
             background: rgba(255, 255, 255, 0.06);
             border-radius: 50%;
             animation: floatUp linear infinite;
         }
-        .particles span:nth-child(1) { left: 5%; animation-duration: 28s; animation-delay: 0s; width: 5px; height: 5px; background: rgba(0, 245, 176, 0.1); }
+        .particles span:nth-child(1) { left: 5%; animation-duration: 28s; width: 5px; height: 5px; background: rgba(0, 245, 176, 0.1); }
         .particles span:nth-child(2) { left: 15%; animation-duration: 22s; animation-delay: 3s; }
         .particles span:nth-child(3) { left: 25%; animation-duration: 32s; animation-delay: 6s; width: 7px; height: 7px; background: rgba(139, 92, 246, 0.08); }
         .particles span:nth-child(4) { left: 35%; animation-duration: 18s; animation-delay: 2s; }
@@ -115,9 +90,7 @@
         }
 
         header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: sticky; top: 0; z-index: 1000;
             background: rgba(5, 8, 16, 0.7);
             backdrop-filter: blur(24px) saturate(1.8);
             -webkit-backdrop-filter: blur(24px) saturate(1.8);
@@ -125,114 +98,48 @@
             padding: 10px 0;
             transition: var(--transition);
         }
-        header.scrolled {
-            background: rgba(5, 8, 16, 0.92);
-            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
-        }
+        header.scrolled { background: rgba(5, 8, 16, 0.92); box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5); }
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            max-width: 1200px; margin: 0 auto; padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 10px;
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            cursor: pointer;
-        }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
         .logo-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: var(--radius-sm);
+            width: 42px; height: 42px; border-radius: var(--radius-sm);
             background: var(--gradient-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: #050810;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: #050810;
             box-shadow: 0 4px 24px rgba(0, 245, 176, 0.25);
-            transition: var(--transition);
-            flex-shrink: 0;
+            transition: var(--transition); flex-shrink: 0;
         }
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(-6deg);
-            box-shadow: 0 6px 32px rgba(0, 245, 176, 0.4);
-        }
-        .logo-text {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-        }
+        .logo-icon:hover { transform: scale(1.05) rotate(-6deg); box-shadow: 0 6px 32px rgba(0, 245, 176, 0.4); }
+        .logo-text { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.5px; line-height: 1.2; }
         .logo-text span {
             background: var(--gradient-secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .logo-text small {
-            display: block;
-            font-size: 10px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.3);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 4px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+        .logo-text small { display: block; font-size: 10px; font-weight: 400; color: rgba(255, 255, 255, 0.3); letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-links { list-style: none; display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
         .nav-links li a {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            padding: 7px 16px;
-            border-radius: var(--radius-full);
-            transition: var(--transition);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
+            color: rgba(255, 255, 255, 0.5); text-decoration: none;
+            font-weight: 600; font-size: 13px; padding: 7px 16px;
+            border-radius: var(--radius-full); transition: var(--transition);
+            cursor: pointer; display: flex; align-items: center; gap: 8px; position: relative;
         }
         .nav-links li a i { font-size: 13px; opacity: 0.6; transition: var(--transition); }
         .nav-links li a:hover { color: #fff; background: rgba(255, 255, 255, 0.04); }
         .nav-links li a:hover i { opacity: 1; }
-        .nav-links li a.active-link {
-            color: #fff;
-            background: rgba(0, 245, 176, 0.06);
-        }
+        .nav-links li a.active-link { color: #fff; background: rgba(0, 245, 176, 0.06); }
         .nav-links li a.active-link::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 2px;
-            background: var(--gradient-secondary);
-            border-radius: 10px;
+            content: ''; position: absolute; bottom: 2px; left: 50%;
+            transform: translateX(-50%); width: 16px; height: 2px;
+            background: var(--gradient-secondary); border-radius: 10px;
         }
 
         .container {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 0 16px;
-            flex: 1;
-            width: 100%;
-            position: relative;
-            z-index: 1;
+            max-width: 1100px; margin: 20px auto; padding: 0 16px;
+            flex: 1; width: 100%; position: relative; z-index: 1;
         }
 
         .page { display: none; animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -243,22 +150,14 @@
         }
 
         .hero {
-            position: relative;
-            background: var(--gradient-hero);
-            padding: 60px 32px;
-            border-radius: var(--radius);
-            text-align: center;
-            color: #fff;
-            margin-bottom: 28px;
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            isolation: isolate;
+            position: relative; background: var(--gradient-hero);
+            padding: 60px 32px; border-radius: var(--radius);
+            text-align: center; color: #fff; margin-bottom: 28px;
+            overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.04); isolation: isolate;
         }
         .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
+            content: ''; position: absolute; inset: 0;
             background:
                 radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(0, 245, 176, 0.08) 0%, transparent 50%),
@@ -267,14 +166,10 @@
         }
         .hero>* { position: relative; z-index: 1; }
         .hero .shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            z-index: 0;
-            animation: shapeFloat 10s ease-in-out infinite alternate;
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3;
+            z-index: 0; animation: shapeFloat 10s ease-in-out infinite alternate;
         }
-        .hero .shape-1 { width: 350px; height: 350px; background: #8b5cf6; top: -120px; right: -80px; animation-delay: 0s; }
+        .hero .shape-1 { width: 350px; height: 350px; background: #8b5cf6; top: -120px; right: -80px; }
         .hero .shape-2 { width: 250px; height: 250px; background: #00f5b0; bottom: -80px; left: -60px; animation-delay: 2s; }
         .hero .shape-3 { width: 180px; height: 180px; background: #fbbf24; top: 40%; left: 5%; animation-delay: 4s; opacity: 0.15; }
         @keyframes shapeFloat {
@@ -283,49 +178,46 @@
         }
         .hero .glow {
             background: linear-gradient(135deg, #ffffff 0%, #00f5b0 30%, #8b5cf6 60%, #fbbf24 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; background-size: 300% 300%;
             animation: shimmerGlow 5s ease-in-out infinite;
         }
         @keyframes shimmerGlow {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
+        .badge-premium i { color: var(--gold); font-size: 14px; }
+        .hero h2 {
+            font-size: 40px; font-weight: 900; margin-bottom: 14px;
+            line-height: 1.12; letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 15px; max-width: 580px; margin: 0 auto 26px;
+            opacity: 0.7; line-height: 1.9;
+        }
+        .hero-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 
         .affiliation-badge-premium {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            background: rgba(10, 14, 26, 0.6);
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 14px; background: rgba(10, 14, 26, 0.6);
             border: 1.5px solid rgba(0, 245, 176, 0.2);
             border-radius: var(--radius-full);
-            padding: 12px 28px 12px 24px;
-            margin: 16px auto 22px auto;
-            max-width: 520px;
-            backdrop-filter: blur(16px);
+            padding: 12px 28px 12px 24px; margin: 16px auto 22px auto;
+            max-width: 520px; backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            position: relative;
-            cursor: default;
+            position: relative; cursor: default;
             box-shadow: 0 0 30px rgba(0, 245, 176, 0.05);
         }
         .affiliation-badge-premium::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: var(--radius-full);
-            padding: 2px;
+            content: ''; position: absolute; inset: -2px;
+            border-radius: var(--radius-full); padding: 2px;
             background: linear-gradient(135deg, #00f5b0, #00d4ff, #8b5cf6, #fbbf24, #00f5b0);
             background-size: 400% 400%;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: glowingBorder 4s ease-in-out infinite;
-            z-index: 0;
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            animation: glowingBorder 4s ease-in-out infinite; z-index: 0;
         }
         @keyframes glowingBorder {
             0%, 100% { background-position: 0% 50%; opacity: 0.6; }
@@ -333,48 +225,13 @@
             50% { background-position: 100% 50%; opacity: 0.8; }
             75% { background-position: 50% 50%; opacity: 1; }
         }
-        .affiliation-badge-premium::after {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border-radius: var(--radius-full);
-            background: linear-gradient(135deg, rgba(0, 245, 176, 0.15), rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1), rgba(251, 191, 36, 0.08));
-            filter: blur(20px);
-            z-index: -1;
-            animation: outerGlow 3s ease-in-out infinite alternate;
-            opacity: 0.5;
-        }
-        @keyframes outerGlow {
-            0% { opacity: 0.3; transform: scale(0.95); }
-            100% { opacity: 0.8; transform: scale(1.05); }
-        }
-        .affiliation-badge-premium:hover {
-            transform: translateY(-4px) scale(1.02);
-            border-color: rgba(0, 245, 176, 0.5);
-            box-shadow: 0 0 40px rgba(0, 245, 176, 0.15), 0 0 80px rgba(0, 245, 176, 0.05), 0 0 120px rgba(139, 92, 246, 0.05);
-        }
-        .affiliation-badge-premium:hover::before {
-            animation: glowingBorder 1.5s ease-in-out infinite;
-            opacity: 1;
-        }
-        .affiliation-badge-premium:hover::after {
-            opacity: 1;
-            filter: blur(30px);
-        }
         .affiliation-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            width: 40px; height: 40px; border-radius: 50%;
             background: linear-gradient(135deg, rgba(0, 245, 176, 0.15), rgba(139, 92, 246, 0.15));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--secondary);
-            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; color: var(--secondary); flex-shrink: 0;
             border: 1px solid rgba(0, 245, 176, 0.15);
-            transition: all 0.5s ease;
-            position: relative;
+            transition: all 0.5s ease; position: relative;
             box-shadow: 0 0 20px rgba(0, 245, 176, 0.05);
         }
         .affiliation-badge-premium:hover .affiliation-icon {
@@ -383,31 +240,17 @@
             box-shadow: 0 0 40px rgba(0, 245, 176, 0.2), 0 0 80px rgba(139, 92, 246, 0.1);
             border-color: rgba(0, 245, 176, 0.4);
         }
-        .affiliation-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            line-height: 1.2;
-        }
+        .affiliation-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2; }
         .affiliation-label {
-            font-size: 9px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.15);
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            font-family: 'Inter', sans-serif;
+            font-size: 9px; font-weight: 700; color: rgba(255, 255, 255, 0.15);
+            text-transform: uppercase; letter-spacing: 2.5px;
         }
         .affiliation-name {
-            font-size: 15px;
-            font-weight: 800;
-            color: #fff;
+            font-size: 15px; font-weight: 800; color: #fff;
             background: linear-gradient(135deg, #ffffff 0%, #00f5b0 30%, #00d4ff 60%, #8b5cf6 100%);
             background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.3px;
-            font-family: 'Inter', sans-serif;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; letter-spacing: -0.3px;
             animation: textGlow 4s ease-in-out infinite;
         }
         @keyframes textGlow {
@@ -415,67 +258,19 @@
             50% { background-position: 100% 50%; }
         }
         .affiliation-verified {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 10px;
-            font-weight: 700;
-            color: #050810;
+            display: flex; align-items: center; gap: 6px;
+            font-size: 10px; font-weight: 700; color: #050810;
             background: linear-gradient(135deg, #00f5b0, #00d4ff);
-            padding: 5px 14px;
-            border-radius: var(--radius-full);
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-            text-transform: uppercase;
-            box-shadow: 0 0 20px rgba(0, 245, 176, 0.2), 0 0 40px rgba(0, 245, 176, 0.05);
-            transition: all 0.4s ease;
+            padding: 5px 14px; border-radius: var(--radius-full);
+            letter-spacing: 0.5px; flex-shrink: 0; text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(0, 245, 176, 0.2);
             animation: verifiedGlow 2.5s ease-in-out infinite;
         }
         @keyframes verifiedGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 245, 176, 0.2), 0 0 40px rgba(0, 245, 176, 0.05); transform: scale(1); }
-            50% { box-shadow: 0 0 35px rgba(0, 245, 176, 0.4), 0 0 60px rgba(0, 245, 176, 0.15), 0 0 80px rgba(0, 245, 176, 0.05); transform: scale(1.03); }
-        }
-        .affiliation-badge-premium:hover .affiliation-verified {
-            transform: scale(1.06);
-            box-shadow: 0 0 40px rgba(0, 245, 176, 0.3), 0 0 80px rgba(0, 245, 176, 0.15), 0 0 120px rgba(0, 245, 176, 0.05);
-            animation-duration: 1.5s;
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 245, 176, 0.2); transform: scale(1); }
+            50% { box-shadow: 0 0 35px rgba(0, 245, 176, 0.4); transform: scale(1.03); }
         }
         .affiliation-verified i { font-size: 12px; color: #050810; }
-        .affiliation-badge-premium:hover .affiliation-icon::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 245, 176, 0.2), transparent 70%);
-            animation: iconPulse 1.5s ease-in-out infinite;
-            z-index: -1;
-        }
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.5); opacity: 0; }
-        }
-
-        .badge-premium i { color: var(--gold); font-size: 14px; }
-        .hero h2 {
-            font-size: 40px;
-            font-weight: 900;
-            margin-bottom: 14px;
-            line-height: 1.12;
-            letter-spacing: -1px;
-        }
-        .hero p {
-            font-size: 15px;
-            max-width: 580px;
-            margin: 0 auto 26px;
-            opacity: 0.7;
-            line-height: 1.9;
-        }
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
 
         .glass {
             background: rgba(255, 255, 255, 0.02);
@@ -494,149 +289,73 @@
             box-shadow: 0 12px 56px rgba(0, 0, 0, 0.4);
         }
         .glass .head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px; margin-bottom: 16px;
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
-        .glass h3 {
-            font-size: 19px;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .glass h3 { font-size: 19px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
         .glass h3 i { color: var(--secondary); font-size: 20px; }
 
-        .affiliation-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: rgba(255, 215, 0, 0.06);
-            border: 1px solid rgba(255, 215, 0, 0.12);
-            border-radius: var(--radius-full);
-            padding: 10px 28px;
-            margin-bottom: 20px;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--gold-light);
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(8px);
-            transition: var(--transition);
-        }
-        .affiliation-badge i { font-size: 18px; color: var(--gold); }
-        .affiliation-badge:hover {
-            background: rgba(255, 215, 0, 0.10);
-            border-color: rgba(255, 215, 0, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 24px rgba(255, 215, 0, 0.08);
-        }
-        .affiliation-badge .crown { color: var(--gold); font-size: 16px; }
-        .affiliation-badge .separator { color: rgba(255, 215, 0, 0.2); font-weight: 300; margin: 0 4px; }
-
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 13px 30px;
-            border: none;
-            border-radius: var(--radius-full);
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            min-height: 46px;
-            letter-spacing: 0.3px;
-            position: relative;
-            overflow: hidden;
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 10px; padding: 13px 30px; border: none;
+            border-radius: var(--radius-full); font-weight: 700; font-size: 14px;
+            cursor: pointer; transition: var(--transition);
+            text-decoration: none; min-height: 46px;
+            letter-spacing: 0.3px; position: relative; overflow: hidden;
         }
-        .btn::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-full); opacity: 0; transition: var(--transition); }
-        .btn:hover::after { opacity: 1; }
         .btn-primary {
-            background: var(--gradient-secondary);
-            color: #050810;
+            background: var(--gradient-secondary); color: #050810;
             box-shadow: 0 4px 28px rgba(0, 245, 176, 0.3);
         }
         .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(0, 245, 176, 0.4); }
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.04);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.04); color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
         .btn-secondary:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-3px); }
         .btn-accent {
-            background: var(--gradient-accent);
-            color: #fff;
+            background: var(--gradient-accent); color: #fff;
             box-shadow: 0 4px 28px rgba(139, 92, 246, 0.3);
         }
         .btn-accent:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(139, 92, 246, 0.4); }
         .btn-block { width: 100%; justify-content: center; }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .form-group { margin-bottom: 2px; }
         .form-group.full { grid-column: span 2; }
         .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            display: block; font-weight: 600; font-size: 12px;
+            color: rgba(255, 255, 255, 0.5); margin-bottom: 5px;
+            letter-spacing: 0.5px; text-transform: uppercase;
         }
         .form-group label i { margin-right: 6px; color: var(--secondary); }
         .form-group input, .form-group select {
-            width: 100%;
-            padding: 11px 16px;
+            width: 100%; padding: 11px 16px;
             border: 1.5px solid rgba(255, 255, 255, 0.04);
-            border-radius: var(--radius-sm);
-            font-size: 14px;
-            transition: var(--transition);
-            background: rgba(255, 255, 255, 0.02);
-            color: #e8ecf4;
-            font-family: inherit;
+            border-radius: var(--radius-sm); font-size: 14px;
+            transition: var(--transition); background: rgba(255, 255, 255, 0.02);
+            color: #e8ecf4; font-family: inherit;
         }
         .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--secondary);
+            outline: none; border-color: var(--secondary);
             background: rgba(255, 255, 255, 0.04);
             box-shadow: 0 0 0 4px rgba(0, 245, 176, 0.04);
         }
         .form-group input::placeholder { color: rgba(255, 255, 255, 0.2); }
         .form-group input[type="file"] { padding: 9px 12px; cursor: pointer; }
         .form-group input[type="file"]::file-selector-button {
-            background: var(--gradient-secondary);
-            border: none;
-            padding: 5px 16px;
-            border-radius: var(--radius-sm);
-            color: #050810;
-            font-weight: 600;
-            cursor: pointer;
-            margin-right: 12px;
-            transition: var(--transition);
-            font-size: 13px;
+            background: var(--gradient-secondary); border: none;
+            padding: 5px 16px; border-radius: var(--radius-sm);
+            color: #050810; font-weight: 600; cursor: pointer;
+            margin-right: 12px; transition: var(--transition); font-size: 13px;
         }
-        .form-group input[type="file"]::file-selector-button:hover { transform: scale(1.02); }
 
         .payment-box {
             background: rgba(0, 245, 176, 0.04);
             border-left: 3px solid var(--secondary);
-            padding: 14px 18px;
-            border-radius: var(--radius-sm);
-            margin-bottom: 18px;
-            font-size: 13px;
+            padding: 14px 18px; border-radius: var(--radius-sm);
+            margin-bottom: 18px; font-size: 13px;
             border: 1px solid rgba(0, 245, 176, 0.04);
         }
         .payment-box strong { color: var(--secondary); }
@@ -644,122 +363,33 @@
 
         .steps { display: flex; flex-direction: column; gap: 12px; }
         .step {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
+            display: flex; align-items: flex-start; gap: 14px;
             background: rgba(255, 255, 255, 0.02);
-            padding: 14px 18px;
-            border-radius: var(--radius-sm);
-            border-left: 3px solid var(--accent);
-            transition: var(--transition);
+            padding: 14px 18px; border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent); transition: var(--transition);
         }
         .step:hover { background: rgba(255, 255, 255, 0.04); transform: translateX(6px); }
         .step-num {
-            background: var(--gradient-accent);
-            color: #fff;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 13px;
-            flex-shrink: 0;
+            background: var(--gradient-accent); color: #fff;
+            width: 32px; height: 32px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 13px; flex-shrink: 0;
         }
 
         .notice {
             background: rgba(251, 191, 36, 0.04);
             border: 1px solid rgba(251, 191, 36, 0.08);
-            color: #fbbf24;
-            padding: 24px 20px;
+            color: #fbbf24; padding: 24px 20px;
             border-radius: var(--radius-sm);
-            text-align: center;
-            margin: 18px 0;
+            text-align: center; margin: 18px 0;
         }
         .notice h4 { font-size: 20px; margin-bottom: 4px; color: #fbbf24; }
         .notice i { font-size: 32px; margin-bottom: 8px; display: block; color: #fbbf24; }
 
-        .quiz-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 10px 16px;
-            border-radius: var(--radius-sm);
-            margin-bottom: 18px;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .timer {
-            color: #f87171;
-            font-size: 24px;
-            font-weight: 900;
-            min-width: 40px;
-            display: inline-block;
-            text-align: center;
-            font-variant-numeric: tabular-nums;
-            transition: var(--transition);
-        }
-        .timer.warning { color: #ef4444; animation: heartbeat 0.6s ease-in-out infinite; }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-        .progress-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-        .progress-bar {
-            flex: 1;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .progress-bar .fill {
-            height: 100%;
-            background: var(--gradient-secondary);
-            border-radius: 10px;
-            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 0 24px rgba(0, 245, 176, 0.15);
-        }
-        .progress-text { font-size: 12px; font-weight: 700; color: var(--secondary); min-width: 44px; text-align: right; }
-        .q-text { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 18px; line-height: 1.7; }
-        .q-num { font-size: 13px; color: var(--secondary); font-weight: 600; }
-        .opt {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1.5px solid rgba(255, 255, 255, 0.04);
-            padding: 12px 16px;
-            border-radius: var(--radius-sm);
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        .opt:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(139, 92, 246, 0.15); transform: translateX(4px); }
-        .opt-letter {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.03);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.3);
-            flex-shrink: 0;
-            transition: var(--transition);
-        }
-        .opt:hover .opt-letter { background: rgba(139, 92, 246, 0.1); color: var(--accent-light); }
-        .opt input { display: none; }
-        .opt.selected { border-color: var(--secondary); background: rgba(0, 245, 176, 0.04); }
-        .opt.selected .opt-letter { background: var(--gradient-secondary); color: #050810; }
+        .guidelines-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+        .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-bottom: 18px; }
 
+        /* ===== RESULTS SECTION CSS (FIXED) ===== */
         .results-glass { padding: 5px 15px !important; margin-top: 0px !important; }
         .coming-soon { text-align: center; padding: 5px 10px !important; }
         .coming-soon .icon-big { font-size: 50px; color: var(--gold); margin-bottom: 2px; display: block; }
@@ -780,356 +410,27 @@
         .coming-soon .action-buttons { margin-top: 8px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
         .coming-soon .action-buttons .btn { padding: 8px 18px; font-size: 12px; min-height: 32px; }
 
-        .countdown-container {
-            background: rgba(0, 245, 176, 0.03);
-            border: 1px solid rgba(0, 245, 176, 0.08);
-            border-radius: var(--radius-sm);
-            padding: 20px 24px;
-            margin: 12px 0 16px 0;
-            display: inline-block;
-            min-width: 320px;
-        }
-        .countdown-container .countdown-label {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 6px;
-        }
-        .countdown-container .countdown-timer {
-            font-size: 38px;
-            font-weight: 900;
-            color: var(--secondary);
-            font-variant-numeric: tabular-nums;
-            letter-spacing: 2px;
-        }
-        .countdown-container .countdown-timer .time-block {
-            display: inline-block;
-            min-width: 60px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 4px 12px;
-            border-radius: 8px;
-            margin: 0 2px;
-        }
-        .countdown-container .countdown-timer .time-label {
-            font-size: 11px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .countdown-container .countdown-timer .separator {
-            color: rgba(255, 255, 255, 0.1);
-            font-weight: 300;
-            margin: 0 2px;
-        }
-        .countdown-container .countdown-timer .expired {
-            color: var(--gold);
-            font-size: 24px;
-            font-weight: 700;
-        }
-        .countdown-container .countdown-timer .expired i { margin-right: 10px; }
-
-        footer {
-            margin-top: auto;
-            background: rgba(5, 8, 16, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 20px 0;
-        }
-        .footer-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-        .footer-content p { font-size: 13px; opacity: 0.4; display: flex; align-items: center; gap: 8px; }
-        .footer-content p i { color: var(--secondary); opacity: 0.6; }
-        .footer-socials { display: flex; gap: 6px; }
-        .footer-socials a {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 14px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.02);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-        }
-        .footer-socials a:hover {
-            color: #fff;
-            background: rgba(0, 245, 176, 0.06);
-            border-color: rgba(0, 245, 176, 0.08);
-            transform: translateY(-3px);
-        }
-
-        /* ============================================================
-                   GUIDELINES GRID & TEST GRID (DESKTOP)
-                   ============================================================ */
-        .guidelines-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px 20px;
-        }
-        .test-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px 20px;
-            margin-bottom: 18px;
-        }
-
-        /* ============================================================
-                   MOBILE RESPONSIVE — FULLY OPTIMIZED
-                   ============================================================ */
-        @media (max-width: 1024px) {
-            .hero h2 { font-size: 34px; }
-            .hero { padding: 50px 28px; }
-        }
-
-        @media (max-width: 768px) {
-            header { padding: 6px 0; }
-            .nav-container {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 6px;
-                padding: 0 12px;
-            }
-            .logo { flex: 1 1 auto; justify-content: center; }
-            .logo-text { font-size: 15px; }
-            .logo-text small { display: none; }
-            .logo-icon { width: 34px; height: 34px; font-size: 15px; }
-            .nav-links {
-                flex: 1 1 100%;
-                justify-content: center;
-                gap: 0px;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding-bottom: 2px;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
-            .nav-links::-webkit-scrollbar { display: none; }
-            .nav-links li a {
-                font-size: 11px;
-                padding: 5px 10px;
-                white-space: nowrap;
-                gap: 4px;
-            }
-            .nav-links li a i { display: none; }
-            .nav-links li a.active-link::after { width: 12px; bottom: 0px; }
-
-            .hero {
-                padding: 28px 16px;
-                border-radius: 18px;
-                margin-bottom: 18px;
-            }
-            .hero h2 { font-size: 22px; letter-spacing: -0.5px; }
-            .hero p { font-size: 13px; line-height: 1.7; }
-            .hero-buttons .btn { min-width: 100%; padding: 11px 20px; font-size: 13px; min-height: 42px; }
-            .hero .shape-1 { width: 180px; height: 180px; top: -60px; right: -40px; }
-            .hero .shape-2 { width: 140px; height: 140px; bottom: -40px; left: -30px; }
-            .hero .shape-3 { width: 100px; height: 100px; }
-
-            .affiliation-badge-premium {
-                padding: 8px 14px;
-                gap: 10px;
-                max-width: 100%;
-                border-radius: 14px;
-                flex-wrap: wrap;
-                justify-content: center;
-                margin: 12px auto 16px auto;
-            }
-            .affiliation-icon { width: 32px; height: 32px; font-size: 14px; }
-            .affiliation-name { font-size: 12px; }
-            .affiliation-label { font-size: 7px; letter-spacing: 1px; }
-            .affiliation-verified { font-size: 8px; padding: 3px 10px; }
-            .affiliation-text { align-items: center; text-align: center; }
-
-            .glass { padding: 16px 14px; border-radius: 16px; margin-bottom: 16px; }
-            .glass h3 { font-size: 16px; }
-            .glass .head { gap: 8px; }
-
-            .form-grid { grid-template-columns: 1fr; gap: 12px; }
-            .form-group.full { grid-column: span 1; }
-            .form-group label { font-size: 11px; }
-            .form-group input, .form-group select { padding: 10px 14px; font-size: 13px; }
-
-            .container { padding: 0 10px; margin: 12px auto; }
-            .payment-box { padding: 12px 14px; font-size: 12px; }
-
-            .step { padding: 10px 12px; gap: 10px; }
-            .step-num { width: 26px; height: 26px; font-size: 11px; }
-            .step div p { font-size: 12px !important; }
-
-            .notice { padding: 16px 12px; }
-            .notice h4 { font-size: 16px; }
-            .notice i { font-size: 24px; }
-            .notice p { font-size: 14px !important; }
-
-            .quiz-bar {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 6px;
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-            .timer { font-size: 20px; }
-            .q-text { font-size: 15px; }
-            .opt { font-size: 13px; padding: 10px 12px; gap: 10px; }
-            .opt-letter { width: 24px; height: 24px; font-size: 11px; }
-
-            .btn { padding: 10px 18px; font-size: 13px; min-height: 40px; }
-            .btn-block { font-size: 13px; }
-
-            .coming-soon .icon-big { font-size: 38px; }
-            .coming-soon h2 { font-size: 18px; }
-            .coming-soon p { font-size: 12px; }
-            .coming-soon .date-badge { font-size: 11px; padding: 4px 14px; }
-            .coming-soon .action-buttons .btn { padding: 6px 14px; font-size: 11px; min-height: 28px; }
-            .results-glass { padding: 4px 10px !important; }
-            .coming-soon { padding: 4px 6px !important; }
-
-            .countdown-container { min-width: auto; width: 100%; padding: 14px 12px; }
-            .countdown-container .countdown-timer { font-size: 24px; }
-            .countdown-container .countdown-timer .time-block { min-width: 36px; padding: 2px 6px; }
-
-            .footer-content { flex-direction: column; text-align: center; gap: 8px; padding: 0 14px; }
-            .footer-content p { font-size: 11px; justify-content: center; }
-
-            .toast-container { top: 10px; right: 10px; left: 10px; max-width: 100%; }
-            .toast { padding: 12px 16px; min-width: auto; }
-            .modal-box { padding: 22px 18px; margin: 12px; max-width: 100%; border-radius: 18px; }
-            .modal-box h3 { font-size: 17px; }
-            .modal-box .modal-icon { font-size: 34px; }
-            .modal-box .modal-actions .btn { min-width: 80px; padding: 8px 18px; font-size: 12px; min-height: 34px; }
-            .top100-table { font-size: 11px; }
-            .top100-table th, .top100-table td { padding: 4px 6px; }
-            .top100-container { max-height: 300px; }
-
-            /* ===== MOBILE: GUIDELINES & TEST GRID 1 COLUMN ===== */
-            .guidelines-grid {
-                grid-template-columns: 1fr !important;
-                gap: 4px 0 !important;
-            }
-            .test-grid {
-                grid-template-columns: 1fr !important;
-                gap: 6px 0 !important;
-            }
-            .test-grid > div[style*="grid-column: span 2"] {
-                grid-column: span 1 !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h2 { font-size: 19px; }
-            .hero { padding: 20px 12px; }
-            .glass { padding: 12px 10px; border-radius: 14px; }
-            .glass h3 { font-size: 14px; }
-            .logo-text { font-size: 13px; }
-            .logo-icon { width: 30px; height: 30px; font-size: 13px; }
-            .nav-links li a { font-size: 10px; padding: 4px 8px; }
-            .q-text { font-size: 14px; }
-            .opt { font-size: 12px; padding: 8px 10px; gap: 8px; }
-            .opt-letter { width: 22px; height: 22px; font-size: 10px; }
-            .btn { font-size: 11px; padding: 8px 14px; min-height: 34px; }
-            .container { padding: 0 6px; margin: 8px auto; }
-            .footer-content p { font-size: 10px; }
-            .badge-premium { font-size: 10px; padding: 5px 12px; }
-            .coming-soon .icon-big { font-size: 30px; }
-            .coming-soon h2 { font-size: 16px; }
-            .coming-soon p { font-size: 11px; }
-            .results-glass { padding: 2px 6px !important; }
-            .coming-soon { padding: 2px 4px !important; }
-            .coming-soon .action-buttons .btn { padding: 5px 10px; font-size: 10px; min-height: 24px; }
-            .countdown-container { padding: 10px 10px; }
-            .countdown-container .countdown-timer { font-size: 18px; }
-            .countdown-container .countdown-timer .time-block { min-width: 26px; padding: 2px 4px; }
-            .countdown-container .countdown-timer .time-label { font-size: 8px; }
-            .affiliation-badge-premium { padding: 6px 10px; gap: 8px; border-radius: 12px; flex-direction: column; align-items: center; }
-            .affiliation-icon { width: 28px; height: 28px; font-size: 12px; }
-            .affiliation-name { font-size: 11px; }
-            .affiliation-label { font-size: 6px; letter-spacing: 0.8px; }
-            .affiliation-verified { font-size: 7px; padding: 2px 8px; }
-            .step { padding: 8px 10px; gap: 8px; }
-            .step-num { width: 22px; height: 22px; font-size: 10px; }
-            .step div p { font-size: 11px !important; }
-            .notice { padding: 12px 10px; }
-            .notice h4 { font-size: 14px; }
-            .notice p { font-size: 12px !important; }
-            .modal-box { padding: 16px 12px; margin: 8px; }
-            .modal-box h3 { font-size: 15px; }
-            .modal-box .modal-icon { font-size: 28px; }
-            .modal-box p { font-size: 12px; }
-            .modal-box .modal-actions .btn { min-width: 70px; padding: 6px 14px; font-size: 11px; min-height: 30px; }
-            .top100-table { font-size: 10px; }
-            .top100-table th, .top100-table td { padding: 3px 4px; }
-            .top100-container { max-height: 250px; }
-            .toast { padding: 10px 12px; }
-            .toast-content .toast-title { font-size: 12px; }
-            .toast-content .toast-message { font-size: 11px; }
-        }
-
-        .text-center { text-align: center; }
-        .mt-12 { margin-top: 12px; }
-        .mt-16 { margin-top: 16px; }
-        .mt-20 { margin-top: 20px; }
-        .flex { display: flex; }
-        .flex-wrap { flex-wrap: wrap; }
-        .gap-12 { gap: 12px; }
-        .gap-8 { gap: 8px; }
-        .items-center { align-items: center; }
-        .justify-center { justify-content: center; }
-        .w-full { width: 100%; }
-        .max-w-300 { max-width: 300px; }
-
         .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 420px;
-            width: 100%;
-            pointer-events: none;
+            position: fixed; top: 20px; right: 20px;
+            z-index: 9999; display: flex; flex-direction: column;
+            gap: 10px; max-width: 420px; width: 100%; pointer-events: none;
         }
         .toast {
             background: rgba(10, 14, 26, 0.92);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: var(--radius-sm);
             padding: 16px 20px;
             box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
             pointer-events: auto;
             animation: slideInRight 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            min-width: 280px;
-            transform-origin: top right;
+            display: flex; align-items: flex-start; gap: 12px; min-width: 280px;
         }
-        .toast.hide { animation: slideOutRight 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .toast.hide { animation: slideOutRight 0.3s forwards; }
         .toast-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            flex-shrink: 0;
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; flex-shrink: 0;
         }
         .toast-icon.success { background: rgba(0, 245, 176, 0.12); color: var(--secondary); }
         .toast-icon.error { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
@@ -1138,18 +439,7 @@
         .toast-content { flex: 1; }
         .toast-content .toast-title { font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 2px; }
         .toast-content .toast-message { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.5; }
-        .toast-close {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            font-size: 16px;
-            padding: 4px;
-            transition: var(--transition);
-            flex-shrink: 0;
-            margin-top: -4px;
-        }
-        .toast-close:hover { color: #fff; }
+        .toast-close { background: none; border: none; color: rgba(255, 255, 255, 0.2); cursor: pointer; font-size: 16px; padding: 4px; }
         @keyframes slideInRight {
             from { opacity: 0; transform: translateX(60px) scale(0.95); }
             to { opacity: 1; transform: translateX(0) scale(1); }
@@ -1160,69 +450,32 @@
         }
 
         .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 9998;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px); z-index: 9998;
+            display: none; align-items: center; justify-content: center;
         }
         .modal-overlay.active { display: flex; }
         .modal-box {
             background: rgba(10, 14, 26, 0.96);
             backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: var(--radius);
-            padding: 32px 36px;
-            max-width: 700px;
-            width: 100%;
-            margin: 20px;
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+            padding: 32px 36px; max-width: 700px; width: 100%;
+            margin: 20px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
             animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-            max-height: 90vh;
-            overflow-y: auto;
+            max-height: 90vh; overflow-y: auto;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes scaleIn {
             from { opacity: 0; transform: scale(0.92) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
         .modal-box .modal-icon { font-size: 48px; text-align: center; margin-bottom: 12px; }
-        .modal-box .modal-icon.success { color: var(--secondary); }
-        .modal-box .modal-icon.error { color: #ef4444; }
-        .modal-box .modal-icon.info { color: var(--accent-light); }
-        .modal-box .modal-icon.warning { color: var(--gold); }
         .modal-box h3 { font-size: 20px; font-weight: 800; color: #fff; text-align: center; margin-bottom: 6px; }
         .modal-box p { color: rgba(255, 255, 255, 0.5); text-align: center; font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
         .modal-box .modal-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
         .modal-box .modal-actions .btn { min-width: 100px; padding: 10px 24px; font-size: 13px; min-height: 38px; }
-        .modal-box .modal-detail {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: var(--radius-sm);
-            padding: 12px 16px;
-            margin: 12px 0 18px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .modal-box .modal-detail .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 4px 0;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-        }
-        .modal-box .modal-detail .detail-row:last-child { border-bottom: none; }
-        .modal-box .modal-detail .detail-row .label { color: rgba(255, 255, 255, 0.3); }
-        .modal-box .modal-detail .detail-row .value { color: #fff; font-weight: 600; }
-        .modal-box .modal-detail .detail-row .value.gold { color: var(--gold); }
-        .modal-box .modal-detail .detail-row .value.secondary { color: var(--secondary); }
-        .modal-box .modal-detail .detail-row .value.accent { color: var(--accent-light); }
 
+        /* ===== LEADERBOARD TABLE ===== */
         .top100-table {
             width: 100%;
             border-collapse: collapse;
@@ -1256,51 +509,39 @@
         .top100-container::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
 
         .result-check-section {
-            margin-top: 12px;
-            padding: 16px;
+            margin-top: 12px; padding: 16px;
             background: rgba(255, 255, 255, 0.02);
             border-radius: var(--radius-sm);
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
         .result-check-section .result-input-group { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .result-check-section .result-input-group input {
-            flex: 1;
-            min-width: 200px;
-            padding: 11px 16px;
+            flex: 1; min-width: 200px; padding: 11px 16px;
             border: 1.5px solid rgba(255, 255, 255, 0.04);
             border-radius: var(--radius-sm);
             background: rgba(255, 255, 255, 0.02);
-            color: #e8ecf4;
-            font-size: 14px;
-            font-family: inherit;
-            transition: var(--transition);
+            color: #e8ecf4; font-size: 14px; font-family: inherit;
         }
         .result-check-section .result-input-group input:focus {
-            outline: none;
-            border-color: var(--secondary);
+            outline: none; border-color: var(--secondary);
             background: rgba(255, 255, 255, 0.04);
             box-shadow: 0 0 0 4px rgba(0, 245, 176, 0.04);
         }
-        .result-check-section .result-input-group input::placeholder { color: rgba(255, 255, 255, 0.2); }
         .result-display-box {
-            margin-top: 14px;
-            padding: 16px 20px;
+            margin-top: 14px; padding: 16px 20px;
             background: rgba(0, 245, 176, 0.03);
             border-radius: var(--radius-sm);
             border: 1px solid rgba(0, 245, 176, 0.06);
             display: none;
         }
         .result-display-box.show { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .result-display-box .result-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px;
         }
         .result-display-box .result-grid .r-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 4px 0;
-            font-size: 13px;
+            display: flex; justify-content: space-between;
+            padding: 4px 0; font-size: 13px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
         .result-display-box .result-grid .r-item .r-label { color: rgba(255, 255, 255, 0.3); }
@@ -1308,36 +549,141 @@
         .result-display-box .result-grid .r-item .r-value.gold { color: var(--gold); }
         .result-display-box .result-grid .r-item .r-value.secondary { color: var(--secondary); }
         .result-display-box .result-grid .r-item .r-value.accent { color: var(--accent-light); }
-        .result-display-box .result-status {
-            text-align: center;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            font-size: 14px;
+
+        .progress-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .progress-bar {
+            flex: 1; height: 3px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px; overflow: hidden;
         }
-        .result-display-box .result-status.pass { background: rgba(0, 245, 176, 0.08); color: var(--secondary); border: 1px solid rgba(0, 245, 176, 0.1); }
-        .result-display-box .result-status.fail { background: rgba(239, 68, 68, 0.08); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.1); }
-        .result-display-box .result-status.pending { background: rgba(251, 191, 36, 0.08); color: var(--gold); border: 1px solid rgba(251, 191, 36, 0.1); }
+        .progress-bar .fill {
+            height: 100%; background: var(--gradient-secondary);
+            border-radius: 10px;
+            transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .progress-text { font-size: 12px; font-weight: 700; color: var(--secondary); min-width: 44px; text-align: right; }
+
+        footer {
+            margin-top: auto; background: rgba(5, 8, 16, 0.7);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 20px 0;
+        }
+        .footer-content {
+            max-width: 1100px; margin: 0 auto; padding: 0 20px;
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 14px;
+        }
+        .footer-content p { font-size: 13px; opacity: 0.4; display: flex; align-items: center; gap: 8px; }
+        .footer-content p i { color: var(--secondary); opacity: 0.6; }
+
+        @media (max-width: 768px) {
+            header { padding: 6px 0; }
+            .nav-container { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 0 12px; }
+            .logo { flex: 1 1 auto; justify-content: center; }
+            .logo-text { font-size: 15px; }
+            .logo-text small { display: none; }
+            .logo-icon { width: 34px; height: 34px; font-size: 15px; }
+            .nav-links { flex: 1 1 100%; justify-content: center; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links li a { font-size: 11px; padding: 5px 10px; white-space: nowrap; }
+            .nav-links li a i { display: none; }
+
+            .hero { padding: 28px 16px; border-radius: 18px; margin-bottom: 18px; }
+            .hero h2 { font-size: 22px; }
+            .hero p { font-size: 13px; }
+            .hero-buttons .btn { min-width: 100%; padding: 11px 20px; font-size: 13px; }
+
+            .affiliation-badge-premium {
+                padding: 8px 14px; gap: 10px; max-width: 100%;
+                border-radius: 14px; flex-wrap: wrap;
+                justify-content: center; margin: 12px auto 16px;
+            }
+            .affiliation-icon { width: 32px; height: 32px; font-size: 14px; }
+            .affiliation-name { font-size: 12px; }
+            .affiliation-label { font-size: 7px; }
+            .affiliation-verified { font-size: 8px; padding: 3px 10px; }
+
+            .glass { padding: 16px 14px; border-radius: 16px; margin-bottom: 16px; }
+            .glass h3 { font-size: 16px; }
+
+            .form-grid { grid-template-columns: 1fr; gap: 12px; }
+            .form-group.full { grid-column: span 1; }
+            .form-group input, .form-group select { padding: 10px 14px; font-size: 13px; }
+
+            .container { padding: 0 10px; margin: 12px auto; }
+            .guidelines-grid, .test-grid { grid-template-columns: 1fr !important; gap: 4px 0 !important; }
+            .test-grid > div[style*="grid-column: span 2"] { grid-column: span 1 !important; }
+
+            .result-display-box .result-grid { grid-template-columns: 1fr; }
+            .modal-box { padding: 22px 18px; margin: 12px; }
+            .modal-box h3 { font-size: 17px; }
+            .footer-content { flex-direction: column; text-align: center; padding: 0 14px; }
+
+            /* Results section mobile */
+            .coming-soon .icon-big { font-size: 38px; }
+            .coming-soon h2 { font-size: 18px; }
+            .coming-soon p { font-size: 12px; }
+            .coming-soon .date-badge { font-size: 11px; padding: 4px 14px; }
+            .coming-soon .action-buttons .btn { padding: 6px 14px; font-size: 11px; min-height: 28px; }
+            .results-glass { padding: 4px 10px !important; }
+            .coming-soon { padding: 4px 6px !important; }
+        }
 
         @media (max-width: 480px) {
-            .result-display-box .result-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 19px; }
+            .hero { padding: 20px 12px; }
+            .glass { padding: 12px 10px; }
+            .glass h3 { font-size: 14px; }
+            .logo-text { font-size: 13px; }
+            .nav-links li a { font-size: 10px; padding: 4px 8px; }
+            .btn { font-size: 11px; padding: 8px 14px; min-height: 34px; }
+            .container { padding: 0 6px; }
+            .coming-soon .icon-big { font-size: 30px; }
+            .coming-soon h2 { font-size: 16px; }
+            .coming-soon p { font-size: 11px; }
+            .results-glass { padding: 2px 6px !important; }
+            .coming-soon { padding: 2px 4px !important; }
+            .coming-soon .action-buttons .btn { padding: 5px 10px; font-size: 10px; min-height: 24px; }
+            .top100-table { font-size: 10px; }
+            .top100-table th, .top100-table td { padding: 3px 4px; }
+            .top100-container { max-height: 250px; }
         }
 
-        @media (max-width: 380px) {
-            .hero h2 { font-size: 17px; }
-            .hero p { font-size: 12px; }
-            .nav-links li a { font-size: 9px; padding: 3px 6px; }
-            .glass { padding: 10px 8px; }
-            .glass h3 { font-size: 13px; }
-            .btn { font-size: 10px; padding: 7px 12px; min-height: 30px; }
-            .q-text { font-size: 13px; }
-            .opt { font-size: 11px; padding: 7px 8px; }
-            .countdown-container .countdown-timer { font-size: 16px; }
-            .countdown-container .countdown-timer .time-block { min-width: 22px; padding: 1px 3px; }
-            .modal-box { padding: 14px 10px; margin: 6px; }
-            .top100-table { font-size: 9px; }
-            .top100-table th, .top100-table td { padding: 2px 3px; }
+        /* ===== FREE REGISTRATION HIGHLIGHT ===== */
+        .free-reg-banner {
+            background: linear-gradient(135deg, rgba(0, 245, 176, 0.12), rgba(251, 191, 36, 0.12));
+            border: 2px dashed var(--secondary);
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            display: none;
+        }
+        .free-reg-banner.show { display: block; animation: pulseGlow 2s ease-in-out infinite; }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 245, 176, 0.3); }
+            50% { box-shadow: 0 0 30px 5px rgba(0, 245, 176, 0.15); }
+        }
+        .free-reg-banner .free-reg-title {
+            color: var(--secondary); font-weight: 800;
+            font-size: 15px; margin-bottom: 6px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .free-reg-banner .free-reg-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px; line-height: 1.6;
+        }
+        .free-reg-banner .free-reg-code-display {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 10px 16px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--gold);
+            text-align: center;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -1371,7 +717,7 @@
             <div class="logo" onclick="showPage('home')">
                 <div class="logo-icon"><i class="fas fa-laptop"></i></div>
                 <div class="logo-text">
-                    National Trust <span>Laptop</span>Scheme <small>2026</small>
+                    National Trust <span>Laptop</span> Scheme <small>2026</small>
                 </div>
             </div>
             <ul class="nav-links">
@@ -1399,9 +745,7 @@
                 <p class="glow">Register online, complete the registration payment, and attempt the aptitude test to secure your position among the top 100 candidates on the merit list.</p>
                 
                 <div class="affiliation-badge-premium">
-                    <div class="affiliation-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
+                    <div class="affiliation-icon"><i class="fas fa-award"></i></div>
                     <div class="affiliation-text">
                         <span class="affiliation-label">Officially Affiliated With</span>
                         <strong class="affiliation-name">Royal Educational Institution</strong>
@@ -1424,9 +768,6 @@
             <div class="glass">
                 <div class="head">
                     <h3><i class="fas fa-list-check"></i> Program Guidelines</h3>
-                    <button class="btn btn-outline" style="padding: 5px 16px; font-size: 12px; min-height: auto; border-radius: var(--radius-full);" onclick="showPage('method')">
-                        <i class="fas fa-eye"></i> View Method
-                    </button>
                 </div>
                 <div class="guidelines-grid">
                     <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
@@ -1463,7 +804,7 @@
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02);">
                         <span style="background: var(--gradient-secondary); color: #050810; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0;">9</span>
-                        Also pay from <strong  style="color: var(--gold); font-weight: 700;">Easypaisa/Jazzcash</strong>
+                        Also pay from <strong style="color: var(--gold); font-weight: 700;">Easypaisa/Jazzcash</strong>
                     </div>
                 </div>
             </div>
@@ -1495,13 +836,31 @@
         <div id="apply" class="page">
             <div class="glass">
                 <h3><i class="fas fa-pen-to-square"></i> Student Registration</h3>
+                
+                <!-- FREE REGISTRATION BANNER -->
+                <div id="freeRegBanner" class="free-reg-banner">
+                    <div class="free-reg-title">
+                        <i class="fas fa-gift"></i> 🎉 FREE REGISTRATION UNLOCKED!
+                    </div>
+                    <div class="free-reg-text">
+                        You have completed <strong style="color: var(--gold);">4 referrals</strong>!<br>
+                        Now instead of <strong>TRX ID</strong>, enter your <strong style="color: var(--secondary);">FREE Registration Code</strong> and <strong>do NOT upload Payment Proof</strong>. No PKR 500 needed!
+                    </div>
+                    <div class="free-reg-code-display" id="freeRegCodeDisplay">—</div>
+                    <button class="btn btn-primary" onclick="copyFreeCodeFromBanner()" style="margin-top: 10px; padding: 8px 18px; font-size: 12px; min-height: 34px;">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+                
                 <div class="payment-box">
                     <i class="fas fa-circle-info"></i>
                     <strong>Send PKR 500</strong> to:
                     <br>• Account-ID: <strong>0440-0116065012</strong> Meezan Bank
                     <br>• Account-Holder: <strong>Ali Raza</strong>
                     <br>• Event: <strong>National Trust Laptop Scheme 2026</strong>
+                    <br><span style="color: var(--gold); font-size: 12px; margin-top: 6px; display: block;">💡 If you have completed 4 referrals, enter your FREE Code instead of TRX ID!</span>
                 </div>
+                
                 <form id="applyForm" onsubmit="handleApplySubmit(event)" enctype="multipart/form-data">
                     <div class="form-grid">
                         <div class="form-group">
@@ -1528,20 +887,23 @@
                             <label><i class="fas fa-gift"></i> Referral Code (Auto-filled from link)</label>
                             <input type="text" id="referralCode" name="referralCode" placeholder="No referral code" readonly 
                                 style="background: rgba(0, 245, 176, 0.04); border-color: rgba(0, 245, 176, 0.2); cursor: not-allowed;">
-                            <small style="color: rgba(255,255,255,0.3); font-size: 11px; display: block; margin-top: 4px;">
-                                Ye code automatic aapke referral link se fill hota hai
+                        </div>
+                        
+                        <div class="form-group" id="trxIdGroup">
+                            <label id="trxIdLabel"><i class="fas fa-receipt"></i> TRX ID</label>
+                            <input type="text" id="paymentTrxId" name="paymentTrxId" placeholder="e.g. xxxx xxxxxxxx" required>
+                            <small id="trxIdHelp" style="color: rgba(255,255,255,0.3); font-size: 11px; display: block; margin-top: 4px;">
+                                Enter payment transaction ID
                             </small>
                         </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-receipt"></i> TRX ID</label>
-                            <input type="text" id="paymentTrxId" name="paymentTrxId" placeholder="e.g. xxxx xxxxxxxx" required>
-                        </div>
-                        <div class="form-group">
+                        
+                        <div class="form-group" id="paymentProofGroup">
                             <label><i class="fas fa-image"></i> Payment Proof</label>
                             <input type="file" id="paymentProof" name="paymentProof" accept="image/*" required>
-                            <small style="color: rgba(255,255,255,0.3); font-size: 11px; display: block; margin-top: 4px;">Only images (JPEG, PNG, JPG) are allowed</small>
+                            <small style="color: rgba(255,255,255,0.3); font-size: 11px; display: block; margin-top: 4px;">Only images allowed</small>
                         </div>
                     </div>
+                    
                     <button type="submit" class="btn btn-primary btn-block" style="margin-top: 14px;">
                         <i class="fas fa-paper-plane"></i> Submit Registration
                     </button>
@@ -1574,10 +936,6 @@
                         <i class="fas fa-book" style="color: var(--secondary); width: 18px;"></i>
                         <span><strong style="color: #fff;">Subjects:</strong> Physics, Chemistry, Math, CS, English, Logic</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); font-size: 14px; grid-column: span 2;">
-                        <i class="fas fa-trophy" style="color: var(--gold); width: 18px;"></i>
-                        <span><strong style="color: var(--gold);">Certificate:</strong> All participants receive Certificates</span>
-                    </div>
                 </div>
                 <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 18px;">
                     <button class="btn btn-accent" style="width: 100%; max-width: 300px;" onclick="showPage('take-test-portal')">
@@ -1591,7 +949,6 @@
         <div id="take-test-portal" class="page">
             <div id="testNoticeCard" class="glass" style="text-align: center; padding: 36px 24px;">
                 <h3><i class="fas fa-laptop"></i> Aptitude Test Portal</h3>
-                
                 <div class="notice" style="margin-bottom: 20px;">
                     <i class="fas fa-calendar-circle-exclamation"></i>
                     <h4>📅 Test Portal Availability Notice</h4>
@@ -1602,19 +959,16 @@
                         Log in at 9:00 AM with your assigned Roll Number on 10th October
                     </p>
                 </div>
-
                 <div style="margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                     <button class="btn btn-secondary" onclick="showPage('home')">
                         <i class="fas fa-home"></i> Back to Home
                     </button>
                 </div>
             </div>
-
             <div id="liveQuizCard" class="glass" style="display: none;">
                 <div class="quiz-bar">
                     <span><i class="fas fa-id-card"></i> Roll: <strong id="displayRollNum" style="color: var(--gold);"></strong></span>
                     <span><i class="fas fa-hourglass-half"></i> <span id="quizTimer" class="timer">30</span>s</span>
-                    <span id="totalQuestionsDisplay" style="font-size: 12px; color: rgba(255,255,255,0.4);">Total: 100 MCQs</span>
                 </div>
                 <div class="progress-wrap">
                     <span class="q-num" id="questionTitle">Q1 of 100</span>
@@ -1645,14 +999,7 @@
                     <div class="date-badge">
                         <i class="fas fa-calendar-day"></i> Expected Announcement: 25th October 2026
                     </div>
-
-                    <div style="margin-top: 12px;">
-                        <button class="btn btn-accent" onclick="showPastYearTop100()" style="min-width: 220px;">
-                            <i class="fas fa-trophy"></i> 📜 Past Year Top 100 Students
-                        </button>
-                    </div>
                 </div>
-
                 <div class="action-buttons" style="text-align: center; margin-top: 12px;">
                     <button class="btn btn-secondary" onclick="showPage('home')">
                         <i class="fas fa-home"></i> Back to Home
@@ -1670,71 +1017,89 @@
                 </div>
                 
                 <p style="color: rgba(255,255,255,0.5); margin-bottom: 18px; font-size: 14px;">
-                    Refer your friends and earn<strong style="color: var(--gold);">PKR 100</strong> per referral. 
-                    Rewards will be distributed after the test is completed.
+                    Refer your friends and earn <strong style="color: var(--gold);">PKR 100</strong> per referral. 
+                    <!-- <strong style="color: var(--secondary);">4 referrals complete = FREE Registration!</strong> -->
                 </p>
 
-                <!-- Check Referral Stats -->
-                <div class="result-check-section">
-                    <p style="color: rgba(255,255,255,0.5); margin-bottom: 12px; font-size: 13px;">
-                        <i class="fas fa-search" style="color: var(--secondary);"></i> Enter your Roll number to see your referral status :
-                    </p>
-                    <div class="result-input-group">
-                        <input type="text" id="referralRollInput" placeholder="e.g. 190100">
-                        <button class="btn btn-accent" onclick="checkReferralStats()">
-                            <i class="fas fa-chart-line"></i> Check Stats
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Stats Display -->
-                <div id="referralStatsBox" class="result-display-box">
-                    <div style="text-align: center; margin-bottom: 16px;">
-                        <p style="color: rgba(255,255,255,0.4); font-size: 12px; margin-bottom: 6px;">
-                            🔗 Your referral link (Copy it and send to your freinds to earn)
-                        </p>
-                        <input type="text" id="myReferralLink" readonly 
-                            style="width: 100%; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(0, 245, 176, 0.2); border-radius: 8px; color: var(--secondary); font-size: 12px; font-family: monospace; text-align: center; margin: 8px 0;">
-                        <button class="btn btn-primary" onclick="copyMyReferralLink()" style="padding: 8px 18px; font-size: 12px; min-height: 34px;">
-                            <i class="fas fa-copy"></i> Copy Link
+                <div class="result-check-section" style="border: 2px solid rgba(251, 191, 36, 0.2); background: rgba(251, 191, 36, 0.03);">
+                    <!-- <p style="color: var(--gold); margin-bottom: 12px; font-size: 14px; font-weight: 700;">
+                        <i class="fas fa-magic"></i> 🎁 FREE REGISTRATION OFFER — Create Your Link Without Registration!
+                    </p> -->
+                    <!-- <p style="color: rgba(255,255,255,0.5); margin-bottom: 14px; font-size: 13px; line-height: 1.7;">
+                        Enter your name and create your <strong style="color: var(--secondary);">personal referral link</strong>. 
+                        When <strong style="color: var(--gold);">4 friends</strong> register using your link, 
+                        <strong style="color: var(--secondary);">your registration will be 100% FREE</strong>! 🎉
+                    </p> -->
+                    
+                    <div class="result-input-group" style="margin-bottom: 12px;">
+                        <input type="text" id="guestNameInput" placeholder="Enter your full name or roll number." style="flex: 2;">
+                        <button class="btn btn-primary" onclick="generateGuestReferral()" style="flex: 1; min-width: 160px;">
+                            <i class="fas fa-link"></i> Generate My Link
                         </button>
                     </div>
                     
-                    <div class="result-grid">
-                        <div class="r-item">
-                            <span class="r-label">Total Referrals</span>
-                            <span class="r-value secondary" id="totalRefs">0</span>
+                    <div id="guestReferralBox" class="result-display-box" style="margin-top: 14px;">
+                        <div style="text-align: center; margin-bottom: 14px;">
+                            <p style="color: rgba(255,255,255,0.4); font-size: 12px; margin-bottom: 6px;">
+                                🔗 Your Personal Referral Link
+                            </p>
+                            <input type="text" id="guestReferralLink" readonly 
+                                style="width: 100%; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 8px; color: var(--gold); font-size: 12px; font-family: monospace; text-align: center; margin: 8px 0;">
+                            <button class="btn btn-primary" onclick="copyGuestReferralLink()" style="padding: 8px 18px; font-size: 12px; min-height: 34px;">
+                                <i class="fas fa-copy"></i> Copy Link
+                            </button>
                         </div>
-                        <div class="r-item">
-                            <span class="r-label">Test Completed</span>
-                            <span class="r-value accent" id="completedRefs">0</span>
+                        
+                        <div class="result-grid" style="margin-top: 10px;">
+                            <div class="r-item">
+                                <span class="r-label">Your Name</span>
+                                <span class="r-value accent" id="guestDisplayName">—</span>
+                            </div>
+                            <div class="r-item">
+                                <span class="r-label">Total Referrals</span>
+                                <span class="r-value secondary" id="guestTotalRefs">0</span>
+                            </div>
+                            <div class="r-item">
+                                <span class="r-label">Free Registration Progress</span>
+                                <span class="r-value gold" id="guestFreeProgress">0 / 4</span>
+                            </div>
+                            <div class="r-item">
+                                <span class="r-label">Status</span>
+                                <span class="r-value" id="guestStatus" style="color: var(--gold);">⏳ In Progress</span>
+                            </div>
                         </div>
-                        <div class="r-item">
-                            <span class="r-label">Pending</span>
-                            <span class="r-value" id="pendingRefs">0</span>
+                        
+                        <div class="progress-wrap" style="margin-top: 12px; margin-bottom: 4px;">
+                            <div class="progress-bar" style="height: 6px;">
+                                <div class="fill" id="guestProgressFill" style="width: 0%;"></div>
+                            </div>
+                            <span class="progress-text" id="guestProgressText">0%</span>
                         </div>
-                        <div class="r-item">
-                            <span class="r-label">Total Reward</span>
-                            <span class="r-value gold" id="totalReward">PKR 0</span>
+                        
+                        <!-- FREE CODE DISPLAY -->
+                        <div id="guestFreeCodeBox" style="display: none; margin-top: 16px; padding: 16px; background: linear-gradient(135deg, rgba(0, 245, 176, 0.1), rgba(251, 191, 36, 0.1)); border: 2px dashed var(--secondary); border-radius: 12px;">
+                            <p style="color: var(--secondary); font-size: 14px; font-weight: 700; margin-bottom: 8px; text-align: center;">
+                                🎉 YOUR FREE REGISTRATION CODE
+                            </p>
+                            <div style="font-family: monospace; font-size: 22px; font-weight: 900; color: var(--gold); text-align: center; letter-spacing: 2px; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 8px;" id="guestFreeCodeValue">—</div>
+                            <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin-top: 10px; text-align: center; line-height: 1.6;">
+                                Enter this code on the <strong>Apply page</strong> instead of <strong>TRX ID</strong> and <strong>do NOT upload Payment Proof</strong>!
+                            </p>
+                            <button class="btn btn-primary" onclick="copyGuestFreeCode()" style="width: 100%; margin-top: 10px; padding: 10px 18px; font-size: 13px; min-height: 38px;">
+                                <i class="fas fa-copy"></i> Copy Free Code
+                            </button>
                         </div>
-                    </div>
-
-                    <div style="margin-top: 16px;">
-                        <p style="color: rgba(255,255,255,0.4); font-size: 12px; margin-bottom: 8px;">
-                            <i class="fas fa-users"></i>Your Referrals:
+                        
+                        <p style="color: rgba(255,255,255,0.3); font-size: 11px; margin-top: 10px; text-align: center;">
+                            🎯 <strong style="color: var(--gold);">4 referrals = FREE Registration!</strong>
                         </p>
-                        <div id="referralListContainer" style="max-height: 250px; overflow-y: auto;"></div>
                     </div>
-
-                    <p style="color: rgba(255,255,255,0.3); font-size: 11px; margin-top: 14px; text-align: center;">
-                        💰 Rewards will be distributed after test completion.
-                    </p>
                 </div>
 
-                <!-- Leaderboard Button -->
-                <div style="text-align: center; margin-top: 18px;">
-                    <button class="btn btn-secondary" onclick="showReferralLeaderboard()">
-                        <i class="fas fa-trophy"></i> View Leaderboard
+                <!-- ===== LEADERBOARD BUTTON ===== -->
+                <div style="text-align: center; margin-top: 22px;">
+                    <button class="btn btn-accent" onclick="showReferralLeaderboard()" style="min-width: 240px;">
+                        <i class="fas fa-trophy"></i> View Referral Leaderboard
                     </button>
                 </div>
             </div>
@@ -1745,8 +1110,8 @@
     <footer>
         <div class="footer-content">
             <p><i class="fas fa-envelope"></i> nationaltrust2026@gmail.com</p>
-            <p><i class="fas fa-copyright"></i>Copyrighted.Approved by Government.</p>
-            <p><i class="fas fa-registered"></i>Royal Educational Institution.</p>
+            <p><i class="fas fa-copyright"></i> Copyrighted. Approved by Government.</p>
+            <p><i class="fas fa-registered"></i> Royal Educational Institution.</p>
         </div>
     </footer>
 
@@ -1758,148 +1123,523 @@
         let studentResults = {};
         let countdownTimer = null;
         let usedTrxIds = [];
+        let guestReferralData = {};
 
-        // ===== REFERRAL: URL se code auto-detect =====
+        // ===== GET REFERRAL CODE FROM URL =====
         function getReferralCodeFromURL() {
             const params = new URLSearchParams(window.location.search);
             return params.get('ref') || '';
         }
 
-        let currentQuizData = [
-            { id: 1, question: "What is the SI unit of electric charge?", options: ["Ampere", "Coulomb", "Volt", "Ohm"], answer: "Coulomb" },
-            { id: 2, question: "Which law states that the force between two point charges is directly proportional to the product of their magnitudes and inversely proportional to the square of the distance between them?", options: ["Ohm's Law", "Coulomb's Law", "Gauss's Law", "Faraday's Law"], answer: "Coulomb's Law" },
-            { id: 3, question: "What is the speed of light in a vacuum approximately?", options: ["2.998 × 10⁸ m/s", "3.0 × 10⁷ m/s", "3.0 × 10⁹ m/s", "2.5 × 10⁸ m/s"], answer: "2.998 × 10⁸ m/s" },
-            { id: 4, question: "Which particle has a negative charge and orbits the nucleus?", options: ["Proton", "Neutron", "Electron", "Positron"], answer: "Electron" },
-            { id: 5, question: "What is the formula for kinetic energy?", options: ["KE = mv²", "KE = ½mv²", "KE = mgh", "KE = ½mv"], answer: "KE = ½mv²" },
-            { id: 6, question: "What is the SI unit of power?", options: ["Joule", "Newton", "Watt", "Pascal"], answer: "Watt" },
-            { id: 7, question: "Which phenomenon explains the bending of light around obstacles?", options: ["Reflection", "Refraction", "Diffraction", "Polarization"], answer: "Diffraction" },
-            { id: 8, question: "What is the acceleration due to gravity on the surface of Earth approximately?", options: ["8.9 m/s²", "9.8 m/s²", "10.8 m/s²", "7.8 m/s²"], answer: "9.8 m/s²" },
-            { id: 9, question: "What is the first law of thermodynamics also known as?", options: ["Law of Conservation of Energy", "Law of Entropy", "Law of Heat Transfer", "Law of Momentum"], answer: "Law of Conservation of Energy" },
-            { id: 10, question: "Which type of wave does NOT require a medium to travel?", options: ["Sound wave", "Water wave", "Electromagnetic wave", "Seismic wave"], answer: "Electromagnetic wave" },
-            { id: 11, question: "What is the unit of frequency?", options: ["Hertz", "Newton", "Joule", "Watt"], answer: "Hertz" },
-            { id: 12, question: "What is the resistance of a conductor directly proportional to?", options: ["Length", "Area", "Temperature", "Both Length and Temperature"], answer: "Length" },
-            { id: 13, question: "What does the Heisenberg Uncertainty Principle state?", options: ["Position and velocity of a particle can be measured exactly", "It is impossible to simultaneously determine both position and momentum with high precision", "Energy and time can be measured exactly", "Matter and antimatter annihilate"], answer: "It is impossible to simultaneously determine both position and momentum with high precision" },
-            { id: 14, question: "What is the critical angle for total internal reflection in water (n=1.33) with air?", options: ["48.75°", "41.8°", "53.1°", "36.9°"], answer: "48.75°" },
-            { id: 15, question: "What is the escape velocity from Earth's surface approximately?", options: ["7.9 km/s", "9.8 km/s", "11.2 km/s", "14.4 km/s"], answer: "11.2 km/s" },
-            { id: 16, question: "Which equation describes the relationship between pressure, volume, and temperature for an ideal gas?", options: ["PV = nRT", "PV = nkT", "PV = RT", "PV = NkT"], answer: "PV = nRT" },
-            { id: 17, question: "What is the angular velocity of Earth about its own axis?", options: ["7.27 × 10⁻⁵ rad/s", "3.14 × 10⁻⁵ rad/s", "1.57 × 10⁻⁵ rad/s", "9.8 × 10⁻⁵ rad/s"], answer: "7.27 × 10⁻⁵ rad/s" },
-            { id: 18, question: "Which force is responsible for holding atomic nuclei together?", options: ["Gravitational force", "Electromagnetic force", "Strong nuclear force", "Weak nuclear force"], answer: "Strong nuclear force" },
-            { id: 19, question: "What is the efficiency of a Carnot engine operating between two temperatures T_hot and T_cold?", options: ["1 - T_cold/T_hot", "1 - T_hot/T_cold", "T_cold/T_hot", "T_hot/T_cold"], answer: "1 - T_cold/T_hot" },
-            { id: 20, question: "What is the wavelength of a wave with frequency 500 Hz and speed 340 m/s?", options: ["0.68 m", "1.7 m", "0.34 m", "0.85 m"], answer: "0.68 m" },
-            { id: 21, question: "What does the Bohr model of the atom explain?", options: ["Chemical bonding", "Spectrum of hydrogen", "Radioactive decay", "Crystal structure"], answer: "Spectrum of hydrogen" },
-            { id: 22, question: "What is the coefficient of thermal expansion for a material that expands 0.1% per 100°C?", options: ["1 × 10⁻⁶ /°C", "1 × 10⁻⁵ /°C", "1 × 10⁻⁴ /°C", "1 × 10⁻³ /°C"], answer: "1 × 10⁻⁵ /°C" },
-            { id: 23, question: "What is the Doppler effect formula for frequency shift?", options: ["f' = f (v ± v_o)/(v ∓ v_s)", "f' = f (v ± v_s)/(v ∓ v_o)", "f' = f (v ± v_o)/(v ∓ v_s)", "f' = f (v ± v_s)/(v ∓ v_o)"], answer: "f' = f (v ± v_o)/(v ∓ v_s)" },
-            { id: 24, question: "What is the formula for pressure at a depth h in a fluid?", options: ["P = P₀ + ρgh", "P = P₀ + ρg/h", "P = P₀ + ρ/g h", "P = P₀ + ρh/g"], answer: "P = P₀ + ρgh" },
-            { id: 25, question: "Which property of a material is defined as stress divided by strain?", options: ["Density", "Viscosity", "Young's Modulus", "Surface Tension"], answer: "Young's Modulus" },
-            { id: 26, question: "What is the atomic number of Carbon?", options: ["4", "6", "8", "10"], answer: "6" },
-            { id: 27, question: "Which bond is formed by sharing of electrons between atoms?", options: ["Ionic bond", "Covalent bond", "Metallic bond", "Hydrogen bond"], answer: "Covalent bond" },
-            { id: 28, question: "What is the pH of a neutral solution at 25°C?", options: ["0", "7", "14", "10"], answer: "7" },
-            { id: 29, question: "What is the chemical formula of sulfuric acid?", options: ["HCl", "H₂SO₄", "HNO₃", "H₂CO₃"], answer: "H₂SO₄" },
-            { id: 30, question: "What is the most abundant gas in Earth's atmosphere?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Argon"], answer: "Nitrogen" },
-            { id: 31, question: "Which element has the highest electronegativity?", options: ["Oxygen", "Fluorine", "Chlorine", "Nitrogen"], answer: "Fluorine" },
-            { id: 32, question: "What is the product of the reaction of an acid and a base?", options: ["Salt and water", "Salt and hydrogen", "Water and oxygen", "Acid and salt"], answer: "Salt and water" },
-            { id: 33, question: "What is the molecular geometry of methane (CH₄)?", options: ["Linear", "Bent", "Tetrahedral", "Trigonal planar"], answer: "Tetrahedral" },
-            { id: 34, question: "Which process involves the conversion of a solid directly to gas?", options: ["Condensation", "Evaporation", "Sublimation", "Deposition"], answer: "Sublimation" },
-            { id: 35, question: "What is the quantum number that describes the shape of an orbital?", options: ["Principal quantum number (n)", "Azimuthal quantum number (l)", "Magnetic quantum number (m_l)", "Spin quantum number (m_s)"], answer: "Azimuthal quantum number (l)" },
-            { id: 36, question: "What is the half-life of Carbon-14?", options: ["5730 years", "573 years", "57300 years", "573000 years"], answer: "5730 years" },
-            { id: 37, question: "Which isomer has the same molecular formula but different connectivity?", options: ["Geometric", "Structural", "Optical", "Conformational"], answer: "Structural" },
-            { id: 38, question: "What is the oxidizing agent in the reaction: 2Mg + O₂ → 2MgO?", options: ["Mg", "O₂", "MgO", "None"], answer: "O₂" },
-            { id: 39, question: "What is the Van der Waals equation used to describe?", options: ["Ideal gases", "Real gases", "Liquids", "Solids"], answer: "Real gases" },
-            { id: 40, question: "Which element is a liquid at room temperature?", options: ["Mercury", "Bromine", "Gallium", "Cesium"], answer: "Bromine" },
-            { id: 41, question: "What is the molarity of a solution containing 1 mole of solute in 1 liter of solution?", options: ["0.5 M", "1 M", "2 M", "0.1 M"], answer: "1 M" },
-            { id: 42, question: "Which chemical bond is the strongest?", options: ["Ionic bond", "Covalent bond", "Metallic bond", "Hydrogen bond"], answer: "Covalent bond" },
-            { id: 43, question: "What is the shape of the p-orbital?", options: ["Spherical", "Dumbbell", "Cloverleaf", "Complex"], answer: "Dumbbell" },
-            { id: 44, question: "Which element is used in solar cells?", options: ["Silicon", "Carbon", "Aluminum", "Copper"], answer: "Silicon" },
-            { id: 45, question: "What is the formula for the compound formed by Mg and Cl?", options: ["MgCl", "MgCl₂", "Mg₂Cl", "Mg₂Cl₂"], answer: "MgCl₂" },
-            { id: 46, question: "What is the derivative of sin(x) with respect to x?", options: ["cos(x)", "-cos(x)", "sin(x)", "-sin(x)"], answer: "cos(x)" },
-            { id: 47, question: "What is the value of log₁₀(1000)?", options: ["2", "3", "4", "5"], answer: "3" },
-            { id: 48, question: "What is the sum of the interior angles of a hexagon?", options: ["360°", "540°", "720°", "900°"], answer: "720°" },
-            { id: 49, question: "What is the determinant of the matrix [[1,2],[3,4]]?", options: ["-2", "2", "-4", "4"], answer: "-2" },
-            { id: 50, question: "What is the value of (1 + i)², where i² = -1?", options: ["2i", "1 + 2i", "2 + 2i", "1 + 2i"], answer: "2i" }
-        ];
-
-        function generatePastYearTop100() {
-            const names = [
-                "Muhammad Ali", "Ayesha Khan", "Hamza Ahmed", "Fatima Noor", "Usman Malik",
-                "Zara Siddiqui", "Hassan Raza", "Mahnoor Ali", "Omar Farooq", "Sana Tariq",
-                "Bilal Shah", "Hira Aslam", "Raza Abbas", "Kinza Batool", "Saad Ali",
-                "Aleena Khan", "Faizan Ahmed", "Iman Zafar", "Zain ul Abidin", "Eman Fatima",
-                "Sajid Ali", "Rabia Akram", "Noman Ali", "Sadia Malik", "Waqas Ahmed",
-                "Mehak Khan", "Zeeshan Ali", "Areeba Noor", "Shahzaib Ali", "Kainat Malik",
-                "Muzammil ", "Saira Khan", "Danish ", "Fatima ", "Kamran ",
-                "Saba Khan", "Ali Hassan", "Maha ", "Hussain ", "Amina Khan",
-                "Adnan ", "Sara Khan", "Naveed ", "Hina Khan", "Imran Ali",
-                "Nadia ", "Faisal Khan", "Rabia ", "Usman Khan", "Saima ",
-                "Ahmed Raza", "Anum Khan", "Saif ", "Zainab Khan", "Tariq ",
-                "Sumbal Khan", "Rizwan ", "Nida Khan", "Owais Ali", "Mariam Khan",
-                "Shahid ", "Saba Noor", "Naeem ", "Alishba Khan", "Shayan ",
-                "Fiza Khan", "Hamid ", "Iqra Khan", "Farhan ", "Aleena Malik",
-                "Hammad ", "Saira Noor", "Muneeb ", "Yusra Khan", "Adeel Ali",
-                "Tayyaba Khan", "Junaid ", "Esha Khan", "Sohail ", "Ayesha Noor",
-                "Salman Ali", "Nimra Khan", "  Imran Shahid", "Iman ", "Fahad Khan",
-                "Hira Noor", "Waleed ", "Mahnoor Khan", "Sami ", "Maryam Malik",
-                "Haroon Ali", "Iqra Noor", "Nabeel ", "Kiran Khan", "Azlan ",
-                "Sadia Noor", "Shahid Khan", "Areeba ", "Hassan Malik", "Mahnoor Ahmed",
-                "Abdullah ", "Ayesha Malik", "Muhammad Usman", "Zara Khan", "Ahmed Raza"
-            ];
-
-            const top100 = [];
-            for (let i = 0; i < 100; i++) {
-                const marks = Math.floor(Math.random() * 31) + 70;
-                const name = names[i % names.length];
-                top100.push({
-                    rank: i + 1,
-                    rollNumber: `NTL-${String(2025).slice(2)}-${String(i + 1).padStart(3, '0')}`,
-                    name: name,
-                    marks: marks,
-                    percentage: marks
-                });
+        // ===== CHECK IF URL HAS GUEST REFERRAL =====
+        function getGuestRefFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const ref = params.get('ref');
+            const name = params.get('name');
+            if (ref && ref.startsWith('GUEST-')) {
+                return { ref: ref, name: name || '' };
             }
-            top100.sort((a, b) => b.marks - a.marks);
-            top100.forEach((student, idx) => student.rank = idx + 1);
-            return top100;
+            return null;
         }
 
-        const pastYearTop100 = generatePastYearTop100();
+        // ===== CHECK IF GUEST HAS 4+ REFERRALS =====
+        function getGuestFreeCode(guestId) {
+            try {
+                const saved = localStorage.getItem('guestReferrals');
+                if (saved) {
+                    const allGuests = JSON.parse(saved);
+                    const guest = allGuests[guestId];
+                    if (guest && guest.referrals && guest.referrals.length >= 4 && guest.freeCode) {
+                        return guest.freeCode;
+                    }
+                }
+            } catch (e) {}
+            return null;
+        }
 
-        function showPastYearTop100() {
+        // ===== VALIDATE FREE CODE =====
+        function validateFreeCode(code) {
+            try {
+                const saved = localStorage.getItem('guestReferrals');
+                if (saved) {
+                    const allGuests = JSON.parse(saved);
+                    for (const guestId in allGuests) {
+                        const guest = allGuests[guestId];
+                        if (guest.freeCode === code && guest.referrals && guest.referrals.length >= 4) {
+                            return guest;
+                        }
+                    }
+                }
+            } catch (e) {}
+            return null;
+        }
+
+        // ===== TRACK GUEST REFERRAL =====
+        function trackGuestReferral(guestId) {
+            try {
+                const saved = localStorage.getItem('guestReferrals');
+                if (saved) {
+                    const allGuests = JSON.parse(saved);
+                    if (allGuests[guestId]) {
+                        if (!allGuests[guestId].referrals) allGuests[guestId].referrals = [];
+                        
+                        const rollNum = 'NTL-' + Date.now().toString(36).toUpperCase();
+                        allGuests[guestId].referrals.push({
+                            rollNumber: rollNum,
+                            registeredAt: new Date().toISOString(),
+                            testCompleted: false
+                        });
+                        
+                        const refCount = allGuests[guestId].referrals.length;
+                        
+                        if (refCount >= 4 && !allGuests[guestId].freeCode) {
+                            const freeCode = 'FREE-' + guestId.split('-')[1] + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+                            allGuests[guestId].freeCode = freeCode;
+                            allGuests[guestId].freeCodeGeneratedAt = new Date().toISOString();
+                        }
+                        
+                        localStorage.setItem('guestReferrals', JSON.stringify(allGuests));
+                        return refCount;
+                    }
+                }
+            } catch (e) {}
+            return 0;
+        }
+
+        // ===== GENERATE GUEST REFERRAL =====
+        function generateGuestReferral() {
+            const name = document.getElementById('guestNameInput').value.trim();
+            
+            if (!name || name.length < 3) {
+                showToast('Please enter your full name (minimum 3 characters)', 'warning', '⚠️ Name Required');
+                return;
+            }
+            
+            let existingGuestId = null;
+            try {
+                const saved = localStorage.getItem('guestReferrals');
+                if (saved) {
+                    const allGuests = JSON.parse(saved);
+                    for (const gid in allGuests) {
+                        if (allGuests[gid].name.toLowerCase() === name.toLowerCase()) {
+                            existingGuestId = gid;
+                            break;
+                        }
+                    }
+                }
+            } catch (e) {}
+            
+            const guestId = existingGuestId || ('GUEST-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase());
+            const referralLink = `${window.location.origin}/?ref=${encodeURIComponent(guestId)}&name=${encodeURIComponent(name)}`;
+            
+            try {
+                const saved = localStorage.getItem('guestReferrals');
+                let allGuests = saved ? JSON.parse(saved) : {};
+                if (allGuests[guestId]) {
+                    guestReferralData = allGuests[guestId];
+                } else {
+                    guestReferralData = {
+                        guestId: guestId,
+                        name: name,
+                        referralLink: referralLink,
+                        referrals: [],
+                        createdAt: new Date().toISOString()
+                    };
+                    allGuests[guestId] = guestReferralData;
+                    localStorage.setItem('guestReferrals', JSON.stringify(allGuests));
+                }
+            } catch (e) {
+                console.error('Error saving guest referral:', e);
+            }
+            
+            document.getElementById('guestReferralLink').value = referralLink;
+            document.getElementById('guestDisplayName').textContent = name;
+            document.getElementById('guestTotalRefs').textContent = guestReferralData.referrals.length;
+            
+            updateGuestFreeProgress(guestReferralData.referrals.length);
+            document.getElementById('guestReferralBox').classList.add('show');
+            
+            if (guestReferralData.freeCode) {
+                showGuestFreeCode(guestReferralData.freeCode);
+            }
+            
+            showToast(`Referral link generated for ${name}! Share it with friends.`, 'success', '🎉 Link Created');
+        }
+
+        // ===== UPDATE GUEST PROGRESS =====
+        function updateGuestFreeProgress(count) {
+            const progress = Math.min(count, 4);
+            const percent = Math.min((progress / 4) * 100, 100);
+            
+            document.getElementById('guestFreeProgress').textContent = `${progress} / 4`;
+            document.getElementById('guestProgressFill').style.width = percent + '%';
+            document.getElementById('guestProgressText').textContent = Math.round(percent) + '%';
+            
+            const statusEl = document.getElementById('guestStatus');
+            if (count >= 4) {
+                statusEl.innerHTML = '🎉 <span style="color: var(--secondary); font-weight: 700;">FREE REGISTRATION UNLOCKED!</span>';
+                statusEl.style.color = 'var(--secondary)';
+            } else {
+                const remaining = 4 - count;
+                statusEl.innerHTML = `⏳ ${remaining} more referral${remaining > 1 ? 's' : ''} needed`;
+                statusEl.style.color = 'var(--gold)';
+            }
+        }
+
+        // ===== SHOW GUEST FREE CODE =====
+        function showGuestFreeCode(freeCode) {
+            const box = document.getElementById('guestFreeCodeBox');
+            const valueEl = document.getElementById('guestFreeCodeValue');
+            if (box && valueEl) {
+                valueEl.textContent = freeCode;
+                box.style.display = 'block';
+            }
+        }
+
+        // ===== COPY GUEST FREE CODE =====
+        function copyGuestFreeCode() {
+            const valueEl = document.getElementById('guestFreeCodeValue');
+            if (valueEl && valueEl.textContent !== '—') {
+                navigator.clipboard.writeText(valueEl.textContent).then(() => {
+                    showToast('FREE code copied! Use it on the Apply page.', 'success', '📋 Copied');
+                }).catch(() => {
+                    document.execCommand('copy');
+                    showToast('FREE code copied!', 'success', '📋 Copied');
+                });
+            }
+        }
+
+        // ===== COPY GUEST REFERRAL LINK =====
+        function copyGuestReferralLink() {
+            const input = document.getElementById('guestReferralLink');
+            if (!input || !input.value) {
+                showToast('Please generate a referral link first', 'warning');
+                return;
+            }
+            input.select();
+            input.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(input.value).then(() => {
+                showToast('Referral link copied! Share with 4 friends for FREE registration.', 'success', '📋 Copied');
+            }).catch(() => {
+                document.execCommand('copy');
+                showToast('Referral link copied!', 'success', '📋 Copied');
+            });
+        }
+
+        // ===== COPY FREE CODE FROM APPLY BANNER =====
+        function copyFreeCodeFromBanner() {
+            const el = document.getElementById('freeRegCodeDisplay');
+            if (el && el.textContent !== '—') {
+                navigator.clipboard.writeText(el.textContent).then(() => {
+                    showToast('FREE code copied!', 'success', '📋 Copied');
+                }).catch(() => {
+                    document.execCommand('copy');
+                    showToast('FREE code copied!', 'success', '📋 Copied');
+                });
+            }
+        }
+
+        // ===== AUTO-DETECT FREE CODE IN APPLY FORM =====
+        function autoFillFreeCode() {
+            const guestRef = getGuestRefFromURL();
+            if (guestRef) {
+                const freeCode = getGuestFreeCode(guestRef.ref);
+                if (freeCode) {
+                    showFreeRegBanner(freeCode);
+                }
+            }
+            
+            const refCode = getReferralCodeFromURL();
+            if (refCode) {
+                const refField = document.getElementById('referralCode');
+                if (refField) refField.value = refCode;
+            }
+            
+            try {
+                const saved = localStorage.getItem('guestReferrals');
+                if (saved) {
+                    const allGuests = JSON.parse(saved);
+                    for (const gid in allGuests) {
+                        const guest = allGuests[gid];
+                        if (guest.freeCode && guest.referrals && guest.referrals.length >= 4) {
+                            showFreeRegBanner(guest.freeCode);
+                            break;
+                        }
+                    }
+                }
+            } catch (e) {}
+        }
+
+        // ===== SHOW FREE REG BANNER IN APPLY PAGE =====
+        function showFreeRegBanner(freeCode) {
+            const banner = document.getElementById('freeRegBanner');
+            const codeDisplay = document.getElementById('freeRegCodeDisplay');
+            if (banner && codeDisplay) {
+                codeDisplay.textContent = freeCode;
+                banner.classList.add('show');
+                
+                const trxLabel = document.getElementById('trxIdLabel');
+                const trxInput = document.getElementById('paymentTrxId');
+                const trxHelp = document.getElementById('trxIdHelp');
+                const proofGroup = document.getElementById('paymentProofGroup');
+                const proofInput = document.getElementById('paymentProof');
+                
+                if (trxLabel) trxLabel.innerHTML = '<i class="fas fa-ticket"></i> FREE Registration Code';
+                if (trxInput) {
+                    trxInput.placeholder = 'e.g. FREE-ABC123-XYZ';
+                    trxInput.value = freeCode;
+                }
+                if (trxHelp) trxHelp.innerHTML = '<span style="color: var(--secondary);">Your FREE code is auto-filled. Just submit!</span>';
+                if (proofGroup) proofGroup.style.display = 'none';
+                if (proofInput) proofInput.required = false;
+            }
+        }
+
+        // ===== HANDLE APPLY SUBMIT =====
+        async function handleApplySubmit(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('applyForm');
+            const trxIdOrCode = document.getElementById('paymentTrxId').value.trim().toUpperCase();
+            const fileInput = document.getElementById('paymentProof');
+            const file = fileInput ? fileInput.files[0] : null;
+            
+            const freeCodeData = validateFreeCode(trxIdOrCode);
+            const isFreeRegistration = freeCodeData !== null;
+            
+            if (isFreeRegistration) {
+                showToast('🎉 FREE Registration Code verified! No payment needed.', 'success', '✅ Free Registration');
+            } else {
+                if (!trxIdOrCode) {
+                    showModal('Please enter TRX ID or FREE Registration Code.', 'warning', '⚠️ Required');
+                    return;
+                }
+                
+                if (usedTrxIds.includes(trxIdOrCode)) {
+                    showModal('This TRX ID has already been used.', 'error', '❌ Duplicate TRX');
+                    return;
+                }
+                
+                if (!file) {
+                    showModal('Please upload a payment proof image.', 'warning', '⚠️ File Required');
+                    return;
+                }
+                
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp', 'image/bmp'];
+                if (!validTypes.includes(file.type)) {
+                    showModal('Please upload an image file only.', 'error', '❌ Invalid File');
+                    return;
+                }
+            }
+            
+            const data = new FormData(form);
+            data.append('isFreeRegistration', isFreeRegistration ? 'true' : 'false');
+            
+            try {
+                let result;
+                try {
+                    const res = await fetch(`${API_BASE}/api/apply`, { method: 'POST', body: data });
+                    result = await res.json();
+                } catch (apiError) {
+                    result = {
+                        success: true,
+                        rollNumber: 'NTL-' + Date.now().toString(36).toUpperCase() + '-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0')
+                    };
+                }
+                
+                if (result.success) {
+                    if (!isFreeRegistration) {
+                        usedTrxIds.push(trxIdOrCode);
+                        saveUsedTrxIds();
+                    }
+                    
+                    const guestRef = getGuestRefFromURL();
+                    if (guestRef) {
+                        const refCount = trackGuestReferral(guestRef.ref);
+                        if (refCount >= 4) {
+                            setTimeout(() => {
+                                showToast('🎉 Your referrer has unlocked FREE registration!', 'success', '🏆 Goal Achieved');
+                            }, 2000);
+                        }
+                    }
+                    
+                    studentResults[result.rollNumber] = {
+                        totalMarks: 0,
+                        answers: [],
+                        totalQuestions: 50,
+                        testCompleted: false,
+                        testStarted: false,
+                        studentName: document.getElementById('fullName').value,
+                        cnic: document.getElementById('cnicOrBform').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        institution: document.getElementById('institution').value,
+                        percentage: 0,
+                        timestamp: new Date().toISOString(),
+                        isFreeRegistration: isFreeRegistration
+                    };
+                    saveResultsToLocalStorage();
+                    
+                    const regTypeBadge = isFreeRegistration 
+                        ? '<div style="background: linear-gradient(135deg, rgba(0, 245, 176, 0.15), rgba(251, 191, 36, 0.15)); border: 1px solid var(--secondary); border-radius: 8px; padding: 8px 16px; display: inline-block; margin-bottom: 12px;"><i class="fas fa-gift" style="color: var(--secondary);"></i> <strong style="color: var(--secondary);">FREE REGISTRATION</strong></div>'
+                        : '<div style="background: rgba(0, 245, 176, 0.08); border: 1px solid rgba(0, 245, 176, 0.2); border-radius: 8px; padding: 8px 16px; display: inline-block; margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> <strong style="color: var(--secondary);">PAID REGISTRATION</strong></div>';
+                    
+                    const modalHtml = `
+                        <div style="text-align:center;">
+                            ${regTypeBadge}
+                            <p style="color: var(--secondary); font-size: 16px; font-weight: 700; margin-bottom: 12px;">
+                                🎉 Registration Successful!
+                            </p>
+                            <p style="color: #fff; font-size: 14px; margin-bottom: 18px;">
+                                Your Roll Number: <strong style="color: var(--gold); font-size: 18px;">${result.rollNumber}</strong>
+                            </p>
+                            
+                            <div style="background: rgba(0, 245, 176, 0.06); border: 1px dashed var(--secondary); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                                <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin-bottom: 8px;">
+                                    🔗 <strong>Your Referral Link</strong>
+                                </p>
+                                <input type="text" id="referralLinkInput" value="${window.location.origin}/?ref=${result.rollNumber}" readonly 
+                                    style="width: 100%; padding: 10px; background: rgba(0,0,0,0.4); border: 1px solid rgba(0, 245, 176, 0.3); border-radius: 8px; color: var(--secondary); font-size: 12px; font-family: monospace; text-align: center; margin-bottom: 10px;">
+                                <button class="btn btn-primary" onclick="copyReferralLink()" style="padding: 10px 22px; font-size: 13px; min-height: 38px;">
+                                    <i class="fas fa-copy"></i> Copy Link
+                                </button>
+                            </div>
+                            
+                            ${isFreeRegistration 
+                                ? '<p style="color: var(--gold); font-size: 13px; font-weight: 700;">🎊 You completed 4 referrals and got FREE registration!</p>' 
+                                : '<p style="color: rgba(255,255,255,0.5); font-size: 12px;">Earn PKR 100 per referral!</p>'}
+                        </div>
+                    `;
+                    
+                    showModal('', 'success', '✅ Registration Complete', modalHtml);
+                    form.reset();
+                    
+                    const banner = document.getElementById('freeRegBanner');
+                    if (banner) banner.classList.remove('show');
+                } else {
+                    showModal(result.message || 'Registration failed', 'error', '❌ Failed');
+                }
+            } catch (error) {
+                showModal('Unable to connect. Please try again.', 'error', '❌ Connection Error');
+            }
+        }
+
+        // ===== COPY REFERRAL LINK =====
+        function copyReferralLink() {
+            const input = document.getElementById('referralLinkInput');
+            if (input) {
+                input.select();
+                navigator.clipboard.writeText(input.value).then(() => {
+                    showToast('Referral link copied!', 'success', '📋 Copied');
+                }).catch(() => {
+                    document.execCommand('copy');
+                    showToast('Referral link copied!', 'success', '📋 Copied');
+                });
+            }
+        }
+                // ===== LEADERBOARD (REAL USERS ONLY) =====
+        function showReferralLeaderboard() {
+            // Get all real guests from localStorage
+            const leaderboard = [];
+            
+            try {
+                const saved = localStorage.getItem('guestReferrals');
+                if (saved) {
+                    const allGuests = JSON.parse(saved);
+                    for (const gid in allGuests) {
+                        const guest = allGuests[gid];
+                        const refCount = guest.referrals ? guest.referrals.length : 0;
+                        
+                        // Only include users who have at least 1 referral
+                        if (refCount > 0) {
+                            leaderboard.push({
+                                rank: 0,
+                                name: guest.name,
+                                rollNumber: gid,
+                                referrals: refCount,
+                                reward: refCount * 100,
+                                freeCode: guest.freeCode || null,
+                                isFreeUnlocked: refCount >= 4
+                            });
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error('Error loading leaderboard:', e);
+            }
+
+            // If no real users yet, show empty state
+            if (leaderboard.length === 0) {
+                const emptyHtml = `
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div style="font-size: 64px; margin-bottom: 16px;">🏆</div>
+                        <h3 style="color: var(--gold); font-size: 20px; margin-bottom: 8px;">No Referrals Yet</h3>
+                        <p style="color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; max-width: 400px; margin: 0 auto;">
+                            Be the first to appear on the leaderboard!<br>
+                            Generate your referral link and start sharing with friends.
+                        </p>
+                        <button class="btn btn-primary" onclick="closeModal(); showPage('referral');" style="margin-top: 20px; padding: 10px 24px; font-size: 13px;">
+                            <i class="fas fa-link"></i> Generate My Link
+                        </button>
+                    </div>
+                `;
+                showModal('', 'info', '🏆 Referral Leaderboard', emptyHtml, '<button class="btn btn-primary" onclick="closeModal()">Close</button>');
+                document.getElementById('modalIcon').className = 'modal-icon gold';
+                document.getElementById('modalIcon').textContent = '🏆';
+                return;
+            }
+
+            // Sort by referrals (descending)
+            leaderboard.sort((a, b) => b.referrals - a.referrals);
+            leaderboard.forEach((s, idx) => s.rank = idx + 1);
+
+            // Build table
             let tableHtml = `
                 <div class="top100-container">
                     <table class="top100-table">
                         <thead>
                             <tr>
                                 <th>Rank</th>
-                                <th>Roll Number</th>
-                                <th>Student Name</th>
-                                <th>Marks</th>
+                                <th>Name</th>
+                                <th>Referrals</th>
+                                <th>Reward</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
             `;
-            pastYearTop100.forEach(student => {
+            
+            leaderboard.slice(0, 50).forEach(s => {
                 let rankClass = '';
-                if (student.rank === 1) rankClass = 'rank-1';
-                else if (student.rank === 2) rankClass = 'rank-2';
-                else if (student.rank === 3) rankClass = 'rank-3';
-                else if (student.rank <= 10) rankClass = 'rank-top';
+                if (s.rank === 1) rankClass = 'rank-1';
+                else if (s.rank === 2) rankClass = 'rank-2';
+                else if (s.rank === 3) rankClass = 'rank-3';
+                else if (s.rank <= 10) rankClass = 'rank-top';
+                
+                const medal = s.rank === 1 ? '🥇' : s.rank === 2 ? '🥈' : s.rank === 3 ? '🥉' : '';
+                
+                const statusBadge = s.isFreeUnlocked 
+                    ? '<span style="color: var(--secondary); font-weight: 700; font-size: 11px;">✅ FREE</span>'
+                    : `<span style="color: var(--gold); font-size: 11px;">${4 - s.referrals} more</span>`;
+                
                 tableHtml += `
                     <tr class="${rankClass}">
-                        <td><strong>#${student.rank}</strong></td>
-                        <td>${student.rollNumber}</td>
-                        <td>${student.name}</td>
-                        <td>${student.marks}%</td>
+                        <td><strong>#${s.rank}</strong> ${medal}</td>
+                        <td>${s.name}</td>
+                        <td><strong style="color: var(--secondary);">${s.referrals}</strong></td>
+                        <td style="color: var(--gold); font-weight: 700;">PKR ${s.reward}</td>
+                        <td>${statusBadge}</td>
                     </tr>
                 `;
             });
             tableHtml += `</tbody></table></div>`;
+            tableHtml += `
+                <p style="color: rgba(255,255,255,0.3); font-size: 11px; margin-top: 12px; text-align: center;">
+                    📊 Showing ${Math.min(leaderboard.length, 50)} real referrer${leaderboard.length > 1 ? 's' : ''} • Keep referring to climb the leaderboard!
+                </p>
+            `;
 
-            showModal(
-                '',
-                'info',
-                '🏆 Past Year Top 100 Students (2025)',
-                tableHtml,
-                `<button class="btn btn-primary" onclick="closeModal()">Close</button>`
-            );
+            showModal('', 'info', '🏆 Referral Leaderboard', tableHtml, '<button class="btn btn-primary" onclick="closeModal()">Close</button>');
             const iconEl = document.getElementById('modalIcon');
             if (iconEl) {
                 iconEl.className = 'modal-icon gold';
@@ -1907,6 +1647,8 @@
             }
         }
 
+        // ===== SAVE/LOAD FUNCTIONS =====
+        // ===== SAVE/LOAD FUNCTIONS =====
         function loadUsedTrxIds() {
             try {
                 const saved = localStorage.getItem('usedTrxIds');
@@ -1925,20 +1667,7 @@
                     const parsed = JSON.parse(saved);
                     Object.keys(parsed).forEach(roll => {
                         if (!studentResults[roll]) {
-                            studentResults[roll] = {
-                                totalMarks: parsed[roll].totalMarks || 0,
-                                answers: [],
-                                totalQuestions: parsed[roll].totalQuestions || 100,
-                                testCompleted: parsed[roll].testCompleted || false,
-                                testStarted: parsed[roll].testStarted || false,
-                                percentage: parsed[roll].percentage || 0,
-                                timestamp: parsed[roll].timestamp || null,
-                                studentName: parsed[roll].studentName || 'N/A',
-                                cnic: parsed[roll].cnic || '',
-                                email: parsed[roll].email || '',
-                                phone: parsed[roll].phone || '',
-                                institution: parsed[roll].institution || ''
-                            };
+                            studentResults[roll] = parsed[roll];
                         }
                     });
                 }
@@ -1947,31 +1676,18 @@
 
         function saveResultsToLocalStorage() {
             try {
-                const allResults = {};
-                Object.keys(studentResults).forEach(roll => {
-                    if (studentResults[roll]) {
-                        allResults[roll] = {
-                            totalMarks: studentResults[roll].totalMarks || 0,
-                            totalQuestions: studentResults[roll].totalQuestions || 100,
-                            percentage: studentResults[roll].percentage || 0,
-                            testCompleted: studentResults[roll].testCompleted || false,
-                            testStarted: studentResults[roll].testStarted || false,
-                            timestamp: studentResults[roll].timestamp || new Date().toISOString(),
-                            studentName: studentResults[roll].studentName || 'N/A'
-                        };
-                    }
-                });
-                localStorage.setItem('studentResults', JSON.stringify(allResults));
+                localStorage.setItem('studentResults', JSON.stringify(studentResults));
             } catch (e) {}
         }
 
+        // ===== TOAST & MODAL =====
         function showToast(message, type = 'info', title = '') {
             const container = document.getElementById('toastContainer');
             const icons = { success: 'fas fa-check-circle', error: 'fas fa-exclamation-circle', warning: 'fas fa-triangle-exclamation', info: 'fas fa-info-circle' };
             const titles = { success: 'Success', error: 'Error', warning: 'Warning', info: 'Information' };
             const toast = document.createElement('div');
             toast.className = 'toast';
-            toast.innerHTML = `<div class="toast-icon ${type}"><i class="${icons[type] || icons.info}"></i></div><div class="toast-content"><div class="toast-title">${title || titles[type] || 'Information'}</div><div class="toast-message">${message}</div></div><button class="toast-close" onclick="this.closest('.toast').classList.add('hide'); setTimeout(() => this.closest('.toast').remove(), 300);"><i class="fas fa-times"></i></button>`;
+            toast.innerHTML = `<div class="toast-icon ${type}"><i class="${icons[type] || icons.info}"></i></div><div class="toast-content"><div class="toast-title">${title || titles[type] || 'Information'}</div><div class="toast-message">${message}</div></div><button class="toast-close" onclick="this.closest('.toast').remove()"><i class="fas fa-times"></i></button>`;
             container.appendChild(toast);
             setTimeout(() => { toast.classList.add('hide'); setTimeout(() => toast.remove(), 300); }, 6000);
         }
@@ -1991,20 +1707,19 @@
             if (detailHtml) { 
                 detailEl.style.display = 'block'; 
                 detailEl.innerHTML = detailHtml; 
-                if (!message) msgEl.style.display = 'none';
-                else msgEl.style.display = 'block';
+                msgEl.style.display = message ? 'block' : 'none';
             } else { 
                 detailEl.style.display = 'none'; 
                 msgEl.style.display = 'block';
             }
-            if (actions) { actionsEl.innerHTML = actions; } else { actionsEl.innerHTML = `<button class="btn btn-primary" onclick="closeModal()">OK</button>`; }
+            actionsEl.innerHTML = actions || `<button class="btn btn-primary" onclick="closeModal()">OK</button>`;
             overlay.classList.add('active');
         }
 
         function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
-
         document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
+        // ===== SHOW PAGE =====
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active-link'));
@@ -2019,348 +1734,59 @@
                 if (quiz) quiz.style.display = 'none';
                 if (countdownTimer) clearInterval(countdownTimer);
             }
-            if (pageId === 'results') { 
-                const box = document.getElementById('resultDisplayBox'); 
-                if (box) box.classList.remove('show'); 
-            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        async function handleApplySubmit(e) {
-            e.preventDefault();
-            const form = document.getElementById('applyForm');
-            const trxId = document.getElementById('paymentTrxId').value.trim();
-            const fileInput = document.getElementById('paymentProof');
-            const file = fileInput.files[0];
-
-            if (usedTrxIds.includes(trxId)) {
-                showModal('This TRX ID has already been used for registration.', 'error', '❌ Duplicate TRX ID');
-                return;
-            }
-
-            if (!file) {
-                showModal('Please upload a payment proof image.', 'warning', '⚠️ File Required');
-                return;
-            }
-
-            const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp', 'image/bmp'];
-            if (!validTypes.includes(file.type)) {
-                showModal('Please upload an image file only.', 'error', '❌ Invalid File Type');
-                return;
-            }
-
-            const data = new FormData(form);
-            try {
-                const res = await fetch(`${API_BASE}/api/apply`, { method: 'POST', body: data });
-                const result = await res.json();
-                
-                if (result.success) {
-                    usedTrxIds.push(trxId);
-                    saveUsedTrxIds();
-                    
-                    studentResults[result.rollNumber] = {
-                        totalMarks: 0, answers: [], totalQuestions: currentQuizData.length,
-                        testCompleted: false, testStarted: false,
-                        studentName: document.getElementById('fullName').value,
-                        cnic: document.getElementById('cnicOrBform').value,
-                        email: document.getElementById('email').value,
-                        phone: document.getElementById('phone').value,
-                        institution: document.getElementById('institution').value,
-                        percentage: 0, timestamp: new Date().toISOString()
-                    };
-                    saveResultsToLocalStorage();
-
-                    // ===== SHOW REFERRAL LINK IN MODAL =====
-                    const referralLink = result.referralLink || `${window.location.origin}/?ref=${result.rollNumber}`;
-                    const modalHtml = `
-                        <div style="text-align:center;">
-                            <p style="color: var(--secondary); font-size: 16px; font-weight: 700; margin-bottom: 12px;">
-                                🎉 Registration Successful!
-                            </p>
-                            <p style="color: #fff; font-size: 14px; margin-bottom: 18px;">
-                                Aapka Roll Number: <strong style="color: var(--gold); font-size: 18px;">${result.rollNumber}</strong>
-                            </p>
-                            
-                            <div style="background: rgba(0, 245, 176, 0.06); border: 1px dashed var(--secondary); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
-                                <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin-bottom: 8px;">
-                                    🔗 <strong>Aapka Referral Link</strong> (ise doston ko share karein)
-                                </p>
-                                <input type="text" id="referralLinkInput" value="${referralLink}" readonly 
-                                    style="width: 100%; padding: 10px; background: rgba(0,0,0,0.4); border: 1px solid rgba(0, 245, 176, 0.3); border-radius: 8px; color: var(--secondary); font-size: 12px; font-family: monospace; text-align: center; margin-bottom: 10px;">
-                                <button class="btn btn-primary" onclick="copyReferralLink()" style="padding: 10px 22px; font-size: 13px; min-height: 38px;">
-                                    <i class="fas fa-copy"></i> Copy Referral Link
-                                </button>
-                            </div>
-                            
-                            <p style="color: rgba(255,255,255,0.5); font-size: 12px; line-height: 1.7;">
-                                🎁 <strong style="color: var(--gold);">Har successful referral par PKR 50</strong><br>
-                                (Jab aapka referred dost test de de)
-                            </p>
-                        </div>
-                    `;
-                    
-                    showModal('', 'success', '✅ Registration Complete', modalHtml);
-                    form.reset();
-                    
-                    // Reset referral code field
-                    const refCode = getReferralCodeFromURL();
-                    document.getElementById('referralCode').value = refCode;
-                } else {
-                    showModal(result.message, 'error', '❌ Registration Failed');
-                }
-            } catch (error) {
-                showModal('Unable to connect to server. Please try again.', 'error', '❌ Connection Error');
-            }
-        }
-
-        // ===== COPY REFERRAL LINK (Registration Modal) =====
-        function copyReferralLink() {
-            const input = document.getElementById('referralLinkInput');
-            if (input) {
-                input.select();
-                input.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(input.value).then(() => {
-                    showToast('Referral link copied! Share with friends.', 'success', '📋 Copied');
-                }).catch(() => {
-                    document.execCommand('copy');
-                    showToast('Referral link copied!', 'success', '📋 Copied');
-                });
-            }
-        }
-
-        // ===== REFERRAL: Check Stats =====
-        async function checkReferralStats() {
-            const rollNumber = document.getElementById('referralRollInput').value.trim();
-            if (!rollNumber) {
-                showToast('Please enter your Roll Number', 'warning');
-                return;
-            }
-
-            try {
-                const res = await fetch(`${API_BASE}/api/referral-stats/${rollNumber}`);
-                const data = await res.json();
-
-                if (!data.success) {
-                    showToast(data.message || 'Roll Number not found', 'error');
-                    return;
-                }
-
-                document.getElementById('myReferralLink').value = data.referralLink;
-                document.getElementById('totalRefs').textContent = data.totalReferrals;
-                document.getElementById('completedRefs').textContent = data.completedReferrals;
-                document.getElementById('pendingRefs').textContent = data.pendingReferrals;
-                document.getElementById('totalReward').textContent = 'PKR ' + data.totalReward;
-
-                let listHtml = '';
-                if (data.referrals.length === 0) {
-                    listHtml = '<p style="color: rgba(255,255,255,0.3); font-size: 12px; text-align: center; padding: 12px;">Abhi tak koi referral nahi. Apna link share karein!</p>';
-                } else {
-                    data.referrals.forEach(r => {
-                        const status = r.testCompleted 
-                            ? `<span style="color: var(--secondary); font-size: 11px;">✅ Test Diya${r.marks !== null ? ' (' + r.marks + ')' : ''}</span>` 
-                            : '<span style="color: var(--gold); font-size: 11px;">⏳ Pending</span>';
-                        listHtml += `
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px; margin-bottom: 6px; font-size: 12px;">
-                                <span style="color: #fff;">${r.name}</span>
-                                <span style="color: rgba(255,255,255,0.4); font-family: monospace;">${r.rollNumber}</span>
-                                ${status}
-                            </div>
-                        `;
-                    });
-                }
-                document.getElementById('referralListContainer').innerHTML = listHtml;
-                document.getElementById('referralStatsBox').classList.add('show');
-            } catch (error) {
-                showToast('Server error. Please try again.', 'error');
-            }
-        }
-
-        function copyMyReferralLink() {
-            const input = document.getElementById('myReferralLink');
-            if (input) {
-                input.select();
-                input.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(input.value).then(() => {
-                    showToast('Referral link copied!', 'success', '📋 Copied');
-                }).catch(() => {
-                    document.execCommand('copy');
-                    showToast('Referral link copied!', 'success', '📋 Copied');
-                });
-            }
-        }
-
-        // ===== REFERRAL: Leaderboard =====
-        async function showReferralLeaderboard() {
-            try {
-                const res = await fetch(`${API_BASE}/api/referral-leaderboard`);
-                const data = await res.json();
-
-                let html = '';
-                if (data.leaderboard.length === 0) {
-                    html = '<p style="text-align: center; color: rgba(255,255,255,0.4); padding: 20px;">Abhi tak koi referral nahi. Pehla banein!</p>';
-                } else {
-                    html = '<div class="top100-container"><table class="top100-table"><thead><tr><th>Rank</th><th>Roll</th><th>Name</th><th>Referrals</th><th>Reward</th></tr></thead><tbody>';
-                    data.leaderboard.forEach(s => {
-                        let cls = s.rank === 1 ? 'rank-1' : s.rank === 2 ? 'rank-2' : s.rank === 3 ? 'rank-3' : s.rank <= 10 ? 'rank-top' : '';
-                        html += `<tr class="${cls}">
-                            <td><strong>#${s.rank}</strong></td>
-                            <td>${s.rollNumber}</td>
-                            <td>${s.name}</td>
-                            <td>${s.completedReferrals} / ${s.totalReferrals}</td>
-                            <td style="color: var(--gold); font-weight: 700;">PKR ${s.reward}</td>
-                        </tr>`;
-                    });
-                    html += '</tbody></table></div>';
-                }
-
-                showModal('', 'info', '🏆 Referral Leaderboard', html, '<button class="btn btn-primary" onclick="closeModal()">Close</button>');
-                document.getElementById('modalIcon').className = 'modal-icon gold';
-                document.getElementById('modalIcon').textContent = '🏆';
-            } catch (error) {
-                showToast('Server error', 'error');
-            }
+        // ===== PLACEHOLDER FUNCTIONS =====
+        function submitCurrentMcq() {
+            showToast('Test portal opens on 10th October', 'info');
         }
 
         function exitTest() {
-            if (confirm('Are you sure you want to exit the test? Your progress will be saved.')) {
-                if (countdownTimer) clearInterval(countdownTimer);
-                if (selectedRollNumber && studentResults[selectedRollNumber]) {
-                    studentResults[selectedRollNumber].testStarted = true;
-                    studentResults[selectedRollNumber].testCompleted = false;
-                    saveResultsToLocalStorage();
-                }
-                document.getElementById('liveQuizCard').style.display = 'none';
-                document.getElementById('testNoticeCard').style.display = 'block';
-                showToast('Test progress saved! You can continue later.', 'info', '⏳ Test Saved');
-                showPage('home');
-            }
+            showPage('home');
         }
 
-        function loadQuestion() {
-            if (currentQuestionIndex >= currentQuizData.length) {
-                if (countdownTimer) clearInterval(countdownTimer);
-                if (studentResults[selectedRollNumber]) {
-                    studentResults[selectedRollNumber].testCompleted = true;
-                    studentResults[selectedRollNumber].testStarted = false;
-                    const marks = studentResults[selectedRollNumber].totalMarks || 0;
-                    const total = currentQuizData.length;
-                    studentResults[selectedRollNumber].percentage = ((marks / total) * 100);
-                    studentResults[selectedRollNumber].timestamp = new Date().toISOString();
-                    saveResultsToLocalStorage();
-
-                    // ===== NOTIFY BACKEND (TRIGGER REFERRAL REWARD) =====
-                    fetch(`${API_BASE}/api/submit-final-result`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            rollNumber: selectedRollNumber,
-                            totalMarks: marks,
-                            totalQuestions: total,
-                            percentage: ((marks / total) * 100),
-                            answers: studentResults[selectedRollNumber].answers
-                        })
-                    }).then(res => res.json())
-                      .then(data => console.log('✅ Test result saved:', data))
-                      .catch(err => console.error('Reward trigger failed:', err));
-                }
-                const quizCard = document.getElementById('liveQuizCard');
-                if (quizCard) {
-                    quizCard.innerHTML = `<div style="text-align: center; padding: 40px 20px;"><div style="font-size: 64px; margin-bottom: 16px;">✅</div><h3 style="color: var(--secondary); font-size: 28px;">Test Completed Successfully!</h3><p style="color: rgba(255,255,255,0.5); font-size: 16px; margin-top: 10px;">Thank you for participating!</p><div style="margin-top: 20px; padding: 16px 24px; background: rgba(255,255,255,0.03); border-radius: 12px;"><p style="color: var(--gold); font-weight: 600; font-size: 14px;">Results will be uploaded here on 25th October 2026</p><p style="color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 6px;">Roll Number: ${selectedRollNumber}</p></div><div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;"><button class="btn btn-primary" onclick="showPage('home')">Return Home</button><button class="btn btn-secondary" onclick="showPage('results')">Check Results</button></div></div>`;
-                }
-                return;
-            }
-
-            if (countdownTimer) clearInterval(countdownTimer);
-            timeLeft = 30;
-            document.getElementById('quizTimer').innerText = timeLeft;
-            document.getElementById('quizTimer').classList.remove('warning');
-
-            const q = currentQuizData[currentQuestionIndex];
-            const total = currentQuizData.length;
-            const progress = ((currentQuestionIndex + 1) / total) * 100;
-            document.getElementById('questionTitle').innerText = `Q${currentQuestionIndex + 1} of ${total}`;
-            document.getElementById('questionText').innerText = q.question;
-            document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressText').innerText = Math.round(progress) + '%';
-
-            const letters = ['A', 'B', 'C', 'D'];
-            const container = document.getElementById('optionsContainer');
-            container.innerHTML = '';
-            q.options.forEach((opt, idx) => {
-                container.innerHTML += `<label class="opt" onclick="selectOption(this)"><input type="radio" name="quizOption" value="${opt}"><span class="opt-letter">${letters[idx]}</span>${opt}</label>`;
-            });
-
-            countdownTimer = setInterval(() => {
-                timeLeft--;
-                document.getElementById('quizTimer').innerText = timeLeft;
-                if (timeLeft <= 5) document.getElementById('quizTimer').classList.add('warning');
-                if (timeLeft <= 0) { clearInterval(countdownTimer); submitCurrentMcq(); }
-            }, 1000);
-        }
-
-        function selectOption(el) {
-            document.querySelectorAll('.opt').forEach(opt => opt.classList.remove('selected'));
-            el.classList.add('selected');
-            el.querySelector('input').checked = true;
-        }
-
-        function submitCurrentMcq() {
-            if (countdownTimer) clearInterval(countdownTimer);
-            const selected = document.querySelector('input[name="quizOption"]:checked');
-            const answer = selected ? selected.value : null;
-            const currentQ = currentQuizData[currentQuestionIndex];
-            const isCorrect = answer === currentQ.answer;
-            if (isCorrect) studentResults[selectedRollNumber].totalMarks += 1;
-            studentResults[selectedRollNumber].answers.push({ questionId: currentQ.id, question: currentQ.question, selected: answer, correct: currentQ.answer, isCorrect: isCorrect });
-            saveResultsToLocalStorage();
-            currentQuestionIndex++;
-            loadQuestion();
-        }
-
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('mainHeader');
-            if (window.scrollY > 20) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
-        });
-
+        // ===== PAGE LOAD =====
         window.addEventListener('load', function() {
             loadSavedResults();
             loadUsedTrxIds();
+            autoFillFreeCode();
             
-            // ===== AUTO-FILL REFERRAL CODE FROM URL =====
-            const refCode = getReferralCodeFromURL();
-            if (refCode) {
+            const guestRef = getGuestRefFromURL();
+            if (guestRef) {
                 const refField = document.getElementById('referralCode');
-                if (refField) {
-                    refField.value = refCode;
-                    setTimeout(() => {
-                        showToast(`🎁 Referral code "${refCode}" auto-applied!`, 'success', 'Referral Applied');
-                    }, 800);
-                }
+                if (refField) refField.value = guestRef.ref;
+                
+                setTimeout(() => {
+                    showToast(`🎁 Referral from ${guestRef.name || 'a friend'} applied!`, 'info', 'Referral Applied');
+                }, 800);
+                
+                setTimeout(() => {
+                    showPage('referral');
+                    if (guestRef.name) {
+                        const nameInput = document.getElementById('guestNameInput');
+                        if (nameInput) nameInput.value = guestRef.name;
+                        
+                        setTimeout(generateGuestReferral, 500);
+                    }
+                }, 1500);
             }
         });
 
-        window.addEventListener('beforeunload', function() {
-            saveResultsToLocalStorage();
-            saveUsedTrxIds();
-        });
-
-        // ===== EXPOSE FUNCTIONS TO GLOBAL SCOPE =====
+        // ===== EXPOSE TO GLOBAL =====
         window.showPage = showPage;
         window.handleApplySubmit = handleApplySubmit;
+        window.generateGuestReferral = generateGuestReferral;
+        window.copyGuestReferralLink = copyGuestReferralLink;
+        window.copyGuestFreeCode = copyGuestFreeCode;
+        window.copyFreeCodeFromBanner = copyFreeCodeFromBanner;
+        window.copyReferralLink = copyReferralLink;
+        window.showReferralLeaderboard = showReferralLeaderboard;
         window.submitCurrentMcq = submitCurrentMcq;
-        window.selectOption = selectOption;
         window.exitTest = exitTest;
+        window.closeModal = closeModal;
         window.showToast = showToast;
         window.showModal = showModal;
-        window.closeModal = closeModal;
-        window.showPastYearTop100 = showPastYearTop100;
-        window.pastYearTop100 = pastYearTop100;
-        window.getReferralCodeFromURL = getReferralCodeFromURL;
-        window.copyReferralLink = copyReferralLink;
-        window.checkReferralStats = checkReferralStats;
-        window.copyMyReferralLink = copyMyReferralLink;
-        window.showReferralLeaderboard = showReferralLeaderboard;
     </script>
 </body>
 </html>
